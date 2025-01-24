@@ -18,7 +18,6 @@ year:1999 },
     price: "1,50,000",
     location: "Rishikesh, Uttarakhand",
     area: "2700 sq ft",
-        area: "1.5 acre",
         status:'soldout',
         year:1999
     },

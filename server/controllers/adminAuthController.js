@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const AdminModel = require("../models/adminModel.js");
+const AdminModel = require("../models/AdminModel.js");
 const ejs = require("ejs");
 const path = require("path");
 const { sendEmail } = require("../utils/sendMail.js");
