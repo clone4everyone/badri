@@ -24,8 +24,8 @@ const Service = () => {
   ];
 
   return (
-    <section className="py-8 pl-5 md:pl-0">
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-8 pl-5 md:pl-0 " >
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-50 bg-white">
       <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
         Our Services
       </h2>

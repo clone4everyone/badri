@@ -22,6 +22,7 @@ const Navbar = () => {
   const handleMouseEnter = () => {
     clearTimeout(timeoutId); // Clear any existing timeout
     setIsDropdownOpen(true);
+    setMobileMenuOpen(false);
   };
  const [mobileMenuOpen,setMobileMenuOpen]=useState(false)
   const handleMouseLeave = () => {
@@ -43,7 +44,7 @@ const logout=()=>{
 }
   return (
  
-    <div className="flex justify-between items-center p-4 border bg-white ">
+    <div className="flex justify-between items-center p-4 border bg-white relative z-30">
     {/* Left Section */}
     <div className="flex items-center space-x-4">
       {model && <Search setModel={setModel} />}
@@ -120,7 +121,10 @@ const logout=()=>{
       <div className="md:hidden">
         <FaBars
           className="text-2xl cursor-pointer"
-          onClick={() => setMobileMenuOpen((prev) => !prev)}
+          onClick={() => {
+            setMobileMenuOpen((prev) => !prev)
+            setIsDropdownOpen(false)
+          }}
         />
       </div>
     </div>
@@ -130,10 +134,10 @@ const logout=()=>{
       <div className="absolute top-16 left-0 w-full z-20 bg-white shadow-lg md:hidden">
         <div className="flex flex-col items-center space-y-4 p-4 z-10">
           <Link className="hover:cursor-pointer hover:border-b-2" to="/">Home</Link>
-          <a href="#about" className="hover:cursor-pointer hover:border-b-2">About Us</a>
-          <a href="#service" className="hover:cursor-pointer hover:border-b-2">Services</a>
-          <a href="#projects" className="hover:cursor-pointer hover:border-b-2">Projects</a>
-          <a href="#contact" className="hover:cursor-pointer hover:border-b-2">Contact Us</a>
+          <Link to="#/about" className="hover:cursor-pointer hover:border-b-2">About Us</Link>
+          <Link to="#/service" className="hover:cursor-pointer hover:border-b-2">Services</Link>
+          <Link to="#/projects" className="hover:cursor-pointer hover:border-b-2">Projects</Link>
+          <Link to="#/contact" className="hover:cursor-pointer hover:border-b-2">Contact Us</Link>
         </div>
       </div>
     )}

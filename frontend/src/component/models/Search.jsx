@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import API from '../../utils/API';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Loading from '../Loading';
 
 const Search = ({ setModel }) => {
   const user=useSelector((state)=>state.user.user);
@@ -95,7 +96,7 @@ const Search = ({ setModel }) => {
       <div className="mt-6">
         <h2 className="text-xl font-semibold font-fira-sans">Property Listings</h2>
         {loading ? (
-          <p className="text-center mt-4 font-montserrat">Loading...</p>
+          <p className="text-center mt-4 font-montserrat"><Loading/></p>
         ) : currentData.length > 0 ? (
           currentData.map((item, index) => (
             <div

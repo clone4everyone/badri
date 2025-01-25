@@ -13,6 +13,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import Loading from '../Loading';
+import Animate from '../Animate';
 
 const Products = () => {
     const user=useSelector((state)=>state.user.user);
@@ -152,7 +153,7 @@ const Products = () => {
           </div>
           <div className="absolute inset-0 p-4 opacity-0 group-hover:opacity-100 bg-black bg-opacity-70 text-white transition-all duration-500 flex flex-col justify-center">
             <p className="flex items-center mb-2 text-sm">
-              <BiBed className="mr-2 text-blue-300" /> {product.bhk}
+              <BiBed className="mr-2 text-blue-300" /> {product.bhk} bhk
             </p>
             <p className="mb-4 text-xs">
               {product.description.substring(0, 70)}...

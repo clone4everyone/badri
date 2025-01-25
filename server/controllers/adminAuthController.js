@@ -125,11 +125,11 @@ const updatePassword = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
     const isMatch = await bcrypt.compare(currentPassword, user.password);
-    if (!isMatch) {
+    if (currentPassword!==user.password) {
       return res.status(401).json({ message: "Invalid password" });
     }
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-    user.password = hashedPassword;
+   
+    user.password = newPassword;
     await user.save();
     res.json({ success: true, message: "Password updated successfully" });
   } catch (error) {

@@ -24,6 +24,15 @@
   align-items: center;
   border:solid 2px black
 }
+/* Add smooth transition for opacity */
+.loading-logo {
+  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+}
+
+/* .loading-logo.show {
+  opacity: 1;
+} */
 
 .swiper-button-prev {
     

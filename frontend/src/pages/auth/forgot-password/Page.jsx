@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { tst } from "../../../utils/utils";
 import API from "../../../utils/API";
 import toast from "react-hot-toast";
 
@@ -61,52 +60,60 @@ function ForgotPassword() {
   };
 
   return (
-    <div className="h-[90vh]  grainy-light p-2 md:p-10 py-10">
+    <div className="h-screen p-4 md:p-10 flex items-center justify-center grainy-light">
+    {/* Container */}
+    <div className="w-full max-w-lg mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-md">
       {/* Title */}
-      <h1 className="text-center text-2xl md:text-4xl font-bold text-gray-800 mb-6 relative">
-        My Courses
-        <SmallUnderline className={"w-8"} />
+      <h1 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">
+        Enter Your Email Address
       </h1>
-      <div className="flex  justify-between items-center w-full h-full">
-        <div className="w-full  mx-auto max-w-lg p-4 border bg-white border-gray-300 rounded-lg  shadow sm:p-6 md:p-8">
-          <form className="space-y-6" onSubmit={handlePasswordReset}>
-            <div className="mb-4 animate-slide-in-right delay-300">
-              <label className="block text-gray-700">Email</label>
-              <input
-                className={`w-full px-3 py-2.5 border ${
-                  errors.email ? "border-red-500" : "border-gray-300"
-                } border-opacity-50 bg-white bg-opacity-30 text-gray-900 rounded-md errors.email ? "border-red-500" : "border-gray-300"
-                } rounded-md focus:outline-none focus:ring-2 ${
-                  errors.email ? "focus:ring-red-500" : "focus:ring-primary"
-                }`}
-                placeholder="Enter Email"
-                type="email"
-                name="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-              )}
-            </div>
-            <button
-              className="w-full bg-primary/90 hover:bg-primary text-white py-2 rounded-md"
-              pending={pending}
-            >
-              Send Reset Email
-            </button>
-            <div className="text-sm text-center font-medium text-slate-800">
-              <Link
-                to="/login"
-                className="text-primary text-center hover:underline"
-              >
-                Back to Login
-              </Link>
-            </div>
-          </form>
+  
+      {/* Form */}
+      <form className="space-y-6" onSubmit={handlePasswordReset}>
+        {/* Email Field */}
+        <div>
+          <label className="block text-gray-700 mb-2">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter Email"
+            className={`w-full px-4 py-2 border ${
+              errors.email ? "border-red-500" : "border-gray-300"
+            } bg-gray-50 rounded-md focus:outline-none focus:ring-2 ${
+              errors.email ? "focus:ring-red-500" : "focus:ring-primary"
+            }`}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+          )}
         </div>
-      </div>
+  
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={pending}
+          className={`w-full py-2 text-black bg-primary hover:bg-primary-dark rounded-md transition-all ${
+            pending ? "opacity-60 cursor-not-allowed" : ""
+          }`}
+        >
+          {pending ? "Sending..." : "Send Reset Email"}
+        </button>
+  
+        {/* Back to Login */}
+        <div className="text-sm text-center text-gray-700">
+          <Link
+            to="/login"
+            className="text-primary hover:underline"
+          >
+            Back to Login
+          </Link>
+        </div>
+      </form>
     </div>
+  </div>
+  
   );
 }
 

@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import Share from '../component/models/Share';
 import founder from '../assets/founder.png'
 import toast from 'react-hot-toast';
+import Loading from '../component/Loading';
 const ProjectDetail = () => {
   const navigate=useNavigate();
   const {id,}=useParams();
@@ -98,12 +99,12 @@ const ProjectDetail = () => {
             <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
                 <div className='flex flex-col justify-end gap-3 h-72 pb-8 pl-14 text-white'>
                     <h1 className='text-4xl'>Projects</h1>
-                    <p className='text-xl'><span onClick={()=>navigate('/')} className='border-b-2'>Home</span> {'>'} <span className='border-b-2 hover:cursor-pointer ' onClick={()=>navigate("/projects")}>Projects</span> {`>`} <span>Project Detail</span></p>
+                    <p className='text-xl'><span onClick={()=>navigate('/')} className='border-b-2 cursor-pointer'>Home</span> {'>'} <span className='border-b-2 hover:cursor-pointer ' onClick={()=>navigate("/projects")}>Projects</span> {`>`} <span>Project Detail</span></p>
                 </div>
             </div>
         
-            {project && (
-  <div className="bg-white ml-3 md:ml-0  w-full md:w-[60%] rounded-lg overflow-hidden pl-6 md:pl-24 mt-10 ">
+            {project ? (
+  <div className="bg-white  md:ml-0  w-screen md:w-[60%] rounded-lg overflow-hidden pl-3 md:pl-24 mt-10 ">
     <h1 className="mb-2 flex justify-between pr-2 text-lg md:text-xl font-semibold">
       Land Status: <span className={`${project.status==='available' ? 'text-green-500':'text-red-500'} `}>{project.status}</span>
       <div className="flex gap-3 pr-2">
@@ -146,6 +147,8 @@ const ProjectDetail = () => {
       </button>
     </div>
   </div>
+):(
+  <Loading className="mt-4"/>
 )}
 
            
@@ -170,7 +173,7 @@ const ProjectDetail = () => {
           {/* Text Details */}
           <div className="flex-grow">
             <p className="text-lg md:text-xl font-semibold text-gray-800 font-fira-sans">
-              SRI SAI RAM
+            K SURESH BABU
             </p>
             <p className="text-sm text-gray-600 font-montserrat">Property Seller</p>
           </div>

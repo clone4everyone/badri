@@ -24,7 +24,9 @@ cloudinary.config({
 
 
 // Routes Start
-
+app.get("/",()=>{
+  console.log("hel")
+})
 app.use("/api/v1/admin-auth", adminAuthRoute);
 app.use("/api/v1/projects",projectRoute);
 app.use("/api/v1/auth", UserRoute);

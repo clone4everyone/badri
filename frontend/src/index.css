@@ -14,3 +14,13 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: #1d4ed8; /* Darker blue on hover */
 }
+/* Add smooth transition for opacity */
+.loading-logo {
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+  }
+  
+  .loading-logo.show {
+    opacity: 1;
+  }
+  
