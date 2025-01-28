@@ -44,7 +44,7 @@ const logout=()=>{
 }
   return (
  
-    <div className="flex justify-between items-center p-4 border bg-white relative z-30">
+    <div className="flex justify-between items-center p-4 border bg-white relative z-30 md:pl-20">
     {/* Left Section */}
     <div className="flex items-center space-x-4">
       {model && <Search setModel={setModel} />}
@@ -59,9 +59,9 @@ const logout=()=>{
     {/* Center Section - Links */}
     <div className="hidden md:flex items-center space-x-6 ">
       <Link className="hover:cursor-pointer hover:border-b-2" to="/">Home</Link>
-      <Link to="/#about" className="hover:cursor-pointer hover:border-b-2">About Us</Link>
-      <Link to="/#service" className="hover:cursor-pointer hover:border-b-2">Services</Link>
-      <Link to="/#properties" className="hover:cursor-pointer hover:border-b-2">Properties</Link>
+      <Link to="/about" className="hover:cursor-pointer hover:border-b-2">About Us</Link>
+      <Link to="/service" className="hover:cursor-pointer hover:border-b-2">Services</Link>
+      <Link to="/projects" className="hover:cursor-pointer hover:border-b-2">Properties</Link>
       <Link to="/#contact" className="hover:cursor-pointer hover:border-b-2">Contact Us</Link>
     </div>
   
@@ -134,10 +134,10 @@ const logout=()=>{
       <div className="absolute top-16 left-0 w-full z-20 bg-white shadow-lg md:hidden">
         <div className="flex flex-col items-center space-y-4 p-4 z-10">
           <Link className="hover:cursor-pointer hover:border-b-2" to="/">Home</Link>
-          <Link to="#/about" className="hover:cursor-pointer hover:border-b-2">About Us</Link>
-          <Link to="#/service" className="hover:cursor-pointer hover:border-b-2">Services</Link>
-          <Link to="#/projects" className="hover:cursor-pointer hover:border-b-2">Projects</Link>
-          <Link to="#/contact" className="hover:cursor-pointer hover:border-b-2">Contact Us</Link>
+          <Link to="/about" className="hover:cursor-pointer hover:border-b-2">About Us</Link>
+          <Link to="/service" className="hover:cursor-pointer hover:border-b-2">Services</Link>
+          <Link to="/projects" className="hover:cursor-pointer hover:border-b-2">Projects</Link>
+          <Link to="/#contact" className="hover:cursor-pointer hover:border-b-2">Contact Us</Link>
         </div>
       </div>
     )}

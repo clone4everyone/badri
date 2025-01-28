@@ -82,49 +82,37 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="relative w-full max-w-6xl mx-auto bg-[#E9E9FB] py-12 px-4 sm:px-6 lg:px-8">
+    <div className="relative w-full bg-[#E9E9FB] py-12 px-4 sm:px-6 lg:px-16 xl:px-24 2xl:px-36">
     {/* Top Section */}
     {reviewModel && <Review setReviewModel={setReviewModel} />}
-    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 pl-5 md:ml-0">
+    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10">
       <div className="text-left mb-6 sm:mb-0">
-        <h2 className="text-3xl font-semibold text-gray-900 font-[Fira_Sans]">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl text-gray-900 font-[Fira_Sans] leading-snug">
           What Our Clients Say
         </h2>
-        <p className="text-lg text-gray-600 font-[Montserrat]">
+        <p className="text-base sm:text-lg text-gray-600 font-[Montserrat] mt-2">
           See the feedback from our amazing clients
         </p>
       </div>
       <div
-        className="text-center sm:ml-4 cursor-pointer mt-3 md:mt-0 "
-        onClick={() => {
-          user!==null ? setReviewModel(true) :navigate("/login")
-         
-          
-        }}
+        className="text-center sm:ml-4 cursor-pointer mt-3 md:mt-0"
+        onClick={() => (user !== null ? setReviewModel(true) : navigate("/login"))}
       >
-       <div className="relative inline-block text-center group">
-  <div className="relative text-black py-2 px-6 text-lg font-[Montserrat] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-[#E6AE35] after:transition-transform after:duration-300 after:scale-x-100 group-hover:after:scale-x-0 whitespace-nowrap">
-    Give Review
-  </div>
-  <div className="absolute inset-0 flex items-center justify-center bg-[#E6AE35] text-black py-2 px-6 text-lg font-[Montserrat] opacity-0 transition-opacity duration-1000 group-hover:opacity-100 whitespace-nowrap">
-    Give Review
-  </div>
-  <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 flex items-end opacity-0 transition-opacity duration-1000 group-hover:opacity-100">
-    <div className="w-2 h-4 bg-[#FFCD62] relative left-1"></div>
-    <div className="w-2 h-7 bg-[#FFC74E] relative left-1"></div>
-    <div className="w-2 h-10 bg-[#FFC13B]"></div>
-    <div className="w-2 h-4 bg-[#FFC74E] relative right-1"></div>
-    <div className="w-2 h-5 bg-[#FFCD62] relative right-1"></div>
-  </div>
-</div>
-
+        <div className="relative inline-block text-center group">
+          <div className="relative text-black py-2 px-6 text-base sm:text-lg font-[Montserrat] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-[#E6AE35] after:transition-transform after:duration-300 after:scale-x-100 group-hover:after:scale-x-0 whitespace-nowrap">
+            Give Review
+          </div>
+          <div className="absolute inset-0 flex items-center justify-center bg-[#E6AE35] text-black py-2 px-6 text-base sm:text-lg font-[Montserrat] opacity-0 transition-opacity duration-1000 group-hover:opacity-100 whitespace-nowrap">
+            Give Review
+          </div>
+        </div>
       </div>
     </div>
   
     {/* Arrows */}
     <button
       onClick={handlePrev}
-      className="absolute left-3 top-1/2 transform -translate-y-1/2 p-3 rounded-full z-20 transition duration-300"
+      className="absolute left-3 top-1/2 transform -translate-y-1/2 p-3 rounded-full z-20 transition duration-300 bg-white shadow-lg hover:shadow-xl"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +131,7 @@ const Testimonial = () => {
     </button>
     <button
       onClick={handleNext}
-      className="absolute right-3 top-1/2 transform -translate-y-1/2 p-3 rounded-full z-20 transition duration-300"
+      className="absolute right-3 top-1/2 transform -translate-y-1/2 p-3 rounded-full z-20 transition duration-300 bg-white shadow-lg hover:shadow-xl"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -170,8 +158,10 @@ const Testimonial = () => {
           <div
             key={testimonial.id}
             className={`transition-all duration-500 transform bg-white p-6 rounded-lg shadow-lg ${
-              isCenterCard ? "scale-105 shadow-xl z-10" : "scale-90 opacity-75"
-            } w-full sm:w-64`}
+              isCenterCard
+                ? "scale-105 shadow-xl z-10 w-11/12 sm:w-4/5 lg:w-3/5"
+                : "scale-90 opacity-75 flex flex-col items-center w-full sm:w-2/5 lg:w-1/3"
+            }`}
           >
             {isCenterCard ? (
               <div className="flex flex-col items-center justify-center">
@@ -179,10 +169,10 @@ const Testimonial = () => {
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg mb-4 sm:mb-0"
+                    className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg mb-4 sm:mb-0"
                   />
                   <div className="flex flex-col text-left">
-                    <p className="text-lg font-medium text-gray-900 font-[Fira_Sans]">
+                    <p className="text-base sm:text-lg text-gray-900 font-[Fira_Sans]">
                       {testimonial.name}
                     </p>
                     <p className="text-sm text-gray-500 font-[Montserrat]">
@@ -190,15 +180,19 @@ const Testimonial = () => {
                     </p>
                     <div className="flex space-x-1 mt-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-yellow-400">★</span>
+                        <span key={i} className="text-yellow-400">
+                          ★
+                        </span>
                       ))}
                       {[...Array(5 - testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-gray-300">★</span>
+                        <span key={i} className="text-gray-300">
+                          ★
+                        </span>
                       ))}
                     </div>
                   </div>
                 </div>
-                <p className="text-sm text-gray-600 mt-4 italic text-center font-[Montserrat]">
+                <p className="text-sm sm:text-base text-gray-600 mt-4 italic text-center ">
                   {testimonial.feedback}
                 </p>
               </div>
@@ -207,17 +201,21 @@ const Testimonial = () => {
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-28 h-20 sm:w-36 sm:h-24 object-cover mb-4 rounded-lg"
+                  className="w-20 h-16 sm:w-24 sm:h-20 object-cover mb-4 rounded-lg"
                 />
                 <div className="flex space-x-1 mb-3">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-yellow-400">★</span>
+                    <span key={i} className="text-yellow-400">
+                      ★
+                    </span>
                   ))}
                   {[...Array(5 - testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-gray-300">★</span>
+                    <span key={i} className="text-gray-300">
+                      ★
+                    </span>
                   ))}
                 </div>
-                <p className="text-lg font-medium text-gray-900 font-[Fira_Sans]">
+                <p className="text-base sm:text-lg text-gray-900 font-[Fira_Sans]">
                   {testimonial.name}
                 </p>
                 <p className="text-sm text-gray-500 font-[Montserrat]">
@@ -230,6 +228,7 @@ const Testimonial = () => {
       })}
     </div>
   </div>
+  
   
   
   );

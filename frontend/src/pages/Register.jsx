@@ -114,92 +114,80 @@ const Register = () => {
 
   return (
     <>
-      <Navbar className="relative z-20"/>
+    <Navbar className="relative z-20" />
       <div
-  className="flex items-center justify-center min-h-screen grainy-dark bg-cover bg-center p-4"
-  style={{ backgroundImage: `url(${login})` }}
->
-  <Toast />
-
-  {/* Semi-transparent Overlay */}
-  <div className="absolute inset-0 bg-black opacity-40 h-[130vh] z-10"></div>
-
-  {/* Sign Up Container */}
-  <div className="relative z-10 w-full max-w-lg p-8 bg-white bg-opacity-10 backdrop-blur-md rounded-lg shadow-lg border border-gray-500 border-opacity-40">
-    {/* Title */}
-    <h2 className="text-2xl md:text-3xl font-bold text-center text-primary mb-6">
-      Sign Up
-    </h2>
-
-    {/* Form */}
-    <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Input Fields */}
-      {[
-        { label: "Name", name: "name", type: "text", placeholder: "Enter Name" },
-        {
-          label: "Email",
-          name: "email",
-          type: "email",
-          placeholder: "user@gmail.com",
-        },
-        {
-          label: "Password",
-          name: "password",
-          type: "password",
-          placeholder: "********",
-        },
-        {
-          label: "Confirm Password",
-          name: "confirmPassword",
-          type: "password",
-          placeholder: "********",
-        },
-      ].map((field, index) => (
-        <div key={field.name} className={`animate-fade-in delay-${index * 100}`}>
-          <label className="block text-gray-200 mb-2">{field.label}</label>
-          <input
-            className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 transition-all ${
-              errors[field.name]
-                ? "border-red-500 focus:ring-red-500"
-                : "border-gray-300 focus:ring-primary"
-            }`}
-            type={field.type}
-            name={field.name}
-            placeholder={field.placeholder}
-            value={formData[field.name]}
-            onChange={handleChange}
-          />
-          {errors[field.name] && (
-            <p className="text-red-500 text-sm mt-1">{errors[field.name]}</p>
-          )}
-        </div>
-      ))}
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={loading}
-        className={`w-full py-2 rounded-md text-black bg-primary hover:bg-primary-dark transition-all ${
-          loading ? "opacity-60 cursor-not-allowed" : ""
-        }`}
+        className="flex items-center justify-center min-h-screen bg-cover bg-center p-4 grainy-dark"
+        style={{ backgroundImage: `url(${login})` }}
       >
-        {loading ? "Signing Up..." : "Sign Up"}
-      </button>
+        <Toast />
 
-      {/* Navigation Link */}
-      <div className="text-center mt-4 text-black-300">
-        <span>Already have an account? </span>
-        <button
-          type="button"
-          className="text-primary hover:underline"
-          onClick={() => navigate("/login")}
-        >
-          Log In
-        </button>
+        {/* Semi-transparent Overlay */}
+        <div className="absolute bg-black opacity-60 h-screen w-full border z-10"></div>
+
+        {/* Sign Up Card */}
+        <div className="relative z-20 w-full max-w-lg bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-lg shadow-lg border border-gray-500 border-opacity-40">
+          {/* Title */}
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
+            Sign Up
+          </h2>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Input Fields */}
+            {[
+              { label: "Name", name: "name", type: "text", placeholder: "Enter Name" },
+              { label: "Email", name: "email", type: "email", placeholder: "user@gmail.com" },
+              { label: "Password", name: "password", type: "password", placeholder: "********" },
+              { label: "Confirm Password", name: "confirmPassword", type: "password", placeholder: "********" },
+            ].map((field, index) => (
+              <div
+                key={field.name}
+                className={`transition-opacity duration-300 delay-${index * 100}`}
+              >
+                <label className="block text-gray-200 mb-2">{field.label}</label>
+                <input
+                  type={field.type}
+                  name={field.name}
+                  placeholder={field.placeholder}
+                  value={formData[field.name]}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 transition-all ${
+                    errors[field.name]
+                      ? "border-red-500 focus:ring-red-500"
+                      : "border-gray-300 focus:ring-primary"
+                  }`}
+                />
+                {errors[field.name] && (
+                  <p className="text-red-500 text-sm mt-1">{errors[field.name]}</p>
+                )}
+              </div>
+            ))}
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className={`w-full py-2 rounded-md text-white bg-primary hover:bg-primary-dark transition-all ${
+                loading ? "opacity-60 cursor-not-allowed" : ""
+              }`}
+            >
+              {loading ? "Signing Up..." : "Sign Up"}
+            </button>
+
+            {/* Navigation Link */}
+            <div className="text-center mt-4 text-gray-200">
+              <span>Already have an account? </span>
+              <button
+                type="button"
+                className="text-primary hover:underline"
+                onClick={() => navigate("/login")}
+              >
+                Log In
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </form>
-  </div>
-</div>
 
     </>
   );

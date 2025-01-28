@@ -2,9 +2,15 @@
 import { useState,useEffect } from "react";
 import name from "../assets/safron (2).png"
 import safron from "../assets/safron (1).png"
-const Enterance = () => {
+const Enterance = ({loading}) => {
     const [step, setStep] = useState(0);
+    const [animate, setAnimate] = useState(false);
 
+    useEffect(() => {
+      if (!loading) {
+        setAnimate(true);
+      }
+    }, [loading]);
     useEffect(() => {
       const interval = setInterval(() => {
         setStep((prevStep) => (prevStep < 13 ? prevStep + 1 : 13));
@@ -104,7 +110,9 @@ const Enterance = () => {
 
     ]
     return (
-<div className="absolute bg-[#E9E9FB] w-full flex justify-center items-center h-full">
+<div className={`absolute bg-[#E9E9FB] w-full flex justify-center items-center h-full transition-all duration-7000 ${
+        animate ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
+      }`}>
   <div className="flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12">
     <div
       className="flex animate-pulse transition-all text-[#F4BE85] justify-center items-center hover:animate-shift"

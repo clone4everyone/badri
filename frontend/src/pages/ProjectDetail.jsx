@@ -94,7 +94,7 @@ const ProjectDetail = () => {
   return (
     <>
        <Navbar />
-       {shareModel && <Share setShareModel={setShareModel} image={project.thumbnail} title={project.title} url={`http://localhost:5173/projectDetail/${project.title}/${project._id}`}/>}
+       {shareModel && <Share setShareModel={setShareModel} image={project.thumbnail} title={project.title} url={`badri.bharathmegaminds.com/projectDetail/${project.title}/${project._id}`}/>}
             {/* Background Section */}
             <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
                 <div className='flex flex-col justify-end gap-3 h-72 pb-8 pl-14 text-white'>
@@ -104,49 +104,90 @@ const ProjectDetail = () => {
             </div>
         
             {project ? (
-  <div className="bg-white  md:ml-0  w-screen md:w-[60%] rounded-lg overflow-hidden pl-3 md:pl-24 mt-10 ">
-    <h1 className="mb-2 flex justify-between pr-2 text-lg md:text-xl font-semibold">
-      Land Status: <span className={`${project.status==='available' ? 'text-green-500':'text-red-500'} `}>{project.status}</span>
-      <div className="flex gap-3 pr-2">
-        <FaShareAlt onClick={() => setShareModel(true)} className="hover:cursor-pointer" />
-        <FaHeart
-          onClick={()=>{
-           user!==null ? handleWishlistToggle() : navigate("/login")
-          }}
-          className={`cursor-pointer ${
-            isInWishlist ? "text-red-500" : "text-gray-400"
-          }`}
-        />
-      </div>
+  <div className="bg-white w-full md:w-[95%] mx-auto rounded-lg overflow-hidden  p-5 md:p-8 mt-10">
+  {/* Header Section */}
+  <div className="mb-4 flex justify-between items-center">
+    <h1 className="text-lg md:text-xl font-semibold">
+      Land Status:{" "}
+      <span
+        className={`${
+          project.status === "available" ? "text-green-500" : "text-red-500"
+        }`}
+      >
+        {project.status}
+      </span>
     </h1>
-    <img
-      src={project.thumbnail}
-      alt={project.title}
-      className="w-full h-48 object-cover"
-    />
-    <div className="p-6 pl-0">
-      <h3 className="text-xl md:text-2xl font-semibold mb-2">{project.title}</h3>
-      <p className="text-gray-600 mb-2 flex items-center text-sm md:text-base font-montserrat">
-        <BiBed className="mr-2 text-blue-500" /> {project.bhk}
-      </p>
-      <p className="text-green-600 font-bold flex items-center text-sm md:text-base font-montserrat">
-        <MdOutlineAttachMoney className="mr-2" /> {project.price}
-      </p>
-      <p className="text-gray-500 flex items-center mt-2 text-sm md:text-base font-montserrat">
-        <FaMapMarkerAlt className="mr-2 text-red-500" /> {project.location}
-      </p>
-      <p className="text-gray-500 mt-2 flex gap-2 items-center text-sm md:text-base font-montserrat">
-        <FaMapMarked /> {project.Acre}
-      </p>
-      <p className="max-w-[70%] text-sm md:text-base font-montserrat">
-        Description
-        <p className="text-gray-700 mb-4">{project.description}</p>
-      </p>
-      <button onClick={()=>openContact(!contact)} className="bg-blue-400 p-2 border-none text-white rounded mt-4">
-        Inquiry to buy the property
-      </button>
+    <div className="flex gap-4 items-center">
+      <FaShareAlt
+        onClick={() => setShareModel(true)}
+        className="hover:cursor-pointer text-gray-600 hover:text-blue-500 transition-colors duration-200"
+      />
+      <FaHeart
+        onClick={() => {
+          user !== null ? handleWishlistToggle() : navigate("/login");
+        }}
+        className={`cursor-pointer text-xl ${
+          isInWishlist ? "text-red-500" : "text-gray-400"
+        } hover:scale-110 transition-transform duration-200`}
+      />
     </div>
   </div>
+
+  {/* Main Content Section */}
+  <div className="flex flex-col md:flex-row gap-6">
+    {/* Left Section */}
+    <div className="w-full md:w-[60%]">
+      <img
+        src={project.thumbnail}
+        alt={project.title}
+        className="w-full h-56 md:h-64 object-cover rounded-lg shadow-md"
+      />
+      <div className="mt-4">
+        <h3 className="text-xl md:text-2xl font-semibold mb-3">
+          {project.title}
+        </h3>
+        <p className="text-gray-600 mb-2 flex items-center text-sm md:text-base font-montserrat">
+          <BiBed className="mr-2 text-blue-500" /> {project.bhk}
+        </p>
+        <p className="text-green-600 font-bold flex items-center text-sm md:text-base font-montserrat">
+          <MdOutlineAttachMoney className="mr-2" /> {project.price}
+        </p>
+        <p className="text-gray-500 flex items-center mt-2 text-sm md:text-base font-montserrat">
+          <FaMapMarkerAlt className="mr-2 text-red-500" /> {project.location}
+        </p>
+        <p className="text-gray-500 mt-2 flex gap-2 items-center text-sm md:text-base font-montserrat">
+          <FaMapMarked />
+          {project.unit === "sqft"
+            ? `${project.sqft} Sq.ft (W: ${project.width}, L: ${project.length})`
+            : `${project.Acre} Acre`}
+        </p>
+        <div className="max-w-[90%] mt-4">
+          <h4 className="text-gray-800 font-medium mb-2">Description</h4>
+          <p className="text-gray-700 text-sm md:text-base font-montserrat">
+            {project.description}
+          </p>
+        </div>
+        <button
+          onClick={() => openContact(!contact)}
+          className="bg-blue-500 text-white px-5 py-2 rounded-md mt-6 hover:bg-blue-600 transition-colors duration-200"
+        >
+          Inquiry to Buy Property
+        </button>
+      </div>
+    </div>
+
+    {/* Right Section */}
+    <div className="w-full md:w-[40%]">
+      <h2 className="text-xl md:text-2xl font-semibold mb-4">Floor Image</h2>
+      <img
+        src={project.floorImage}
+        alt="Floor Plan"
+        className="w-full h-60 md:h-80 object-cover rounded-lg shadow-md"
+      />
+    </div>
+  </div>
+</div>
+
 ):(
   <Loading className="mt-4"/>
 )}
@@ -155,7 +196,7 @@ const ProjectDetail = () => {
 {
   contact && (
     <div className='w-full flex justify-center px-6 md:px-24 mb-5'>
-      <div className="w-full mx-auto bg-indigo-50 border rounded-md shadow-md">
+      <div className="w-full mx-auto ">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-2 bg-indigo-100 border-b">
           <div className="flex items-center space-x-2">

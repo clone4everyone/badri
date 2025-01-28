@@ -125,7 +125,9 @@ const Search = ({ setModel }) => {
                   <strong>Location:</strong> {item.location}
                 </p>
                 <p>
-                  <strong>Area:</strong> {item.Acre}
+                  <strong>Area:</strong> {item.unit === "sqft"
+            ? `${item.sqft} Sq.ft (W: ${item.width}, L: ${item.length})`
+            : `${item.Acre} Acre`}
                 </p>
                 <p>
                 <strong>Price:</strong> ₹ {Number(item.price).toLocaleString()}

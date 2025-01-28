@@ -59,13 +59,13 @@ const handleWishlistToggle = async () => {
      
     >
       {
-        shareModel && <Share image={product.thumbnail} title={product.title} url={`http://localhost:5173/projectDetail/${product.title}/${product._id}`} setShareModel={setShareModel}/>
+        shareModel && <Share image={product.thumbnail} title={product.title} url={`badri.bharathmegaminds.com/projectDetail/${encodeURIComponent(product.title)}/${product._id}`} setShareModel={setShareModel}/>
       }
       {/* Thumbnail */}
       <img 
         src={product.thumbnail} 
         alt={product.title} 
-        className="w-full md:w-[40%] h-52 object-cover rounded-md mb-4 mt-3 md:mt-0" 
+        className="w-full md:max-w-[30%] md:min-w-[30%] h-52 object-cover rounded-md mb-4 mt-3 md:mt-0" 
       />
     
       {/* Content */}
@@ -84,7 +84,9 @@ const handleWishlistToggle = async () => {
           <FaMapMarkerAlt /> {product.location}
         </p>
         <p className="flex items-center gap-2 font-[Montserrat]">
-          <FaMap /> {product.Acre}
+          <FaMap /> {product.unit === "sqft"
+            ? `${product.sqft} Sq.ft (W: ${product.width}, L: ${product.length})`
+            : `${product.Acre} Acre`}
         </p>
         <p className="flex items-center gap-2 font-[Montserrat]">
           <BiBed className="font-semibold" /> {product.bhk}BHK{product.balcony? '- Balcony':null}{product.terrace? '- Terrace':null}

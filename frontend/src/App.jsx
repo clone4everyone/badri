@@ -11,6 +11,7 @@ import EmailSentPage from './pages/auth/email-sent/Page';
 import ForgotPassword from './pages/auth/forgot-password/Page';
 import ResetPassword from './pages/auth/reset-password/Page';
 import Enterance from './component/Enterance';
+import Service from './pages/Service';
 
 function App() {
   return (
@@ -25,18 +26,24 @@ const LoadingRoutes = () => {
   const [loading, setLoading] = useState(true);// To track route changes
 
   // Handle page loading and first-time visit logic
+  const [showEnterance, setShowEnterance] = useState(true);
+
   useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
       setTimeout(() => {
-        setLoading(false); // Show loading for 3 seconds initially
-      }, 5000);
-    
+        setShowEnterance(false); // Unmount only after the animation ends
+      }, 7000); // Match this duration with your animation duration
+    }, 5000); // Simulate 5 seconds loading
+
+    return () => clearTimeout(timer);
   }, []); // Empty dependency array to run once on component mount
 
 
 
   return (
     <>
-      {loading && <Enterance />} {/* Show loading screen when loading */}
+      {showEnterance && <Enterance loading={loading} />}{/* Show loading screen when loading */}
       {!loading && (
         <Routes>
           <Route path="/auth/email-sent" element={<EmailSentPage />} />
@@ -47,6 +54,7 @@ const LoadingRoutes = () => {
           <Route path="/projects" element={<Projects />} />
           <Route path='/about' element={<AboutUs />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/service" element={<Service/>}/>
           <Route path='/projectDetail/:name/:id' element={<ProjectDetail />} />
         </Routes>
       )}

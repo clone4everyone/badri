@@ -4,7 +4,7 @@ const View = require("../models/View"); // Path to your Listing model
 const Show=require("../models/Showcase")
 const create=async(req,res)=> {
     try {
-      const { formFields, listingPhotos,thumbnail } = req.body;
+      const { formFields, listingPhotos,thumbnail,floorImage } = req.body;
       
       const year = new Date().getFullYear();
       console.log("Received form fields:", formFields);
@@ -30,7 +30,11 @@ const create=async(req,res)=> {
          crop:"scale"
        });
 
-
+       const floor=await cloudinary.uploader.upload(floorImage,{
+        folder:"avatars",
+        width:150,
+        crop:"scale"
+      });
       const uploadedPhotoUrls = await Promise.all(uploadPromises);
        console.log("reached here")
       // Create a new listing with uploaded photo URLs
@@ -38,7 +42,8 @@ const create=async(req,res)=> {
         ...formFields, // Spread form fields
         listingPhotoPaths: uploadedPhotoUrls.map((result) => result.url),
         year,
-        thumbnail:picture.url
+        thumbnail:picture.url,
+        floorImage:floor.url
       });
   
       // Save the listing to the database

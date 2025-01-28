@@ -166,7 +166,9 @@ const Products = () => {
               <FaMapMarkerAlt className=" text-red-400" />{" "}
               {product.location.substring(0, 10)}...
             </p>
-            <p className="mt-2 text-sm">Area: {product.Acre}</p>
+            <p className="mt-2 text-sm">Area: {product.unit === "sqft"
+            ? `${product.sqft} Sq.ft (W: ${product.width}, L: ${product.length})`
+            : `${product.Acre} Acre`}</p>
           </div>
         </div>
       </SwiperSlide>

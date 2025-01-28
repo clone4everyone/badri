@@ -139,14 +139,7 @@ filteredProducts = products.filter(product => {
                         placeholder="Max Price"
                         className="p-3 border rounded-md"
                     />
-                    <input
-                        type="text"
-                        name="area"
-                        value={filters.area}
-                        onChange={handleFilterChange}
-                        placeholder="Filter by Area"
-                        className="p-3 border rounded-md"
-                    />
+                  
                 </div>
 
                 {/* Project Cards Section */}

@@ -24,27 +24,34 @@ const Service = () => {
   ];
 
   return (
-    <section className="py-8 pl-5 md:pl-0 " >
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 z-50 bg-white">
-      <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-800 mb-8">
-        Our Services
-      </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-3">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className=" rounded-lg text-center hover:scale-105 p-3  transition-transform duration-300 "
-          >
-            <div className="text-4xl mb-4  min-h-44 max-h-44 overflow-hidden"><img src={service.icon} className='h-44 w-full'/></div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              {service.title}
-            </h3>
-            <p className="text-sm text-gray-600">{service.description}</p>
+<section className="py-8 px-5 md:px-[65px]">
+  <div className="max-w-6xl  px-4 sm:px-6 lg:px-8 z-50 bg-white">
+    <h2 className="text-3xl pl-3 sm:text-4xl font-bold text-start text-gray-800 mb-8">
+      Our Services
+    </h2>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service, index) => (
+        <div
+          key={index}
+          className="rounded-lg text-center hover:scale-105 p-4 transition-transform duration-300"
+        >
+          <div className="relative w-full aspect-square mb-4">
+            <img
+              src={service.icon}
+              alt={`${service.title} icon`}
+              className="object-cover w-full h-full rounded-md"
+            />
           </div>
-        ))}
-      </div>
+          <h3 className="text-xl font-semibold text-gray-800 mb-2">
+            {service.title}
+          </h3>
+          <p className="text-sm text-gray-600">{service.description}</p>
+        </div>
+      ))}
     </div>
-  </section>
+  </div>
+</section>
+
   
   );
 };

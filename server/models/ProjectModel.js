@@ -27,8 +27,22 @@ const listingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    Acre: {
-        type: String
+    unit: {
+        type: String,
+        enum: ["sqft", "Acre"], // Specify allowed units
+        required: true,
+      },
+      sqft: {
+        type: Number,
+      },
+      width: {
+        type: Number,
+      },
+      length: {
+        type: Number,
+      },
+      Acre: {
+        type: Number,
     },
     status: {
         type: String,
@@ -53,6 +67,9 @@ const listingSchema = new mongoose.Schema({
         default:false,
         
     },
+    floorImage:{
+        type:String
+    }
 });
 
 const Listing = mongoose.model('Listing', listingSchema);

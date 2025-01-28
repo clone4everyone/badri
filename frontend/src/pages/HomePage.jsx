@@ -39,7 +39,7 @@ const HomePage = () => {
      <section id='service'>
       <Service/>
      </section>
-      <section id='properties'>
+      <section id='projects'>
         <Products/>
       </section>
       
