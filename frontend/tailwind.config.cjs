@@ -11,11 +11,16 @@ module.exports = {
           'infinite-glow': 'glow 5s infinite',
           'shift': 'colorShift 3s ease infinite',
           'shock': 'shockwave 1.5s ease-out infinite',
+          'scale-up': 'scaleUp 2s ease-out',
         },
         keyframes: {
           spin: {
             '0%': { transform: 'rotate(0deg)' },
             '100%': { transform: 'rotate(360deg)' },
+          },
+          scaleUp: {
+            '0%': { transform: 'scale(1)' },
+            '100%': { transform: 'scale(5)' },
           },
           pulse: {
             '0%': { transform: 'scale(1)' },

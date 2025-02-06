@@ -29,7 +29,7 @@ const Service = () => {
     <h2 className="text-3xl pl-3 sm:text-4xl font-bold text-start text-gray-800 mb-8">
       Our Services
     </h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-32">
       {services.map((service, index) => (
         <div
           key={index}

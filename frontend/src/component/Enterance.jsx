@@ -5,7 +5,15 @@ import safron from "../assets/safron (1).png"
 const Enterance = ({loading}) => {
     const [step, setStep] = useState(0);
     const [animate, setAnimate] = useState(false);
+    const [progress, setProgress] = useState(0);
 
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setProgress((prev) => (prev < 100 ? prev + 1 : 100));
+      }, 10); // Adjust speed by changing interval time
+  
+      return () => clearInterval(interval);
+    }, []);
     useEffect(() => {
       if (!loading) {
         setAnimate(true);
@@ -110,22 +118,41 @@ const Enterance = ({loading}) => {
 
     ]
     return (
-<div className={`absolute bg-[#E9E9FB] w-full flex justify-center items-center h-full transition-all duration-7000 ${
-        animate ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
-      }`}>
+<div
+  className={`absolute bg-[#E9E9FB] w-full flex justify-center items-center h-full transition-transform duration-[10000ms] ease-out ${
+    animate ? "scale-[5]" : "scale-[1]"
+  }`}
+>
   <div className="flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12">
     <div
-      className="flex animate-pulse transition-all text-[#F4BE85] justify-center items-center hover:animate-shift"
+      className={`flex transition-transform duration-[2000ms] ease-out text-[#F4BE85] justify-center items-center ${
+        animate ? "animate-scale-up" : ""
+      }`}
       key={step}
     >
       {logos[step]}
     </div>
 
-    <img className="w-[70%] sm:w-[50%] md:w-[40%] lg:w-[30%]" src={name} alt="name" />
-    <div className="w-[70%] border-[#F4B26E] border-4 rounded-sm mt-3"></div>
-    <img className="w-[70%] sm:w-[50%] md:w-[40%] lg:w-[50%] mt-3" src={safron} alt="safron" />
+    <img
+      className="w-[70%] sm:w-[50%] md:w-[40%] lg:w-[30%]"
+      src={name}
+      alt="name"
+    />
+    <div className="w-[70%] border-[#F4B26E]  rounded-sm mt-3">
+
+      <div
+        className="h-3 w-[70%] sm:w-[50%] md:w-[40%] lg:w-[50%] bg-orange-400 rounded-full transition-all duration-100"
+        style={{ width: `${progress}%` }}
+      ></div>
+    </div>
+ 
+
+
+
   </div>
 </div>
+
+
 
 
       

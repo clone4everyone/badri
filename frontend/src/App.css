@@ -11,6 +11,9 @@
     background: #1d4ed8; /* Darker blue on hover */
 }
 
+.mont {
+  font-family: 'Montserrat', sans-serif;
+}
 .swiper-button-prev,
 .swiper-button-next {
   color: #000; /* Adjust arrow color */

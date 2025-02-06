@@ -7,6 +7,7 @@ import API from '../utils/API';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Share from '../component/models/Share';
+import Loading from '../component/Loading';
 
 const Projects = () => {
 const [products,setProducts]=useState(null);
@@ -85,9 +86,14 @@ filteredProducts = products.filter(product => {
                 </div>
             </div>
 
+
+<h1 className="w-full font-bold mont text-3xl pl-14 mt-10 ">
+    Finding projects you may like 
+</h1>
             {/* Filters Section */}
-            <div className='container mx-auto p-8'>
-                <h1 className="text-2xl font-bold mb-6">Finding Projects You May Like</h1>
+            {
+                products ?  <div className='container mx-auto p-6'>
+                {/* <h1 className="text-2xl font-bold mb-6">Finding Projects You May Like</h1>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
                         type="text"
@@ -140,7 +146,7 @@ filteredProducts = products.filter(product => {
                         className="p-3 border rounded-md"
                     />
                   
-                </div>
+                </div> */}
 
                 {/* Project Cards Section */}
                 <div className="grid grid-cols-1 gap-6">
@@ -169,7 +175,9 @@ filteredProducts = products.filter(product => {
                         </button>
                     ))}
                 </div>
-            </div>
+            </div> : <div className='w-full flex justify-center items-center py-24'><Loading className=""/></div>
+            }
+          
         </>
     );
 };

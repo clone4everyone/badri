@@ -33,10 +33,10 @@ const LoadingRoutes = () => {
       setLoading(false);
       setTimeout(() => {
         setShowEnterance(false); // Unmount only after the animation ends
-      }, 7000); // Match this duration with your animation duration
+      }, 1500); // Match this duration with your animation duration
     }, 5000); // Simulate 5 seconds loading
 
-    return () => clearTimeout(timer);
+  return ()=>clearTimeout(timer)
   }, []); // Empty dependency array to run once on component mount
 
 
@@ -44,7 +44,7 @@ const LoadingRoutes = () => {
   return (
     <>
       {showEnterance && <Enterance loading={loading} />}{/* Show loading screen when loading */}
-      {!loading && (
+      {!showEnterance && (
         <Routes>
           <Route path="/auth/email-sent" element={<EmailSentPage />} />
           <Route path="/auth/forgot-password" element={<ForgotPassword />} />

@@ -40,36 +40,36 @@ zero();
   </div>
 </div>
 
-<div className="p-8 md:p-12 min-h-72 pt-10 relative">
+<div className="px-8 md:px-12 min-h-72 pt-10 relative">
   <h1 className="text-[40px] md:text-[60px] font-bold text-gray-800 mb-2 uppercase tracking-wide font-[Fira_Sans] text-center md:text-left">
     K SURESH BABU
   </h1>
   <p className="text-sm md:text-base font-[Montserrat] text-center md:text-left">Founder</p>
-  <div className="flex flex-col md:flex-row items-center rounded-lg overflow-hidden p-6 md:p-8 space-y-6 md:space-y-0 md:space-x-10">
+  <div className="flex flex-col md:flex-row items-center rounded-lg overflow-hidden  space-y-6 md:space-y-0 md:space-x-10  ">
     <div className="flex flex-col justify-center space-y-6 w-full md:w-2/3">
       <p className="text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg font-[Montserrat]">
-        Our esteemed founder, K. Suresh Babu Garu, was a visionary leader whose
-        passion for service and dedication to excellence left an indelible mark
-        on the Sri Sai Ram Group and Sasvat Charitable Trust. With a rich legacy
-        of compassionate leadership, he spearheaded initiatives that transformed
-        countless lives and uplifted communities.
+      Our esteemed founder, K. Suresh Babu Garu, was a visionary leader whose passion for service and dedication to excellence left an indelible mark on the Sri Sai Ram Group and Sasvat Charitable Trust. With a rich legacy of compassionate leadership, he spearheaded initiatives that transformed countless lives and uplifted communities.
       </p>
       <p className="text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg font-[Montserrat]">
-        Driven by his unwavering commitment to philanthropy and social
-        responsibility, Mr. Suresh Babu Garu played a pivotal role in shaping
-        the Sri Sai Ram Group's success in the real estate and construction
-        industry. His visionary leadership and forward-thinking approach laid
-        the foundation for the organization's growth and expansion over 3
-        decades.
+      Driven by his unwavering commitment to philanthropy and social responsibility, Mr. Suresh Babu Garu played a pivotal role in shaping the Sri Sai Ram Group's success in the real estate and construction industry. His visionary leadership and forward-thinking approach laid the foundation for the organization's growth and expansion over 3 decade.
       </p>
     </div>
     <img
       src={founder}
       alt="Founder Image"
-      className="w-full md:w-1/3 h-auto rounded-lg object-cover shadow-md"
+      className="w-full md:w-1/3 h-auto rounded-lg object-center shadow-md"
     />
   </div>
 </div>
+
+<div className="px-5 min-h-72 relative mt-1">
+  <p className='text-gray-600 leading-relaxed text-sm md:text-base pl-3 md:pl-7 lg:text-lg font-[Montserrat]'>
+    My belief has always been that success is not measured solely by financial achievements but by the positive change we bring to the world. Through Sasvat Charitable Trust, I have strived to address pressing social issues, provide essential resources, and give back to society in a meaningful way.
+    <br />
+    As I reflect on this journey, I take immense pride in the values of compassion, integrity, and excellence that have shaped our mission. My hope is that this legacy continues to inspire future generations to carry forward this vision and make a lasting difference in the lives of others.
+  </p>
+</div>
+
 
 <div className="p-8 md:p-12 min-h-72 pt-10 relative bg-[#F0F1F2]">
   <div className="flex flex-col md:flex-row items-center rounded-lg overflow-hidden p-6 md:p-8 space-y-6 md:space-y-0 md:space-x-10">
@@ -130,16 +130,17 @@ zero();
 <ProjectSlider />
 
 <div
-  className="w-full min-h-64 max-h-80 inset-0 bg-cover bg-center flex items-center justify-center"
+  className="w-full min-h-64 max-h-[70vh] inset-0 bg-cover bg-center flex items-center justify-center py-7"
   style={{
     backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url(${build})`,
   }}
+
 >
-  <div className="text-center w-full text-black px-6 py-12 md:py-36 rounded-lg flex flex-col justify-center">
+  <div className="text-center w-full text-black px-6 py-12 md:py-36 rounded-lg flex flex-col justify-center items-center">
     <h1 className="text-3xl md:text-[60px] font-bold mb-6 text-shadow font-[Fira_Sans]">
       Expanding Horizons
     </h1>
-    <p className="text-base md:text-lg px-6 md:px-20 font-[Montserrat]">
+    <p className="text-base md:text-lg px-6 md:px-20 mt-7 font-[Montserrat]">
       As the real estate landscape continued to change, so did we. Recognizing
       the evolving needs of our clients, we took the bold step of expanding our
       services. In response to increasing demand, we began to construct homes
@@ -148,6 +149,7 @@ zero();
       comprehensive range of services, from land acquisition to the construction
       of your dream home.
     </p>
+    <button className='bg-[#F5BE86] h-4 w-24 mt-4'></button>
   </div>
 </div>
 
@@ -179,14 +181,14 @@ zero();
 </div>
 
 <div
-  className="w-full inset-0 bg-cover bg-center flex items-center justify-center"
-  style={{ backgroundImage: `url(${vision})` }}
+  className="w-full inset-0 bg-cover bg-center   flex items-center justify-center"
+  style={{ backgroundImage: `url(${vision}) ` }}
 >
-  <div className="text-center w-full text-black px-6 py-12 md:py-36 rounded-lg flex flex-col justify-start">
-    <h1 className="text-4xl md:text-[60px] font-bold mb-6 text-shadow font-[Fira_Sans]">
+  <div className="text-center w-full text-black px-6 h-[30vh] md:h-[55vh] rounded-lg flex flex-col pt-10">
+    <h1 className="text-4xl md:text-[70px] font-bold mb-6 text-shadow font-[Fira_Sans]">
       Our Vision
     </h1>
-    <p className="text-base md:text-lg px-4 md:px-24 lg:px-48 font-[Montserrat]">
+    <p className="text-base md:text-xl px-4 md:px-24 lg:px-48 font-[Montserrat] mt-3  ">
       Our vision is to be the premier destination for all your real estate needs. 
       Whether you're looking for the perfect plot of land or the keys to your dream home, 
       we are here to make your aspirations come true.

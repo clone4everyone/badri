@@ -18,7 +18,7 @@ const BigImage = () => {
         Unique Housing & Land <br /> Solution for You
       </h1>
       {/* Subheading */}
-      <p className="text-sm sm:text-lg md:text-xl lg:text-2xl mt-4 mb-6">
+      <p className="text-sm text-start sm:text-lg md:text-xl lg:text-2xl mt-4 mb-6">
         Building Dreams, Crafting Legacies. Your Trusted Address Since 1980.
       </p>
       {/* Buttons */}

@@ -96,7 +96,7 @@ const ProjectDetail = () => {
        <Navbar />
        {shareModel && <Share setShareModel={setShareModel} image={project.thumbnail} title={project.title} url={`badri.bharathmegaminds.com/projectDetail/${project.title}/${project._id}`}/>}
             {/* Background Section */}
-            <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
+            <div className='w-full min-h-72 max-h-72 inset-0  bg-center' style={{ backgroundImage: `url(${background})` }}>
                 <div className='flex flex-col justify-end gap-3 h-72 pb-8 pl-14 text-white'>
                     <h1 className='text-4xl'>Projects</h1>
                     <p className='text-xl'><span onClick={()=>navigate('/')} className='border-b-2 cursor-pointer'>Home</span> {'>'} <span className='border-b-2 hover:cursor-pointer ' onClick={()=>navigate("/projects")}>Projects</span> {`>`} <span>Project Detail</span></p>
@@ -106,7 +106,8 @@ const ProjectDetail = () => {
             {project ? (
   <div className="bg-white w-full md:w-[95%] mx-auto rounded-lg overflow-hidden  p-5 md:p-8 mt-10">
   {/* Header Section */}
-  <div className="mb-4 flex justify-between items-center">
+  <div className="mb-4 flex justify-between items-center ">
+
     <h1 className="text-lg md:text-xl font-semibold">
       Land Status:{" "}
       <span
@@ -122,26 +123,29 @@ const ProjectDetail = () => {
         onClick={() => setShareModel(true)}
         className="hover:cursor-pointer text-gray-600 hover:text-blue-500 transition-colors duration-200"
       />
-      <FaHeart
+      {/* <FaHeart
         onClick={() => {
           user !== null ? handleWishlistToggle() : navigate("/login");
         }}
         className={`cursor-pointer text-xl ${
           isInWishlist ? "text-red-500" : "text-gray-400"
         } hover:scale-110 transition-transform duration-200`}
-      />
+      /> */}
     </div>
   </div>
 
   {/* Main Content Section */}
   <div className="flex flex-col md:flex-row gap-6">
     {/* Left Section */}
-    <div className="w-full md:w-[60%]">
-      <img
+    <div className="w-full md:w-[50%] " >
+      <div className="w-full h-60 md:h-80 inset-0   rounded-lg shadow-md bg-cover bg-no-repeat bg-center" style={{ backgroundImage: `url(${project.thumbnail})` }}>
+
+      </div>
+      {/* <img
         src={project.thumbnail}
         alt={project.title}
-        className="w-full h-56 md:h-64 object-cover rounded-lg shadow-md"
-      />
+        className="w-full h-60 md:h-80 inset-0 object-center rounded-lg shadow-md"
+      /> */}
       <div className="mt-4">
         <h3 className="text-xl md:text-2xl font-semibold mb-3">
           {project.title}
@@ -177,19 +181,25 @@ const ProjectDetail = () => {
     </div>
 
     {/* Right Section */}
-    <div className="w-full md:w-[40%]">
-      <h2 className="text-xl md:text-2xl font-semibold mb-4">Floor Image</h2>
-      <img
+    <div
+  className="w-full min-h-[300px] md:max-w-[50%] inset-0 bg-cover md:bg-contain bg-center bg-no-repeat"
+  style={{ backgroundImage: `url(${project.floorImage})` }}
+>
+      {/* <img
         src={project.floorImage}
         alt="Floor Plan"
-        className="w-full h-60 md:h-80 object-cover rounded-lg shadow-md"
+        className="w-full h-60 md:h-96 items-center object-center inset-0 rounded-lg shadow-md"
       />
+       <h2 className="text-xl md:text-2xl font-semibold mb-4 mt-3">Floor Image</h2> */}
     </div>
   </div>
 </div>
 
 ):(
-  <Loading className="mt-4"/>
+  <div className="min-h-[50vh] flex items-center justify-center">
+  <Loading className=""/>
+  </div>
+
 )}
 
            
@@ -269,7 +279,7 @@ const ProjectDetail = () => {
         <img
           src={project.listingPhotoPaths[currentIndex]}
           alt={`Image ${currentIndex + 1}`}
-          className="w-full rounded-lg"
+          className="w-full rounded-lg border inset-0 object-center border-red-300"
         />
         <button
           onClick={handlePrev}

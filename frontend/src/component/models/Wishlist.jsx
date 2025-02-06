@@ -33,6 +33,7 @@ const [condition,setCondition]=useState(false);
             listingId: id,
           });
          setCondition(!condition);
+         window.location.reload();
     }catch(err){
         console.log(err.message);
     }

@@ -82,7 +82,7 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="relative w-full bg-[#E9E9FB] py-12 px-4 sm:px-6 lg:px-16 xl:px-24 2xl:px-36">
+    <div className="relative w-full bg-[#E9E9FB] py-12 px-4 sm:px-6 lg:px-16 xl:px-24 2xl:px-36 ">
     {/* Top Section */}
     {reviewModel && <Review setReviewModel={setReviewModel} />}
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10">
@@ -157,19 +157,19 @@ const Testimonial = () => {
         return (
           <div
             key={testimonial.id}
-            className={`transition-all duration-500 transform bg-white p-6 rounded-lg shadow-lg ${
+            className={`transition-all duration-500 transform bg-white p-6   ${
               isCenterCard
-                ? "scale-105 shadow-xl z-10 w-11/12 sm:w-4/5 lg:w-3/5"
+                ? "scale-105 shadow-xl z-10 w-11/12 sm:w-4/5 lg:w-3/5 rounded-lg"
                 : "scale-90 opacity-75 flex flex-col items-center w-full sm:w-2/5 lg:w-1/3"
             }`}
           >
             {isCenterCard ? (
-              <div className="flex flex-col items-center justify-center">
+              <div className="flex rounded-lg flex-col items-center justify-center">
                 <div className="flex flex-col sm:flex-row items-center sm:space-x-4">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-lg mb-4 sm:mb-0"
+                    className="w-16 h-16 sm:w-32 sm:h-28 object-center rounded-lg mb-4 sm:mb-0"
                   />
                   <div className="flex flex-col text-left">
                     <p className="text-base sm:text-lg text-gray-900 font-[Fira_Sans]">
@@ -192,7 +192,7 @@ const Testimonial = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-sm sm:text-base text-gray-600 mt-4 italic text-center ">
+                <p className="text-sm sm:text-base text-gray-600 mt-4 italic  text-center ">
                   {testimonial.feedback}
                 </p>
               </div>
@@ -201,7 +201,7 @@ const Testimonial = () => {
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-20 h-16 sm:w-24 sm:h-20 object-cover mb-4 rounded-lg"
+                  className="w-20 h-16 sm:w-32 sm:h-28  object-center mb-4 "
                 />
                 <div className="flex space-x-1 mb-3">
                   {[...Array(testimonial.rating)].map((_, i) => (
@@ -218,7 +218,7 @@ const Testimonial = () => {
                 <p className="text-base sm:text-lg text-gray-900 font-[Fira_Sans]">
                   {testimonial.name}
                 </p>
-                <p className="text-sm text-gray-500 font-[Montserrat]">
+                <p className="text-sm  text-gray-500 font-[Montserrat]">
                   {testimonial.profession}
                 </p>
               </>

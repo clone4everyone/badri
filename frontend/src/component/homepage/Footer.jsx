@@ -18,7 +18,7 @@ const Footer = () => {
 >
   Go Back To Top
 </h1>
-<footer className="bg-[#EEEEFC] text-black pt-6 pl-10 md:pl-0">
+<footer className="bg-[#EEEEFC] text-black pt-6 pl-10 md:px-28 px-0 pb-6">
   <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 md:px-6">
     {/* Logo & Social Media */}
     <div>
@@ -111,13 +111,13 @@ const Footer = () => {
     </div>
   </div>
 
-  <div className="flex  sm:flex-row justify-between px-2 bg-[#2222AE] text-white text-xs mt-6 border-t border-gray-700 py-2 font-montserrat">
+
+</footer>
+  <div className="flex  sm:flex-row justify-between px-2 bg-[#2222AE] text-white text-xs border-t border-gray-700 py-2 font-montserrat md:px-28 ">
     <p>© {new Date().getFullYear()} copyright</p>
     <p>Privacy Policy</p>
     <p>All rights reserved.</p>
   </div>
-</footer>
-
   </>
   
   );

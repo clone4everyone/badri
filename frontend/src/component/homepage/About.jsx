@@ -21,7 +21,7 @@ const About = () => {
         <img 
           src={founder} // Replace with the correct path for your image
           alt="Estate Image" 
-          className="w-full md:w-1/3 h-48 md:h-auto rounded-sm object-cover shadow-md"
+          className="w-full md:w-1/3 h-48 md:h-auto rounded-sm object-center shadow-md"
         />
         {/* Content Section */}
         <div className="flex flex-col justify-center space-y-6 w-full md:w-2/3">

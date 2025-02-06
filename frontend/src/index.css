@@ -23,4 +23,6 @@
   .loading-logo.show {
     opacity: 1;
   }
-  
+  .mont{
+    font-family: 'Montserrat', sans-serif;
+  }

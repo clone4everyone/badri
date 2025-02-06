@@ -55,13 +55,13 @@ const logout=()=>{
         <Logo />
       </Link>
     </div>
-  
-    {/* Center Section - Links */}
-    <div className="hidden md:flex items-center space-x-6 ">
+
+ <div className='gap-10 flex items-center'>
+   <div className="hidden md:flex items-center space-x-6 ">
       <Link className="hover:cursor-pointer hover:border-b-2" to="/">Home</Link>
       <Link to="/about" className="hover:cursor-pointer hover:border-b-2">About Us</Link>
       <Link to="/service" className="hover:cursor-pointer hover:border-b-2">Services</Link>
-      <Link to="/projects" className="hover:cursor-pointer hover:border-b-2">Properties</Link>
+      <Link to="/projects" className="hover:cursor-pointer hover:border-b-2">Projects</Link>
       <Link to="/#contact" className="hover:cursor-pointer hover:border-b-2">Contact Us</Link>
     </div>
   
@@ -102,8 +102,8 @@ const logout=()=>{
             <ul className="py-1">
               {user ? (
                 <>
-                  <li onClick={() => setSettingModel(true)}><li className="px-4 py-2 hover:bg-gray-100">Profile</li></li>
-                  <li className="px-4 py-2 hover:bg-gray-100" onClick={() => setWishModel(true)}>Wishlist</li>
+                  {/* <li onClick={() => setSettingModel(true)}><li className="px-4 py-2 hover:bg-gray-100">Profile</li></li>
+                  <li className="px-4 py-2 hover:bg-gray-100" onClick={() => setWishModel(true)}>Wishlist</li> */}
                   <Link to="/" onClick={() => logout()}><li className="px-4 py-2 hover:bg-gray-100">Log Out</li></Link>
                 </>
               ) : (
@@ -128,6 +128,9 @@ const logout=()=>{
         />
       </div>
     </div>
+  </div> 
+    {/* Center Section - Links */}
+   
   
     {/* Mobile Menu */}
     {mobileMenuOpen && (

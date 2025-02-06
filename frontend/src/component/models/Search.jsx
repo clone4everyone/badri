@@ -13,9 +13,25 @@ const Search = ({ setModel }) => {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate=useNavigate()
+ 
   const itemsPerPage = 10;
+  const placeholders = ["Price", "BHK"];
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+  const [animate, setAnimate] = useState(false);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimate(true); // Start slide-up effect
+      setTimeout(() => {
+        setPlaceholderIndex((prev) => (prev + 1) % placeholders.length);
+        setAnimate(false); // Reset animation
+      }, 300); // Animation duration
+    }, 2500); // Change every 3 seconds
+
+    return () => clearInterval(interval);
+  }, []);
   // Fetch product data
+  
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
@@ -82,15 +98,30 @@ const Search = ({ setModel }) => {
       </button>
   
       {/* Search Bar */}
-      <div className="flex items-center border border-gray-300 rounded-lg p-2 mt-5">
-        <input
-          type="text"
-          placeholder="Find By Seller"
-          className="w-full outline-none px-2 font-montserrat"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
+      <div className="relative flex items-center border border-gray-300 rounded-lg p-2 mt-5">
+      {/* Input Field */}
+      <input
+        type="text"
+        className="w-full outline-none px-2 font-montserrat placeholder-transparent "
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        placeholder="Find By Seller"
+      />
+      
+      {/* Overlay Placeholder Text with Slide Up Animation */}
+      {!search && (
+        <div className="absolute left-2  text-gray-400 pointer-events-none flex">
+          Find By{" "}
+          <span
+            className={`ml-2  inline-block transition-transform duration-500 ${
+              animate ? "-translate-y-1 opacity-2" : "translate-y-0 opacity-100"
+            } `}
+          >
+            {placeholders[placeholderIndex]}
+          </span>
+        </div>
+      )}
+    </div>
   
       {/* Results Section */}
       <div className="mt-6">

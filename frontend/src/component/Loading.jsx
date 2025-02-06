@@ -1,9 +1,24 @@
-import React from 'react';
-
+import React,{useEffect,useState} from 'react';
+import toast from 'react-hot-toast';
 const Loading = () => {
+   const [progress, setProgress] = useState(10);
+  
+   useEffect(() => {
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          toast.error("Refresh the page...");
+          return 10; // Reset to 10% after reaching 100%
+        }
+        return prev + 1;
+      });
+    }, 1000); // Adjust speed
+
+    return () => clearInterval(interval);
+  }, []);
   return (
     <>
-    <div className='w-full flex items-center justify-center'>
+    {/* <div className='w-full flex items-center justify-center'>
  <div class="relative animate-spin-slow hover:animate-pulse transition-all">
   <svg xmlns="http://www.w3.org/2000/svg" width="180" height="245" viewBox="0 0 206 254" fill="none" class="stroke-[#F4BE85]">
     <g id="Frame 427319931">
@@ -11,9 +26,20 @@ const Loading = () => {
     </g>
   </svg>
 </div>
-    </div>
+    </div> */}
    
-
+   <div className="w-full flex items-center justify-center">
+      <div className="w-[70%] border border-[#F4B26E] rounded-full mt-3 overflow-hidden relative">
+        {/* Loading bar */}
+        <div
+          className="h-3 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-400 rounded-full transition-all duration-300 ease-in-out"
+          style={{ width: `${progress}%` }}
+        >
+          {/* Shimmer Effect */}
+          <div className="h-full bg-white/30 animate-pulse w-10 opacity-60 rounded-full ml-auto"></div>
+        </div>
+      </div>
+    </div>
   
  
     </>

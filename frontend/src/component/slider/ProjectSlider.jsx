@@ -20,15 +20,15 @@ const ProjectSlider = () => {
 
     return (
         <div className="relative mt-0 w-full p-8 bg-[#EEEEFC]">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6 font-[Fira_Sans]">Our Projects</h2>
-        <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6">
+        <h2 className="text-2xl md:text-4xl font-bold mb-6 font-[Fira_Sans] md:pl-12">Our Top Projects</h2>
+        <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6 justify-around">
           <button
             onClick={prevSlide}
             className="text-3xl font-[Fira_Sans] text-gray-700 self-center md:self-auto"
           >
             &#9664;
           </button>
-          <div className="relative flex items-center">
+          <div className="relative flex items-center ">
             <div className="text-4xl md:text-6xl h-full flex-col justify-start font-bold text-gray-700 absolute -left-10 md:-left-16 font-[Fira_Sans]">
               {year}
             </div>

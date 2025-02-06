@@ -136,15 +136,21 @@ const Products = () => {
               navigate("/login");
             }
           }}
-          className="relative bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 group h-64 w-full"
+          className="relative bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 group h-96 w-full"
         >
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url(${product.thumbnail})`,
-              height: "100%",
-            }}
-          >
+         <div
+  className="absolute inset-0 bg-center"
+  style={{
+    backgroundImage: `url(${product.thumbnail})`,
+    backgroundSize: "cover", // Try "contain" if needed
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    width: "100%",
+    height: "100%",
+    imageRendering: "auto" // Try "crisp-edges" or "pixelated" if needed
+  }}
+>
+
             <div className="absolute inset-0 bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-500 flex flex-col items-center justify-end pb-2">
               <h3 className="text-white w-full text-center text-lg font-semibold">
                 {product.title}

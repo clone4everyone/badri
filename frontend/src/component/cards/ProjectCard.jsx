@@ -105,12 +105,12 @@ const handleWishlistToggle = async () => {
       />
     
       {/* Wishlist Icon */}
-      <FaHeart
+      {/* <FaHeart
         onClick={handleWishlistToggle}
         className={`cursor-pointer absolute top-2 right-10 text-xl ${
           isInWishlist ? "text-red-500" : "text-gray-400"
         }`}
-      />
+      /> */}
     </div>
     
 

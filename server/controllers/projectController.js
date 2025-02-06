@@ -73,7 +73,7 @@ const create=async(req,res)=> {
 
   const update = async (req, res) => {
     try {
-      const { formFields, listingPhotos, thumbnail,_id,status } = req.body;
+      const { formFields, listingPhotos, thumbnail,_id,status,floorImage } = req.body;
       const year = new Date().getFullYear();
       console.log("Received form fields:", formFields);
   
@@ -113,7 +113,18 @@ const create=async(req,res)=> {
         });
         thumbnailUrl = uploadedThumbnail.url;
       }
-  
+     let floorThumbnail;
+
+     if (isCloudinaryUrl(floorImage)) {
+      floorThumbnail = floorImage; // Use the existing URL if already a Cloudinary URL
+    } else {
+      const uploadedThumbnail = await cloudinary.uploader.upload(floorImage, {
+        folder: "avatars",
+        width: 150,
+        crop: "scale",
+      });
+      floorThumbnail = uploadedThumbnail.url;
+    }
       const uploadedPhotoUrls = await Promise.all(uploadPromises);
   
       // Update the listing with uploaded or existing photo URLs
@@ -124,6 +135,7 @@ const create=async(req,res)=> {
           listingPhotoPaths: uploadedPhotoUrls.map((result) => result.url),
           year,
           thumbnail: thumbnailUrl,
+          floorImage:floorThumbnail,
           status
         },
         { new: true } // Return the updated document
