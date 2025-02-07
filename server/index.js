@@ -23,19 +23,15 @@ cloudinary.config({
   });
 
 
-// Routes Start
-app.get("/",()=>{
-  console.log("hel")
+
+app.get("/", (req, res)=>{
+  return res.send({success:true, message:"Server is running fine"})
 })
 app.use("/api/v1/admin-auth", adminAuthRoute);
 app.use("/api/v1/projects",projectRoute);
 app.use("/api/v1/auth", UserRoute);
 app.use("/api/v1/wishlist",WishlistRoute);
 app.use("/api/v1/msg",MessageRoute);
-
-app.get("/", (req, res)=>{
-  return res.send({success:true, message:"Server is running fine"})
-})
 
 //Routes End
 const port = 5432;
