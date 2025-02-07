@@ -25,11 +25,11 @@ const ProjectDetail = () => {
     const [project,setProject]=useState(null);
     const [shareModel,setShareModel]=useState(false);
     const handlePrev = () => {
-      setCurrentIndex((prev) => (prev === 0 ? location.state.listingPhotoPaths.length - 1 : prev - 1));
+      setCurrentIndex((prev) => (prev === 0 ? project.listingPhotoPaths.length - 1 : prev - 1));
     };
   
     const handleNext = () => {
-      setCurrentIndex((prev) => (prev === location.state.listingPhotoPaths.length - 1 ? 0 : prev + 1));
+      setCurrentIndex((prev) => (prev === project.listingPhotoPaths.length - 1 ? 0 : prev + 1));
     };
   
     const handleThumbnailClick = (index) => {
@@ -181,17 +181,13 @@ const ProjectDetail = () => {
     </div>
 
     {/* Right Section */}
-    <div
-  className="w-full min-h-[300px] md:max-w-[50%] inset-0 bg-cover md:bg-contain bg-center bg-no-repeat"
-  style={{ backgroundImage: `url(${project.floorImage})` }}
->
-      {/* <img
-        src={project.floorImage}
-        alt="Floor Plan"
-        className="w-full h-60 md:h-96 items-center object-center inset-0 rounded-lg shadow-md"
-      />
-       <h2 className="text-xl md:text-2xl font-semibold mb-4 mt-3">Floor Image</h2> */}
-    </div>
+    <div className="w-full md:w-[50%] flex justify-center items-center">
+    <img
+      src={project.floorImage}
+      alt="Floor Plan"
+      className="w-full max-h-[400px] object-contain rounded-lg"
+    />
+  </div>
   </div>
 </div>
 
@@ -274,27 +270,30 @@ const ProjectDetail = () => {
       {/* Main Image Slider */}
       {
         project && <div>
-           <div className='w-full flex justify-center'>
- <div className="relative w-[60%] ">
-        <img
-          src={project.listingPhotoPaths[currentIndex]}
-          alt={`Image ${currentIndex + 1}`}
-          className="w-full rounded-lg border inset-0 object-center border-red-300"
-        />
-        <button
-          onClick={handlePrev}
-          className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 focus:outline-none"
-        >
-          &#x276E;
-        </button>
-        <button
-          onClick={handleNext}
-          className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 focus:outline-none"
-        >
-          &#x276F;
-        </button>
-      </div>
-      </div>
+          <div className="w-full flex justify-center">
+  <div className="relative w-[60%] overflow-visible">
+    <img
+      src={project.listingPhotoPaths[currentIndex]}
+      alt={`Image ${currentIndex + 1}`}
+      className="w-full rounded-lg object-center"
+    />
+    {/* Left Button */}
+    <button
+      onClick={handlePrev}
+      className="absolute top-1/2 -left-9 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 focus:outline-none"
+    >
+      &#x276E;
+    </button>
+    {/* Right Button */}
+    <button
+      onClick={handleNext}
+      className="absolute top-1/2 -right-9 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 focus:outline-none"
+    >
+      &#x276F;
+    </button>
+  </div>
+</div>
+
      
 
       {/* Thumbnails */}

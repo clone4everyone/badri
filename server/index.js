@@ -33,6 +33,10 @@ app.use("/api/v1/auth", UserRoute);
 app.use("/api/v1/wishlist",WishlistRoute);
 app.use("/api/v1/msg",MessageRoute);
 
+app.get("/", (req, res)=>{
+  return res.send({success:true, message:"Server is running fine"})
+})
+
 //Routes End
 const port = process.env.PORT;
 const connectDb = async () => {
