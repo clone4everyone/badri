@@ -38,7 +38,7 @@ app.get("/", (req, res)=>{
 })
 
 //Routes End
-const port = process.env.PORT;
+const port = 5432;
 const connectDb = async () => {
     try {
       await mongoose.connect(`${process.env.MONGO_URI}`);
