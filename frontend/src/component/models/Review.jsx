@@ -42,7 +42,7 @@ const Review = ({setReviewModel}) => {
 
       {/* Right Section: Review Form */}
       <div className="w-full md:w-1/2 flex flex-col">
-        <h2 className="text-xl md:text-2xl font-semibold mb-4 font-fira-sans">Rate & Review</h2>
+        <h2 className="text-xl md:text-2xl font-semibold mb-4 fira-sans">Rate & Review</h2>
 
         {/* Star Rating */}
         <div className="flex items-center mb-4">
@@ -70,7 +70,7 @@ const Review = ({setReviewModel}) => {
 
         {/* Review Message */}
         <textarea
-          className="border border-gray-300 rounded-lg p-3 mb-4 resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm font-montserrat"
+          className="border border-gray-300 rounded-lg p-3 mb-4 resize-none focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm font-[Montserrat]"
           rows="4"
           placeholder="Write your review here..."
           value={reviewMessage}
@@ -79,7 +79,7 @@ const Review = ({setReviewModel}) => {
 
         {/* Submit Button */}
         <button
-          className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors font-montserrat"
+          className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors font-[Montserrat]"
           onClick={() => {
             if(rating===0 ){
               return toast.error("Select the rating")

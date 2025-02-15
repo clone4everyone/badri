@@ -8,7 +8,8 @@ const adminAuthRoute = require("./routes/adminAuthRoute");
 const projectRoute=require("./routes/projectRoute");
 const UserRoute=require("./routes/userRoute");
 const WishlistRoute=require("./routes/wishlistRoute");
-const MessageRoute=require("./routes/messageRoute")
+const MessageRoute=require("./routes/messageRoute");
+const TestimonalRoute=require("./routes/testimonialRoute");
 require("dotenv").config();
 app.use(bodyParser.json({ limit: "50mb" })); // Replace "50mb" with your required limit
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
@@ -32,7 +33,7 @@ app.use("/api/v1/projects",projectRoute);
 app.use("/api/v1/auth", UserRoute);
 app.use("/api/v1/wishlist",WishlistRoute);
 app.use("/api/v1/msg",MessageRoute);
-
+app.use("/api/v1/testimonial",TestimonalRoute);
 //Routes End
 const port = 5432;
 const connectDb = async () => {

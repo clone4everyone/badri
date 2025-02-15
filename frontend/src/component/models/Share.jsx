@@ -11,7 +11,7 @@ const Share = ({ setShareModel, image, title, url }) => {
   return (
     <>
       <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div className="bg-white rounded-xl p-6  md:p-8 w-[50%] max-h-[80%] overflow-y-auto max-w-3xl custom-scrollbar relative shadow-lg transition-transform duration-300 ease-in-out transform scale-100">
+        <div className="bg-white rounded-xl p-6 px-4  md:p-8 w-[50%] max-h-[80%] overflow-y-auto max-w-3xl custom-scrollbar relative shadow-lg transition-transform duration-300 ease-in-out transform scale-100">
           {/* Close Button */}
           <button
             className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors "
@@ -33,7 +33,7 @@ const Share = ({ setShareModel, image, title, url }) => {
             )}
 
             {/* Title */}
-            <h1 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4">
+            <h1 className="text-xl md:text-2xl font-semibold text-gray-800 mb-4 font-[Montserrat]">
               {title}
             </h1>
 

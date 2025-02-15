@@ -14,6 +14,7 @@ import "swiper/css/pagination";
 import { Navigation, Pagination } from "swiper/modules";
 import Loading from '../Loading';
 import Animate from '../Animate';
+import FloatingActionAnimationButton from '../button/FloatingActionAnimationButton';
 
 const Products = () => {
     const user=useSelector((state)=>state.user.user);
@@ -66,8 +67,8 @@ const Products = () => {
     return (
       <div className="w-full px-4 py-20 mt-10 bg-[#FFF9EB]">
 
-      <h2 className="text-3xl font-bold text-center mb-6">Properties</h2>
-      <p className="text-sm text-center mb-6">
+      <h2 className="text-4xl font-bold text-center mb-6 fira-sans">Properties</h2>
+      <p className="text-xl font-[Montserrat] text-center mb-6">
         Transforming Visions into Reality, Shaping Tomorrow's Landscape.
         <br />
         Innovative Construction for a Brighter Future.
@@ -127,14 +128,17 @@ const Products = () => {
       <SwiperSlide key={index}>
         <div
           onClick={() => {
-            if (user !== null) {
-              incrementProjectView(product._id);
-              navigate(`/projectDetail/${product.title}/${product._id}`, {
-                state: product,
+            // if (user !== null) {
+            //   incrementProjectView(product._id);
+            //   navigate(`/projectDetail/${product.title}/${product._id}`, {
+            //     state: product,
+            //   });
+            // } else {
+            //   navigate("/login");
+            // }
+            navigate(`/projectDetail/${product.title}/${product._id}`, {
+               state: product,
               });
-            } else {
-              navigate("/login");
-            }
           }}
           className="relative bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200 group h-96 w-full"
         >
@@ -184,7 +188,11 @@ const Products = () => {
       </div>
 
       {/* View All Button */}
-      <div className="text-center mt-12 " onClick={()=>navigate("/projects")}>
+      <div className="flex w-full justify-center mt-7" onClick={()=>navigate("/projects")}>
+         <FloatingActionAnimationButton/>
+      </div>
+     
+      {/* <div className="text-center mt-12 " onClick={()=>navigate("/projects")}>
         <div className="relative inline-block text-center cursor-pointer group">
           <div className="relative text-black py-2 px-6 text-lg after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-[#E6AE35] after:transition-transform after:duration-300 after:scale-x-100 group-hover:after:scale-x-0">
             View All
@@ -200,7 +208,7 @@ const Products = () => {
             <div className="w-2 h-5 bg-[#FFCD62] relative right-1"></div>
           </div>
         </div>
-      </div>
+      </div> */}
         </>
       }
 

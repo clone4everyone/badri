@@ -99,12 +99,12 @@ const Login = () => {
 
     {/* Login Card */}
     <div className="relative z-10 w-full max-w-md p-6 sm:p-8 bg-opacity-70 backdrop-blur-md rounded-lg shadow-xl border border-gray-700">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-white">
+      <h2 className="text-2xl sm:text-4xl font-bold mb-6 fira-sans text-center text-white">
         Login
       </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Email Field */}
-        <div className="space-y-1 animate-fade-in">
+        <div className="space-y-1 animate-fade-in font-[Montserrat]">
           <label
             htmlFor="email"
             className="block text-gray-200 font-medium"

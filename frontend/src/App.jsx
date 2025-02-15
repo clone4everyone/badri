@@ -12,6 +12,8 @@ import ForgotPassword from './pages/auth/forgot-password/Page';
 import ResetPassword from './pages/auth/reset-password/Page';
 import Enterance from './component/Enterance';
 import Service from './pages/Service';
+import Testimonial from './pages/Testimonial';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -33,8 +35,8 @@ const LoadingRoutes = () => {
       setLoading(false);
       setTimeout(() => {
         setShowEnterance(false); // Unmount only after the animation ends
-      }, 1500); // Match this duration with your animation duration
-    }, 5000); // Simulate 5 seconds loading
+      }, 700); // Match this duration with your animation duration
+    }, 4000); // Simulate 5 seconds loading
 
   return ()=>clearTimeout(timer)
   }, []); // Empty dependency array to run once on component mount
@@ -43,7 +45,10 @@ const LoadingRoutes = () => {
 
   return (
     <>
-      {showEnterance && <Enterance loading={loading} />}{/* Show loading screen when loading */}
+   
+      {showEnterance && <Enterance loading={loading}/>} {/* Show loading screen when loading */}
+   
+    
       {!showEnterance && (
         <Routes>
           <Route path="/auth/email-sent" element={<EmailSentPage />} />
@@ -56,6 +61,8 @@ const LoadingRoutes = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/service" element={<Service/>}/>
           <Route path='/projectDetail/:name/:id' element={<ProjectDetail />} />
+          <Route path='/Testimonials' element={<Testimonial />} />
+          <Route path="*" element={<NotFound/>}/>
         </Routes>
       )}
     </>

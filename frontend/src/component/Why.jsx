@@ -37,7 +37,7 @@ const Why = () => {
 
   return (
     <div className="bg-[#FFF9EB] p-6 md:p-8">
-    <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 font-[Fira_Sans]">
+    <h2 className="text-2xl md:text-4xl  text-center mb-6 md:mb-8 fira-sans">
       Why Choose Shri Sai Ram Real Estate
     </h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
@@ -51,10 +51,10 @@ const Why = () => {
             style={{ backgroundImage: `url(${service.image})` }}
           ></div>
           <div className="pl-0 border-l-2 border-dotted border-[#FFC13B]">
-            <h3 className="text-lg md:text-xl font-semibold mb-2 border-l-8 pl-2 relative -left-1 z-10 border-[#FFC13B] font-[Fira_Sans]">
+            <h3 className="text-lg md:text-xl  mb-2 border-l-8 pl-2 relative -left-1 z-10 border-[#FFC13B] fira-sans">
               {service.title}
             </h3>
-            <p className="text-gray-600 text-sm md:text-base pl-1 font-[Montserrat]">
+            <p className="text-gray-600 text-sm md:text-base pl-1 mont">
               {service.description}
             </p>
           </div>

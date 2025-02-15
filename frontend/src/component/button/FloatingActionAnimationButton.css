@@ -1,36 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-.custom-scrollbar::-webkit-scrollbar-track {
-    background: blue;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-    background: #3b82f6; /* Blue color */
-    border-radius: 5px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: #1d4ed8; /* Darker blue on hover */
-}
-/* Add smooth transition for opacity */
-.loading-logo {
-    transition: opacity 0.5s ease-in-out;
-    opacity: 0;
-  }
-  
-  .loading-logo.show {
-    opacity: 1;
-  }
-  .mont{
-    font-family: 'Montserrat', sans-serif;
-  }
-
-  .moving-div {
-    animation: moveUp 1s ease-in-out forwards;
-  }
-  /* FAB Container - Acts as a stack */
+/* FAB Container - Acts as a stack */
 .fab-container {
   width: 148px;
   height: 86px; /* Invisible height */
@@ -94,15 +62,23 @@
 .fab-container:not(:hover) .bar4 { top: 60px; }
 .fab-container:not(:hover) .bar5 { top: 52.5px; }
 
-.fira-sans {
-  font-family: "Fira Sans", serif;
-  font-weight: 600;
-  font-style: normal;
-}
-
 /* Button Text */
 .button-text {
   left: 37px;
+  top: 53px;
+  position: absolute;
+  text-align: center;
+  color: #1b1c1e;
+  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  /* font-family: 'Fira Sans'; */
+  font-weight: 600;
+  line-height: 21.6px;
+  word-wrap: break-word;
+  cursor: pointer;
+}
+.button-text-another{
+  left: 22px;
   top: 53px;
   position: absolute;
   text-align: center;
@@ -114,18 +90,3 @@
   word-wrap: break-word;
   cursor: pointer;
 }
-.marcellus-regular {
-  font-family: "Marcellus", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-  @keyframes moveUp {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(-100vh);
-    }
-  }
-  

@@ -73,7 +73,7 @@ const create=async(req,res)=> {
 
   const update = async (req, res) => {
     try {
-      const { formFields, listingPhotos, thumbnail,_id,status,floorImage } = req.body;
+      const { formFields, listingPhotos, thumbnail,_id,status,floorImage, } = req.body;
       const year = new Date().getFullYear();
       console.log("Received form fields:", formFields);
   

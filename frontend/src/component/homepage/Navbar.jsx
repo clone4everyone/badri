@@ -57,7 +57,7 @@ const logout=()=>{
     </div>
 
  <div className='gap-10 flex items-center'>
-   <div className="hidden md:flex items-center space-x-6 ">
+   <div className="hidden md:flex items-center space-x-6 font-[Montserrat] font-semibold">
       <Link className="hover:cursor-pointer hover:border-b-2" to="/">Home</Link>
       <Link to="/about" className="hover:cursor-pointer hover:border-b-2">About Us</Link>
       <Link to="/service" className="hover:cursor-pointer hover:border-b-2">Services</Link>
@@ -85,7 +85,7 @@ const logout=()=>{
       </div>
   
       {/* Profile Dropdown */}
-      <div className="relative">
+      {/* <div className="relative">
         <div
           className="w-13 py-3 px-3 rounded-md cursor-pointer flex justify-center items-center gap-3 hover:shadow-xl"
           onMouseEnter={handleMouseEnter}
@@ -102,8 +102,8 @@ const logout=()=>{
             <ul className="py-1">
               {user ? (
                 <>
-                  {/* <li onClick={() => setSettingModel(true)}><li className="px-4 py-2 hover:bg-gray-100">Profile</li></li>
-                  <li className="px-4 py-2 hover:bg-gray-100" onClick={() => setWishModel(true)}>Wishlist</li> */}
+                  <li onClick={() => setSettingModel(true)}><li className="px-4 py-2 hover:bg-gray-100">Profile</li></li>
+                  <li className="px-4 py-2 hover:bg-gray-100" onClick={() => setWishModel(true)}>Wishlist</li>
                   <Link to="/" onClick={() => logout()}><li className="px-4 py-2 hover:bg-gray-100">Log Out</li></Link>
                 </>
               ) : (
@@ -115,7 +115,7 @@ const logout=()=>{
             </ul>
           </div>
         )}
-      </div>
+      </div> */}
   
       {/* Hamburger Menu for Small Screens */}
       <div className="md:hidden">

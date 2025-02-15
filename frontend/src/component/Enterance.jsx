@@ -1,6 +1,7 @@
 // LoadingScreen.js 
 import { useState,useEffect } from "react";
 import name from "../assets/safron (2).png"
+import { motion } from "framer-motion";
 import safron from "../assets/safron (1).png"
 const Enterance = ({loading}) => {
     const [step, setStep] = useState(0);
@@ -117,33 +118,36 @@ const Enterance = ({loading}) => {
 </svg>
 
     ]
+    
     return (
 <div
-  className={`absolute bg-[#E9E9FB] w-full flex justify-center items-center h-full transition-transform duration-[10000ms] ease-out ${
-    animate ? "scale-[5]" : "scale-[1]"
-  }`}
+  className={`absolute z-50 bg-[#E9E9FB] w-full flex justify-center items-center h-screen transition-transform $`}
 >
-  <div className="flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12">
+  <div className={`flex flex-col items-center px-4 sm:px-6 md:px-8 lg:px-12 ${animate ? 'moving-div':''}`}>
     <div
-      className={`flex transition-transform duration-[2000ms] ease-out text-[#F4BE85] justify-center items-center ${
-        animate ? "animate-scale-up" : ""
-      }`}
+      className={`flex transition-transform duration-[2000ms] ease-out text-[#F4BE85] justify-center items-center `}
       key={step}
     >
       {logos[step]}
     </div>
 
     <img
-      className="w-[70%] sm:w-[50%] md:w-[40%] lg:w-[30%]"
+      className="w-[70%] sm:w-[50%] md:w-[40%] lg:w-[45%]"
       src={name}
       alt="name"
     />
-    <div className="w-[70%] border-[#F4B26E]  rounded-sm mt-3">
+    <div className="w-[85%] border-[#F4B26E]  rounded-sm mt-3">
 
       <div
         className="h-3 w-[70%] sm:w-[50%] md:w-[40%] lg:w-[50%] bg-orange-400 rounded-full transition-all duration-100"
         style={{ width: `${progress}%` }}
       ></div>
+
+      <div className="flex items-center justify-center mt-5">
+        <h1 className="marcellus-regular  text-[#E58015]">
+        A SAFFRONS REAL ESTATE COMPANY
+        </h1>
+      </div>
     </div>
  
 

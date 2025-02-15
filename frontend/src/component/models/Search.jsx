@@ -102,7 +102,7 @@ const Search = ({ setModel }) => {
       {/* Input Field */}
       <input
         type="text"
-        className="w-full outline-none px-2 font-montserrat placeholder-transparent "
+        className="w-full outline-none px-2 font-montserrat placeholder-transparent font-[Montserrat]"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Find By Seller"
@@ -113,7 +113,7 @@ const Search = ({ setModel }) => {
         <div className="absolute left-2  text-gray-400 pointer-events-none flex">
           Find By{" "}
           <span
-            className={`ml-2  inline-block transition-transform duration-500 ${
+            className={`ml-2  inline-block transition-transform duration-500 fonr-finaSans ${
               animate ? "-translate-y-1 opacity-2" : "translate-y-0 opacity-100"
             } `}
           >
@@ -125,21 +125,22 @@ const Search = ({ setModel }) => {
   
       {/* Results Section */}
       <div className="mt-6">
-        <h2 className="text-xl font-semibold font-fira-sans">Property Listings</h2>
+        <h2 className="text-xl font-semibold fira-sans">Property Listings</h2>
         {loading ? (
-          <p className="text-center mt-4 font-montserrat"><Loading/></p>
+          <p className="text-center mt-4 font-[Montserrat]"><Loading/></p>
         ) : currentData.length > 0 ? (
           currentData.map((item, index) => (
             <div
               key={index}
               className="flex hover:cursor-pointer flex-col md:flex-row items-start gap-4 mt-4 border-b pb-4"
               onClick={() => {
-                if (user !== null) {
-                  incrementProjectView(item._id);
-                  navigate(`/projectDetail/${item.title}/${item._id}`, { state: item });
-                } else {
-                  navigate("/login");
-                }
+                // if (user !== null) {
+                //   incrementProjectView(item._id);
+                //   navigate(`/projectDetail/${item.title}/${item._id}`, { state: item });
+                // } else {
+                //   navigate("/login");
+                // }
+                navigate(`/projectDetail/${item.title}/${item._id}`, { state: item });
               }}
             >
               <img
@@ -148,19 +149,19 @@ const Search = ({ setModel }) => {
                 className="w-24 h-24 md:w-32 md:h-32 rounded-lg object-cover"
               />
               <div className="font-montserrat">
-                <h3 className="text-lg font-bold font-fira-sans">{item.titile}</h3>
-                <p>
+                <h3 className="text-lg font-bold font-[finaSans]">{item.titile}</h3>
+                <p className="font-[Montserrat]">
                   <strong>BHK:</strong> {item.bhk}BHK{item.balcony? '- Balcony':null}{item.terrace? '- Terrace':null}
                 </p>
-                <p>
+                <p className='font-[Montserrat]'>
                   <strong>Location:</strong> {item.location}
                 </p>
-                <p>
+                <p className='font-[Montserrat]'>
                   <strong>Area:</strong> {item.unit === "sqft"
             ? `${item.sqft} Sq.ft (W: ${item.width}, L: ${item.length})`
             : `${item.Acre} Acre`}
                 </p>
-                <p>
+                <p className='font-[Montserrat]'>
                 <strong>Price:</strong> ₹ {Number(item.price).toLocaleString()}
 
 
@@ -169,7 +170,7 @@ const Search = ({ setModel }) => {
             </div>
           ))
         ) : (
-          <p className="text-center mt-4 text-gray-500 font-montserrat">
+          <p className="text-center mt-4 text-gray-500 font-[Montserrat]">
             No results found for "{search}"
           </p>
         )}

@@ -70,14 +70,15 @@ const handleWishlistToggle = async () => {
     
       {/* Content */}
       <div className="flex flex-col gap-2"  onClick={() => {
-        if (user !== null) {
-          incrementProjectView(product._id);
-          navigate(`/projectDetail/${product.title}/${product._id}`, { state: product });
-        } else {
-          navigate("/login");
-        }
+        // if (user !== null) {
+        //   incrementProjectView(product._id);
+        //   navigate(`/projectDetail/${product.title}/${product._id}`, { state: product });
+        // } else {
+        //   navigate("/login");
+        // }
+        navigate(`/projectDetail/${product.title}/${product._id}`, { state: product });
       }}>
-        <h2 className="text-xl font-bold flex items-center gap-2 font-[Fira Sans]">
+        <h2 className="text-xl font-bold flex items-center gap-2 font-[firaSans]">
           <FaHome /> {product.title}
         </h2>
         <p className="flex items-center gap-2 font-[Montserrat]">

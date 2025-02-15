@@ -74,14 +74,14 @@ const teamMembers = [
 
          <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
                         <div className='flex flex-col justify-end gap-3 h-72 pb-8 pl-14 text-white'>
-                            <h1 className='text-4xl'>Projects</h1>
-                            <p className='text-xl'><span onClick={()=>navigate('/')} className='border-b-2 cursor-pointer'>Home</span> {'>'}<span>Services</span></p>
+                            <h1 className='text-4xl fira-sans'>Projects</h1>
+                            <p className='text-xl font-[Montserrat]'><span onClick={()=>navigate('/')} className='border-b-2 cursor-pointer'>Home</span> {'>'}<span>Services</span></p>
                         </div>
                     </div>
 
-<section className="py-8 px-5 md:px-[65px]">
+<section className="py-8 px-5 md:px-[65px] flex items-center justify-center">
   <div className="max-w-6xl  px-4 sm:px-6 lg:px-8 z-50 bg-white">
-    <h2 className="text-3xl pl-3 sm:text-4xl font-bold text-start text-gray-800 mb-2">
+    <h2 className="text-3xl pl-3 sm:text-4xl fira-sans font-bold text-start text-gray-800 mb-2">
       Our Services
     </h2>
     <div className="max-w-6xl mx-auto py-10 px-5">
@@ -99,8 +99,8 @@ const teamMembers = [
               className="w-full md:w-1/3 h-56 object-cover rounded-sm shadow-lg"
             />
             <div className="bg-amber-50 p-6 py-10 rounded-sm shadow-md">
-              <h3 className="text-xl font-bold">{service.title}</h3>
-              <p className="text-gray-600">{service.description}</p>
+              <h3 className="text-xl fira-sans">{service.title}</h3>
+              <p className="text-gray-600 font-[Montserrat]">{service.description}</p>
             </div>
           </div>
         ))}
@@ -110,8 +110,8 @@ const teamMembers = [
 </section>
 
         <div className="max-w-5xl mx-auto py-10">
-        <h2 className="text-3xl font-bold mb-6">Our Team</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <h2 className="text-4xl font-bold mb-6 fira-sans">Our Team</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-[Montserrat]">
           {teamMembers.map((member, index) => (
             <div key={index} className="flex items-center bg-purple-100 p-10 rounded-sm shadow-md">
               <img src={member.image} alt={member.name} className="w-20 h-20  object-cover" />

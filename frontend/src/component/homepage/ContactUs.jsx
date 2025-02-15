@@ -18,13 +18,16 @@ const ContactUs = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
-  const submitMsg=async()=>{
+  const submitMsg=async(e)=>{
+    e.preventDefault();
     try{
       if(!name || !email || !message){
          toast.error("Every Section Should filled")
+         return ;
       }
       else if(!validateEmail){
          toast.error("enter valid email");
+         return ;
       }else{
         const data=await API.post("/msg/putMsg",{
         name,email,message
@@ -48,16 +51,16 @@ const ContactUs = () => {
   {/* Left Section */}
   <div className="lg:w-1/2 w-full p-4 space-y-6 md:pl-20">
     <h2
-      className="text-4xl md:text-5xl lg:text-[60px] font-bold text-gray-800"
-      style={{ fontFamily: "Fira Sans" }}
+      className="text-4xl md:text-4xl  font-bold text-gray-800 fira-sans"
+      
     >
       Contact Us
     </h2>
     <p
-      className="text-sm md:text-base lg:text-lg text-gray-600"
-      style={{ fontFamily: "Montserrat" }}
+      className="text-sm md:text-base lg:text-lg text-black font-[Montserrat]"
+      
     >
-      <strong>Better yet, See us in person!</strong>
+      <strong >Better yet, See us in person!</strong>
       <br />
       We love our customers, so feel free to visit during normal business hours.
     </p>
@@ -84,19 +87,22 @@ const ContactUs = () => {
         Business Hours
       </h3>
       <p
-        className="text-gray-700 text-sm md:text-base lg:text-lg"
+        className=" text-sm md:text-base lg:text-lg"
         style={{ fontFamily: "Montserrat" }}
       >
-        <strong>Monday to Friday:</strong> 9:00 AM - 5:00 PM
+        Monday to Friday: 9:00 AM - 5:00 PM
         <br />
-        <strong>Saturday:</strong> 10:00 AM - 2:00 PM
+        Saturday: 10:00 AM - 2:00 PM
         <br />
-        <strong>Sunday:</strong> Closed
+        Sunday: Closed
       </p>
     </div>
     <button
-      onClick={() => {
-        user !== null ? toggleSidebar() : navigate("/login");
+      // onClick={() => {
+      //   user !== null ? toggleSidebar() : navigate("/login");
+      // }}
+      onClick={()=>{
+        toggleSidebar()
       }}
       className="text-sm md:text-base lg:text-lg rounded-sm text-white px-6 py-3 bg-[#2b2bd9] font-medium hover:bg-blue-700 transition-all"
       style={{ fontFamily: "Montserrat" }}
@@ -117,7 +123,7 @@ const ContactUs = () => {
   {/* Sidebar */}
   {isSidebarOpen && (
     <div
-      className="absolute top-0 left-0 pl-10 md:pl-0 h-full w-full lg:w-1/2 bg-white shadow-lg p-5 z-10"
+      className="absolute top-0 left-0 !pl-7   md:pl-0 h-full w-full lg:w-1/2 bg-white shadow-lg p-5 z-10"
       style={{
         transform: isSidebarOpen ? "translateX(0)" : "translateX(-100%)",
         transition: "transform 1s ease-in-out",
@@ -192,7 +198,7 @@ const ContactUs = () => {
           </button>
           <button
             className="text-sm md:text-base text-white px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700 transition-all"
-            onClick={() => submitMsg()}
+            onClick={(e) => submitMsg(e)}
             style={{ fontFamily: "Montserrat" }}
           >
             Submit

@@ -24,12 +24,13 @@ const ProjectDetail = () => {
     const [isInWishlist, setIsInWishlist] = useState(false);
     const [project,setProject]=useState(null);
     const [shareModel,setShareModel]=useState(false);
+    const [listingPhoto,setListingPhot]=useState(null);
     const handlePrev = () => {
-      setCurrentIndex((prev) => (prev === 0 ? project.listingPhotoPaths.length - 1 : prev - 1));
+      setCurrentIndex((prev) => (prev === 0 ? listingPhoto.length - 1 : prev - 1));
     };
   
     const handleNext = () => {
-      setCurrentIndex((prev) => (prev === project.listingPhotoPaths.length - 1 ? 0 : prev + 1));
+      setCurrentIndex((prev) => (prev === listingPhoto.length - 1 ? 0 : prev + 1));
     };
   
     const handleThumbnailClick = (index) => {
@@ -44,6 +45,11 @@ const ProjectDetail = () => {
        })
      if(data.data.status){
       setProject(data.data.project);
+      let photos = [...data.data.project.listingPhotoPaths]; 
+      photos.push(data.data.project.thumbnail);
+      photos.push(data.data.project.floorImage);
+      console.log(photos)
+      setListingPhot(photos);
      }
      else{
       console.log(data.data.message);
@@ -98,8 +104,8 @@ const ProjectDetail = () => {
             {/* Background Section */}
             <div className='w-full min-h-72 max-h-72 inset-0  bg-center' style={{ backgroundImage: `url(${background})` }}>
                 <div className='flex flex-col justify-end gap-3 h-72 pb-8 pl-14 text-white'>
-                    <h1 className='text-4xl'>Projects</h1>
-                    <p className='text-xl'><span onClick={()=>navigate('/')} className='border-b-2 cursor-pointer'>Home</span> {'>'} <span className='border-b-2 hover:cursor-pointer ' onClick={()=>navigate("/projects")}>Projects</span> {`>`} <span>Project Detail</span></p>
+                    <h1 className='text-4xl fira-sans'>Projects</h1>
+                    <p className='text-xl font-[Montserrat]'><span onClick={()=>navigate('/')} className='border-b-2 cursor-pointer'>Home</span> {'>'} <span className='border-b-2 hover:cursor-pointer ' onClick={()=>navigate("/projects")}>Projects</span> {`>`} <span>Project Detail</span></p>
                 </div>
             </div>
         
@@ -108,7 +114,7 @@ const ProjectDetail = () => {
   {/* Header Section */}
   <div className="mb-4 flex justify-between items-center ">
 
-    <h1 className="text-lg md:text-xl font-semibold">
+    <h1 className="text-lg md:text-xl font-[Montserrat]">
       Land Status:{" "}
       <span
         className={`${
@@ -147,19 +153,19 @@ const ProjectDetail = () => {
         className="w-full h-60 md:h-80 inset-0 object-center rounded-lg shadow-md"
       /> */}
       <div className="mt-4">
-        <h3 className="text-xl md:text-2xl font-semibold mb-3">
+        <h3 className="text-xl md:text-4xl fira-sans mb-3">
           {project.title}
         </h3>
-        <p className="text-gray-600 mb-2 flex items-center text-sm md:text-base font-montserrat">
+        <p className="text-gray-600 mb-2 flex items-center text-sm md:text-base font-[Montserrat]">
           <BiBed className="mr-2 text-blue-500" /> {project.bhk}
         </p>
-        <p className="text-green-600 font-bold flex items-center text-sm md:text-base font-montserrat">
-          <MdOutlineAttachMoney className="mr-2" /> {project.price}
+        <p className="text-green-600 font-bold flex items-center text-sm md:text-base font-[Montserrat]">
+        <p className='mr-2'>₹</p> {project.price}
         </p>
-        <p className="text-gray-500 flex items-center mt-2 text-sm md:text-base font-montserrat">
+        <p className="text-gray-500 flex items-center mt-2 text-sm md:text-base font-[Montserrat]">
           <FaMapMarkerAlt className="mr-2 text-red-500" /> {project.location}
         </p>
-        <p className="text-gray-500 mt-2 flex gap-2 items-center text-sm md:text-base font-montserrat">
+        <p className="text-gray-500 mt-2 flex gap-2 items-center text-sm md:text-base font-[Montserrat]">
           <FaMapMarked />
           {project.unit === "sqft"
             ? `${project.sqft} Sq.ft (W: ${project.width}, L: ${project.length})`
@@ -167,7 +173,7 @@ const ProjectDetail = () => {
         </p>
         <div className="max-w-[90%] mt-4">
           <h4 className="text-gray-800 font-medium mb-2">Description</h4>
-          <p className="text-gray-700 text-sm md:text-base font-montserrat">
+          <p className="text-gray-700 text-sm md:text-base font-[Montserrat]">
             {project.description}
           </p>
         </div>
@@ -181,7 +187,7 @@ const ProjectDetail = () => {
     </div>
 
     {/* Right Section */}
-    <div className="w-full md:w-[50%] flex justify-center items-center">
+    <div className="w-full md:w-[50%] flex justify-center items-top">
     <img
       src={project.floorImage}
       alt="Floor Plan"
@@ -207,7 +213,7 @@ const ProjectDetail = () => {
         <div className="flex items-center justify-between px-4 py-2 bg-indigo-100 border-b">
           <div className="flex items-center space-x-2">
             <FaUserCircle className="text-indigo-500" />
-            <span className="font-medium text-indigo-700 text-lg md:text-xl font-fira-sans">Contact</span>
+            <span className="font-medium text-indigo-700 text-lg md:text-4xl font-[finaSans]">Contact</span>
           </div>
         </div>
 
@@ -219,23 +225,23 @@ const ProjectDetail = () => {
 </div>
           {/* Text Details */}
           <div className="flex-grow">
-            <p className="text-lg md:text-xl font-semibold text-gray-800 font-fira-sans">
+            <p className="text-lg md:text-xl font-semibold text-gray-800 font-[finaSans]">
             K SURESH BABU
             </p>
-            <p className="text-sm text-gray-600 font-montserrat">Property Seller</p>
+            <p className="text-sm text-gray-600 font-[Montserrat]">Property Seller</p>
           </div>
 
           {/* Contact Info */}
           <div className="flex gap-4 md:gap-7 flex-wrap justify-between">
             <div className="flex items-center space-x-1">
               <FaPhoneAlt className="text-gray-600" />
-              <span className="text-gray-900 font-medium text-sm md:text-base font-montserrat">
+              <span className="text-gray-900 font-medium text-sm md:text-base font-[Montserrat]">
                 <strong>Phone Number:</strong> +91 999 666 1234
               </span>
             </div>
             <div className="flex items-center space-x-1">
               <FaEnvelope className="text-gray-600" />
-              <span className="text-gray-900 font-medium text-sm md:text-base font-montserrat">
+              <span className="text-gray-900 font-medium text-sm md:text-base font-[Montserrat]">
                 <strong>Email:</strong> badrirocks@gmail.com
               </span>
             </div>
@@ -273,7 +279,7 @@ const ProjectDetail = () => {
           <div className="w-full flex justify-center">
   <div className="relative w-[60%] overflow-visible">
     <img
-      src={project.listingPhotoPaths[currentIndex]}
+      src={listingPhoto[currentIndex]}
       alt={`Image ${currentIndex + 1}`}
       className="w-full rounded-lg object-center"
     />
@@ -298,7 +304,7 @@ const ProjectDetail = () => {
 
       {/* Thumbnails */}
       <div className="flex justify-center mt-6 gap-2">
-        {project.listingPhotoPaths.map((src, index) => (
+        {listingPhoto.map((src, index) => (
           <div
             key={index}
             className="relative cursor-pointer"

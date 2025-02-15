@@ -7,7 +7,7 @@ import man5 from '../../assets/man5.jpg'
 import Review from "../models/Review";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
+import GiveReviewButton from "../button/GiveReviewButton"
 const testimonials=[
     {
       id: 1,
@@ -87,25 +87,29 @@ const Testimonial = () => {
     {reviewModel && <Review setReviewModel={setReviewModel} />}
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10">
       <div className="text-left mb-6 sm:mb-0">
-        <h2 className="text-2xl sm:text-4xl lg:text-5xl text-gray-900 font-[Fira_Sans] leading-snug">
+        <h2 className="text-2xl sm:text-4xl lg:text-4xl text-gray-900 fira-sans leading-snug">
           What Our Clients Say
         </h2>
-        <p className="text-base sm:text-lg text-gray-600 font-[Montserrat] mt-2">
+        <p className="text-base sm:text-lg text-gray-600 font-[Montserrat] mt-2 ">
           See the feedback from our amazing clients
         </p>
       </div>
+       
       <div
-        className="text-center sm:ml-4 cursor-pointer mt-3 md:mt-0"
-        onClick={() => (user !== null ? setReviewModel(true) : navigate("/login"))}
+        className="text-center sm:ml-4 cursor-pointer mt-3 md:mt-0 "
+        // onClick={() => (user !== null ? setReviewModel(true) : navigate("/login"))}
+        onClick={()=>navigate("/Testimonials")}
       >
-        <div className="relative inline-block text-center group">
+        <GiveReviewButton/>
+        {/* <div className=" ">
+       
           <div className="relative text-black py-2 px-6 text-base sm:text-lg font-[Montserrat] after:absolute after:bottom-0 after:left-0 after:w-full after:h-1 after:bg-[#E6AE35] after:transition-transform after:duration-300 after:scale-x-100 group-hover:after:scale-x-0 whitespace-nowrap">
             Give Review
           </div>
           <div className="absolute inset-0 flex items-center justify-center bg-[#E6AE35] text-black py-2 px-6 text-base sm:text-lg font-[Montserrat] opacity-0 transition-opacity duration-1000 group-hover:opacity-100 whitespace-nowrap">
             Give Review
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   
@@ -172,10 +176,10 @@ const Testimonial = () => {
                     className="w-16 h-16 sm:w-32 sm:h-28 object-center rounded-lg mb-4 sm:mb-0"
                   />
                   <div className="flex flex-col text-left">
-                    <p className="text-base sm:text-lg text-gray-900 font-[Fira_Sans]">
+                    <p className="text-base sm:text-lg  text-gray-900 font-[Montserrat]">
                       {testimonial.name}
                     </p>
-                    <p className="text-sm text-gray-500 font-[Montserrat]">
+                    <p className="text-sm  text-gray-500 font-[Montserrat]">
                       {testimonial.profession}
                     </p>
                     <div className="flex space-x-1 mt-1">
@@ -192,7 +196,7 @@ const Testimonial = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-sm sm:text-base text-gray-600 mt-4 italic  text-center ">
+                <p className="text-sm sm:text-base text-gray-600 mt-4 italic  text-center font-[Montserrat] ">
                   {testimonial.feedback}
                 </p>
               </div>
@@ -215,7 +219,7 @@ const Testimonial = () => {
                     </span>
                   ))}
                 </div>
-                <p className="text-base sm:text-lg text-gray-900 font-[Fira_Sans]">
+                <p className="text-base sm:text-lg text-gray-900 font-[Montserrat]">
                   {testimonial.name}
                 </p>
                 <p className="text-sm  text-gray-500 font-[Montserrat]">

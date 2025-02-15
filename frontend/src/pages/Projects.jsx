@@ -81,13 +81,13 @@ filteredProducts = products.filter(product => {
            
             <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
                 <div className='flex flex-col justify-end gap-3 h-72 pb-8 pl-14 text-white'>
-                    <h1 className='text-4xl'>Projects</h1>
-                    <p className='text-xl '><span className='hover:cursor-pointer border-b-2' onClick={()=>navigate("/")}>Home</span> {`>`} <span>Projects</span></p>
+                    <h1 className='text-4xl fira-sans'>Projects</h1>
+                    <p className='text-xl font-[Montserrat]'><span className='hover:cursor-pointer border-b-2' onClick={()=>navigate("/")}>Home</span> {`>`} <span>Projects</span></p>
                 </div>
             </div>
 
 
-<h1 className="w-full font-bold mont text-3xl pl-14 mt-10 ">
+<h1 className="w-full font-[Montserrat] mont text-4xl pl-14 mt-10 ">
     Finding projects you may like 
 </h1>
             {/* Filters Section */}

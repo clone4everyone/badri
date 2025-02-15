@@ -8,44 +8,44 @@ const Service = () => {
   const services = [
     {
       title: "Discover Your Plot",
-      description: "Explore the perfect piece of land tailored to your needs with ease.",
+      description: "Find & Buy the Land available, houses for every budget",
       icon: home,
     },
     {
       title: "Make the Most of Your Land",
-      description: "Maximize your land's potential with strategic insights and tools.",
+      description: "Land Sales Solutions Maximize Your Value with Expert Assistance",
       icon: service2,
     },
     {
       title: "Crafting Your Vision",
-      description: "Turn your ideas into reality with expert guidance and support.",
+      description: "Construction Expertise consultancy Turning Blueprints into Reality",
       icon: working,
     },
   ];
 
   return (
-<section className="py-8 px-5 md:px-[65px]">
-  <div className="max-w-6xl  px-4 sm:px-6 lg:px-8 z-50 bg-white">
-    <h2 className="text-3xl pl-3 sm:text-4xl font-bold text-start text-gray-800 mb-8">
+<section className="py-8 px-5 md:pl-[65px] ">
+  <div className="w-full  px-4 sm:px-6 lg:px-8 z-50 bg-white ">
+    <h2 className="text-3xl pl-3 sm:text-4xl font-bold fira-sans text-start text-gray-800 mb-8">
       Our Services
     </h2>
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-32">
+    <div className="grid grid-cols-1 w-full sm:grid-cols-2 lg:grid-cols-3 ">
       {services.map((service, index) => (
         <div
           key={index}
-          className="rounded-lg text-center hover:scale-105 p-4 transition-transform duration-300"
+          className="rounded-lg  text-center hover:scale-105 p-4 transition-transform duration-300 w-[100%]"
         >
-          <div className="relative w-full aspect-square mb-4">
+          <div className="relativew-full aspect-square mb-4">
             <img
               src={service.icon}
               alt={`${service.title} icon`}
-              className="object-cover w-full h-full rounded-md"
+              className="object-cover w-full h-full  rounded-md"
             />
           </div>
-          <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          <h3 className="text-xl font-semibold font-[Montserrat] text-gray-800 mb-2">
             {service.title}
           </h3>
-          <p className="text-sm text-gray-600">{service.description}</p>
+          <p className="text-sm text-gray-600 font-[Montserrat]">{service.description}</p>
         </div>
       ))}
     </div>

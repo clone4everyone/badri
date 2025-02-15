@@ -27,11 +27,11 @@ const HomePage = () => {
   return (
     <>
      <Navbar/>
-    <div className="bg-[#E9E9FB] ">
+    <div className="bg-[#E9E9FB] p-0 m-0 ">
       
       <BigImage/>
       <Overview/>
-      <section id="about">
+      <section id="about" className="!mb-0 !pb-0">
         <About/>
       </section>
       

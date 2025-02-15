@@ -127,7 +127,7 @@ const Register = () => {
         {/* Sign Up Card */}
         <div className="relative z-20 w-full max-w-lg bg-white bg-opacity-10 backdrop-blur-lg p-8 rounded-lg shadow-lg border border-gray-500 border-opacity-40">
           {/* Title */}
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-white mb-6">
+          <h2 className="text-2xl md:text-4xl fira-sans text-center text-white mb-6">
             Sign Up
           </h2>
 
@@ -142,7 +142,7 @@ const Register = () => {
             ].map((field, index) => (
               <div
                 key={field.name}
-                className={`transition-opacity duration-300 delay-${index * 100}`}
+                className={`font-[Montserrat] transition-opacity duration-300 delay-${index * 100}`}
               >
                 <label className="block text-gray-200 mb-2">{field.label}</label>
                 <input
