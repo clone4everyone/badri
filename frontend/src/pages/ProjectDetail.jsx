@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import Navbar from '../component/homepage/Navbar';
 import background from '../assets/project.jpeg';
 import {useLocation,useParams} from 'react-router-dom';
-import { FaMapMarkerAlt,FaMapMarked ,FaShareAlt} from 'react-icons/fa';
+import { FaMapMarkerAlt,FaMapMarked ,FaShareAlt, FaHome, FaArrowRight} from 'react-icons/fa';
 import { BiBed } from 'react-icons/bi';
 import { MdOutlineAttachMoney } from 'react-icons/md';
 import { FaPhoneAlt, FaEnvelope, FaUserCircle,FaHeart} from "react-icons/fa";
@@ -47,7 +47,10 @@ const ProjectDetail = () => {
       setProject(data.data.project);
       let photos = [...data.data.project.listingPhotoPaths]; 
       photos.push(data.data.project.thumbnail);
-      photos.push(data.data.project.floorImage);
+      if(data.data.project.floorImage.length!==0){
+        photos.push(data.data.project.floorImage);
+      }
+      
       console.log(photos)
       setListingPhot(photos);
      }
@@ -152,25 +155,107 @@ const ProjectDetail = () => {
         alt={project.title}
         className="w-full h-60 md:h-80 inset-0 object-center rounded-lg shadow-md"
       /> */}
-      <div className="mt-4">
-        <h3 className="text-xl md:text-4xl fira-sans mb-3">
-          {project.title}
+      <div className="mt-4  text-start ">
+        <h3 className="  mb-3 flex gap-2 text-2xl font-semibold items-center ">
+          <FaHome/>{project.title}
         </h3>
-        <p className="text-gray-600 mb-2 flex items-center text-sm md:text-base font-[Montserrat]">
-          <BiBed className="mr-2 text-blue-500" /> {project.bhk}
+        <p className=" flex gap-2 items-center mt-2  font-thin ">
+          <FaMapMarkerAlt className="text-xl" />  <a
+  href={project.locationLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-black flex gap-1"
+>
+ Location : <p className="underline hover:underline">{project.locationTitle}</p>
+</a>
         </p>
-        <p className="text-green-600 font-bold flex items-center text-sm md:text-base font-[Montserrat]">
-        <p className='mr-2'>₹</p> {project.price}
-        </p>
-        <p className="text-gray-500 flex items-center mt-2 text-sm md:text-base font-[Montserrat]">
-          <FaMapMarkerAlt className="mr-2 text-red-500" /> {project.location}
-        </p>
-        <p className="text-gray-500 mt-2 flex gap-2 items-center text-sm md:text-base font-[Montserrat]">
-          <FaMapMarked />
+        {/* <p className=" flex gap-2 items-center mt-2  font-thin ">
+          <FaMapMarkerAlt className="text-xl" />   {project.location.includes("http") ? (
+    <a
+      href={project.location}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-blue-500 hover:underline"
+    >
+      {
+       project.location.length >50 ?  `${project.location.substring(0,51)}...`:project.location
+      }
+      
+    </a>
+  ) : (
+    <a
+      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(project.location)}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-blue-500 hover:underline"
+    >
+      {project.location}
+    </a>
+  )}
+        </p> */}
+        <p className='mt-2 flex gap-2 items-center font-thin'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" className="mt-2 relative -left-[1px]">
+<g id="gis:location-man" clip-path="url(#clip0_2521_12329)">
+<path id="Vector" d="M12.45 5.89795C10.4915 5.8982 8.55103 6.73995 8.75503 8.42195L9.25503 12.0779C9.34278 12.7212 9.77753 13.7499 10.4268 13.7499H10.473L11.0048 19.8827C11.0278 20.1587 11.2278 20.3827 11.5048 20.3827H13.5048C13.7818 20.3827 13.9818 20.1587 14.0048 19.8827L14.5365 13.7499H14.583C15.2323 13.7499 15.6668 12.7212 15.7548 12.0782L16.2548 8.4217C16.3858 6.73845 14.4088 5.89745 12.45 5.89795Z" fill="black"/>
+<path id="Vector_2" d="M12.5061 12.7271L12.4941 12.7586C12.4981 12.7491 12.5009 12.7393 12.5049 12.7298L12.5061 12.7271Z" fill="black"/>
+<path id="Vector_3" d="M12.5 5.25C13.9497 5.25 15.125 4.07475 15.125 2.625C15.125 1.17525 13.9497 0 12.5 0C11.0503 0 9.875 1.17525 9.875 2.625C9.875 4.07475 11.0503 5.25 12.5 5.25Z" fill="black"/>
+<path id="Vector_4" d="M15.2305 17.2729C15.2093 17.5159 15.1867 17.7584 15.1655 18.0014C17.4035 18.3174 19.0625 19.0344 19.25 19.9214C19.5292 21.2404 15.2145 21.8339 12.435 21.8062C9.6555 21.7784 5.42025 21.2404 5.7905 19.9212C6.0335 19.0554 7.6685 18.3527 9.848 18.0254C9.82625 17.7817 9.8015 17.5379 9.7805 17.2944C6.979 17.6034 4.645 18.3642 3.7125 19.3559H0.55725L0 20.5117H3.2915C3.54725 21.8717 6.39825 23.0457 10.475 23.3422L10.3355 24.9999H14.3705L14.33 23.3424C18.4275 23.0457 21.3592 21.8717 21.7085 20.5117H25L24.5225 19.3559H21.3673C20.4815 18.3392 18.1052 17.5659 15.2305 17.2729Z" fill="black"/>
+</g>
+<defs>
+<clipPath id="clip0_2521_12329">
+<rect width="25" height="25" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+Starting Plot: {'  '}
+{
+  project.plot
+}</p>
+          {
+//       project.unit === "sqft" && <p className='mt-2 flex gap-2 items-center font-thin'>
+//         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" className="mt-2 relative -left-[1px]">
+// <g id="gis:location-man" clip-path="url(#clip0_2521_12329)">
+// <path id="Vector" d="M12.45 5.89795C10.4915 5.8982 8.55103 6.73995 8.75503 8.42195L9.25503 12.0779C9.34278 12.7212 9.77753 13.7499 10.4268 13.7499H10.473L11.0048 19.8827C11.0278 20.1587 11.2278 20.3827 11.5048 20.3827H13.5048C13.7818 20.3827 13.9818 20.1587 14.0048 19.8827L14.5365 13.7499H14.583C15.2323 13.7499 15.6668 12.7212 15.7548 12.0782L16.2548 8.4217C16.3858 6.73845 14.4088 5.89745 12.45 5.89795Z" fill="black"/>
+// <path id="Vector_2" d="M12.5061 12.7271L12.4941 12.7586C12.4981 12.7491 12.5009 12.7393 12.5049 12.7298L12.5061 12.7271Z" fill="black"/>
+// <path id="Vector_3" d="M12.5 5.25C13.9497 5.25 15.125 4.07475 15.125 2.625C15.125 1.17525 13.9497 0 12.5 0C11.0503 0 9.875 1.17525 9.875 2.625C9.875 4.07475 11.0503 5.25 12.5 5.25Z" fill="black"/>
+// <path id="Vector_4" d="M15.2305 17.2729C15.2093 17.5159 15.1867 17.7584 15.1655 18.0014C17.4035 18.3174 19.0625 19.0344 19.25 19.9214C19.5292 21.2404 15.2145 21.8339 12.435 21.8062C9.6555 21.7784 5.42025 21.2404 5.7905 19.9212C6.0335 19.0554 7.6685 18.3527 9.848 18.0254C9.82625 17.7817 9.8015 17.5379 9.7805 17.2944C6.979 17.6034 4.645 18.3642 3.7125 19.3559H0.55725L0 20.5117H3.2915C3.54725 21.8717 6.39825 23.0457 10.475 23.3422L10.3355 24.9999H14.3705L14.33 23.3424C18.4275 23.0457 21.3592 21.8717 21.7085 20.5117H25L24.5225 19.3559H21.3673C20.4815 18.3392 18.1052 17.5659 15.2305 17.2729Z" fill="black"/>
+// </g>
+// <defs>
+// <clipPath id="clip0_2521_12329">
+// <rect width="25" height="25" fill="white"/>
+// </clipPath>
+// </defs>
+// </svg>
+// {
+//   project.plot
+// }</p>
+          }
+        
+        <p className=" mt-2 flex gap-2 items-center font-thin  pl-[0.5px] ">
+          <FaMapMarked className='text-xl' />
+          Project Size :{'  '} 
           {project.unit === "sqft"
             ? `${project.sqft} Sq.ft (W: ${project.width}, L: ${project.length})`
-            : `${project.Acre} Acre`}
+            :project.unit === "Acre"? `${project.Acre} Acre`:`${project.Cents} Cents`
+          }
         </p>
+        {
+          project.category === "house" && <p className="mt-2 mb-2 flex gap-2 items-center font-thin relative -left-[0.9px]">
+          <BiBed className="text-2xl " /> {project.bhk} BHK
+        </p>
+        }
+        
+        <p className="  flex gap-3 items-center pl-1">
+        <p className='text-2xl '>₹</p> {Number(project.price).toLocaleString()}
+        </p>
+        
+        <button className='mont mt-5 border-2 flex items-center rounded-md border-blue-500 px-5 py-3 font-semibold text-blue-600 '  onClick={() => {
+    const gallerySection = document.getElementById('gallery');
+    gallerySection.scrollIntoView({ behavior: 'smooth' });
+  }}
+>
+          View Site Gallery <FaArrowRight className='ml-3'/>
+        </button>
         <div className="max-w-[90%] mt-4">
           <h4 className="text-gray-800 font-medium mb-2">Description</h4>
           <p className="text-gray-700 text-sm md:text-base font-[Montserrat]">
@@ -179,20 +264,24 @@ const ProjectDetail = () => {
         </div>
         <button
           onClick={() => openContact(!contact)}
-          className="bg-blue-500 text-white px-5 py-2 rounded-md mt-6 hover:bg-blue-600 transition-colors duration-200"
+          className="bg-[#2B2BD9] text-white px-5 py-2  mt-6 hover:bg-blue-600 transition-colors duration-200 w-[466px]"
         >
-          Inquiry to Buy Property
+          Enquiry to Buy Property
         </button>
       </div>
     </div>
 
     {/* Right Section */}
+    
     <div className="w-full md:w-[50%] flex justify-center items-top">
-    <img
+      {
+        project.floorImage.length !== 0 &&    <img
       src={project.floorImage}
       alt="Floor Plan"
       className="w-full max-h-[400px] object-contain rounded-lg"
     />
+      }
+ 
   </div>
   </div>
 </div>
@@ -207,20 +296,20 @@ const ProjectDetail = () => {
            
 {
   contact && (
-    <div className='w-full flex justify-center px-6 md:px-24 mb-5'>
-      <div className="w-full mx-auto ">
+    <div className='w-full flex justify-center px-16  mb-5 '>
+      <div className="w-full mx-auto bg-[#E9E9FB] border-2 border-gray-400">
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-2 bg-indigo-100 border-b">
+        <div className="flex items-center justify-between px-4 py-2   border-b-2 border-gray-400">
           <div className="flex items-center space-x-2">
-            <FaUserCircle className="text-indigo-500" />
-            <span className="font-medium text-indigo-700 text-lg md:text-4xl font-[finaSans]">Contact</span>
+            <FaUserCircle className=" text-lg md:text-2xl" />
+            <span className="font-medium  text-lg md:text-2xl font-[finaSans]">Contact</span>
           </div>
         </div>
 
         {/* Content */}
-        <div className="flex items-center px-4 py-6 space-x-4 flex-wrap">
+        <div className="flex items-center px-14 py-14 space-x-4 flex-wrap ">
           {/* Image Placeholder */}
-          <div className="w-16 h-16 bg-gray-300 rounded-md mb-4 md:mb-0 overflow-hidden" style={{url:`${founder}`}} >
+          <div className="w-24 h-24 bg-gray-300  mb-4 md:mb-0 overflow-hidden" style={{url:`${founder}`}} >
             <img src={founder} className='h-full'/>
 </div>
           {/* Text Details */}
@@ -232,17 +321,19 @@ const ProjectDetail = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="flex gap-4 md:gap-7 flex-wrap justify-between">
-            <div className="flex items-center space-x-1">
-              <FaPhoneAlt className="text-gray-600" />
-              <span className="text-gray-900 font-medium text-sm md:text-base font-[Montserrat]">
-                <strong>Phone Number:</strong> +91 999 666 1234
+          <div className="flex gap-4 md:gap-20 flex-wrap justify-between">
+            <div className="flex-col items-center space-x-1">
+            <strong className='text-[#2B2BD9]'>Phone Number:</strong>
+              
+              <span className="text-gray-900 flex items-center gap-2 font-medium text-sm md:text-base font-[Montserrat]">
+              <FaPhoneAlt className="text-gray-600" /> +91 999 666 1234
               </span>
             </div>
-            <div className="flex items-center space-x-1">
-              <FaEnvelope className="text-gray-600" />
-              <span className="text-gray-900 font-medium text-sm md:text-base font-[Montserrat]">
-                <strong>Email:</strong> badrirocks@gmail.com
+            <div className="flex-col items-center space-x-1">
+            <strong className='text-[#2B2BD9]'>Email:</strong>
+             
+              <span className="text-gray-900 font-medium flex items-center gap-2 text-sm md:text-base font-[Montserrat]">
+              <FaEnvelope className="text-gray-600" /> badrirocks@gmail.com
               </span>
             </div>
           </div>
@@ -275,7 +366,7 @@ const ProjectDetail = () => {
 
       {/* Main Image Slider */}
       {
-        project && <div>
+        project && <div id='gallery'>
           <div className="w-full flex justify-center">
   <div className="relative w-[60%] overflow-visible">
     <img

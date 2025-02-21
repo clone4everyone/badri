@@ -88,10 +88,10 @@ const Testimonial = () => {
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10">
       <div className="text-left mb-6 sm:mb-0">
         <h2 className="text-2xl sm:text-4xl lg:text-4xl text-gray-900 fira-sans leading-snug">
-          What Our Clients Say
+        Testimonials
         </h2>
         <p className="text-base sm:text-lg text-gray-600 font-[Montserrat] mt-2 ">
-          See the feedback from our amazing clients
+        This is What Our Clients Say about us
         </p>
       </div>
        
@@ -154,7 +154,7 @@ const Testimonial = () => {
     </button>
   
     {/* Testimonial Cards */}
-    <div className="flex flex-col sm:flex-row justify-center items-center gap-6 overflow-hidden">
+    <div className="flex flex-col sm:flex-row justify-center items-center gap-9 overflow-hidden">
       {getVisibleTestimonials().map((testimonial, index) => {
         const isCenterCard = index === 1;
   
@@ -163,17 +163,17 @@ const Testimonial = () => {
             key={testimonial.id}
             className={`transition-all duration-500 transform bg-white p-6   ${
               isCenterCard
-                ? "scale-105 shadow-xl z-10 w-11/12 sm:w-4/5 lg:w-3/5 rounded-lg"
-                : "scale-90 opacity-75 flex flex-col items-center w-full sm:w-2/5 lg:w-1/3"
+                ? "scale-105 shadow-xl z-10 w-11/12 sm:w-4/5 lg:max-w-[36%]  rounded-lg "
+                : "scale-90 opacity-75 flex flex-col items-center w-full sm:w-2/5 lg:w-1/4"
             }`}
           >
             {isCenterCard ? (
-              <div className="flex rounded-lg flex-col items-center justify-center">
-                <div className="flex flex-col sm:flex-row items-center sm:space-x-4">
+              <div className="flex rounded-lg flex-col  justify-center">
+                <div className="flex flex-col sm:flex-row s sm:space-x-4">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
-                    className="w-16 h-16 sm:w-32 sm:h-28 object-center rounded-lg mb-4 sm:mb-0"
+                    className="w-16 h-16 sm:w-32 sm:h-28 object-center  mb-4 sm:mb-0"
                   />
                   <div className="flex flex-col text-left">
                     <p className="text-base sm:text-lg  text-gray-900 font-[Montserrat]">
@@ -205,7 +205,7 @@ const Testimonial = () => {
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-20 h-16 sm:w-32 sm:h-28  object-center mb-4 "
+                  className="w-20 h-16 sm:w-48 sm:h-48  object-center mb-4 "
                 />
                 <div className="flex space-x-1 mb-3">
                   {[...Array(testimonial.rating)].map((_, i) => (

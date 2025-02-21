@@ -1,9 +1,10 @@
 import React from 'react';
 import big from "../../assets/big.png"
+import { FaArrowRight } from 'react-icons/fa';
 const BigImage = () => {
   return (
     <>
-  <div className="relative w-full h-[65vh] md:h-[75vh]">
+  <div className="relative w-full h-[65vh] md:h-[75vh] ">
   {/* Background Image */}
   <div
     className="w-full h-full bg-cover bg-center relative"
@@ -25,13 +26,13 @@ const BigImage = () => {
       <div className="flex flex-wrap gap-4">
         <a
           href="#service"
-          className="px-4 py-2 bg-[#2b2bd9] hover:bg-blue-700 text-white text-sm md:text-base font-semibold rounded-sm transition duration-300 font-[Montserrat]"
+          className="px-4 py-2 bg-[#2b2bd9] hover:bg-blue-700 text-white text-sm md:text-base font-semibold rounded-sm transition duration-300 fira-sans flex gap-3 items-center"
         >
-          Our Services
+          Our Services <FaArrowRight/>
         </a>
         <a
           href="#contact"
-          className="px-4 py-2 bg-white border-2 border-[#2b2bd9] text-[#2b2bd9] text-sm md:text-base font-semibold rounded-sm transition duration-300 font-[Montserrat]"
+          className="px-4 py-2 bg-white border-2 border-[#2b2bd9] text-[#2b2bd9] text-sm md:text-base font-semibold rounded-sm transition duration-300 fira-sans"
         >
           Contact Us
         </a>

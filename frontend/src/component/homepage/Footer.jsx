@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin,FaYoutube } from 'react-icons/fa'
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin,FaYoutube, FaWhatsapp } from 'react-icons/fa'
 import Login from '../../pages/Login';
 import Logo from '../Logo';
 import { Link } from 'react-router-dom';
@@ -22,23 +22,26 @@ const Footer = () => {
 <footer className="bg-[#EEEEFC] text-black pt-6 pl-10 md:px-28 px-0 pb-6">
   <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 md:px-6">
     {/* Logo & Social Media */}
-    <div>
-      <h1 className="text-lg font-semibold mb-3 font-[Montserrat]"> 
+    <div className=''>
+      <h1 className="text-lg font-semibold mb-3 font-[Montserrat] "> 
         <Logo />
       </h1>
-      <div className="flex space-x-3">
+      <h1 className='text-2xl fira-sans pl-3'>Get Social</h1>
+      <div className="flex space-x-3 text-blue-500 pl-3 mt-1">
         <a href="https://www.facebook.com/profile.php?id=61553482691210" className="text-black hover:text-blue-500">
-          <FaFacebook size={20} />
+          <FaFacebook size={20} className='text-blue-600 hover:text-blue-700' />
         </a>
-       
-        <a href="https://www.instagram.com/sri_sai_ram_realestate/" className="text-black hover:text-pink-500">
-          <FaInstagram size={20} />
+        <a href={`https://wa.me/9962999658`} className="text-black hover:text-blue-500">
+          <FaWhatsapp size={20} className='text-blue-600 hover:text-green-500' />
+        </a>
+        <a href="https://www.instagram.com/sri_sai_ram_realestate/" className="text-black ">
+          <FaInstagram size={20} className='text-blue-600 hover:text-pink-500' />
         </a>
         <a href="https://www.linkedin.com/company/srisairam/?originalSubdomain=in" className="text-black hover:text-blue-700">
-          <FaLinkedin size={20} />
+          <FaLinkedin size={20} className='text-blue-600 hover:text-blue-700' />
         </a>
-        <a href="https://www.youtube.com/@SRISAIRAM_REALESTATE" className="text-black hover:text-red-700">
-          <FaYoutube size={20} />
+        <a href="https://www.youtube.com/@SRISAIRAM_REALESTATE" className="text-black ">
+          <FaYoutube size={20} className='text-blue-600 hover:text-red-700' />
         </a>
       </div>
     </div>

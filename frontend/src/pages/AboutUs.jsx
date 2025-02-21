@@ -7,7 +7,7 @@ import cloud from '../assets/cloud.png'
 import ProjectSlider from '../component/slider/ProjectSlider';
 import build from "../assets/build.jpeg";
 import comitment from "../assets/comitment.jpg"
-import vision from "../assets/vision.jpeg"
+import vision from "../assets/vision.png"
 import Why from '../component/Why';
 import Footer from '../component/homepage/Footer';
 import { useNavigate } from 'react-router-dom';
@@ -125,11 +125,10 @@ zero();
         </div>
       </div>
     </div>
-    <img
-      src={estate}
-      alt="Estate Image"
-      className="w-full md:w-1/3 h-auto rounded-lg object-cover shadow-md"
-    />
+    <div className="relative w-[680px] h-[560px]"> <div className="relative h-[561px] -top-px"> <img className="absolute w-[576px] h-[435px] top-[126px] left-0 object-cover" alt="Rectangle" src={estate} /><div className="absolute top-7 left-48 font-bold text-[150px] tracking-[6.00px] leading-[200px] whitespace-nowrap z-20 text-gray-800  [font-family:'Fira_Sans-Bold',Helvetica] drop-shadow-[0_0_10px_rgba(240,240,240,0.9)] ">
+  1980
+</div>
+ </div> </div>
   </div>
 </div>
 
@@ -171,10 +170,10 @@ zero();
   {/* Right Section: Content */}
   <div className="w-full md:w-1/2 flex items-center justify-center bg-[#E9E9FB]">
     <div className="text-center px-4 sm:px-6 py-6 sm:py-8 md:px-12 md:py-12">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl text-gray-800 mb-4 sm:mb-6 fira-sans">
+      <h2 className="text-2xl text-start sm:text-3xl md:text-4xl text-gray-800 mb-4 sm:mb-6 fira-sans">
         Our Commitment
       </h2>
-      <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed font-[Montserrat]">
+      <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed font-[Montserrat] text-start">
         At Sri Sai Ram Real Estate, our commitment to excellence remains unwavering. 
         We are driven by a passion for quality, a dedication to customer satisfaction, 
         and a profound understanding of the real estate market. Our team of experienced 
@@ -186,14 +185,14 @@ zero();
 </div>
 
 <div
-  className="w-full bg-cover    flex items-center justify-center h-[90vh]"
+  className="w-full bg-cover bg-center    flex items-center justify-center h-[90vh]"
   style={{ backgroundImage: `url(${vision})` }}
 >
   <div className="text-center w-full text-black px-4 sm:px-6 h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] rounded-lg flex flex-col justify-center">
     <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-3 sm:mb-4 md:mb-6 text-shadow fira-sans">
       Our Vision
     </h1>
-    <p className=" sm:text-sm md:text-base lg:text-lg xl:text-xl px-3 sm:px-10 md:px-20 lg:px-32 xl:px-48 font-[Montserrat] mt-2 sm:mt-3 ">
+    <p className=" sm:text-sm md:text-base lg:text-lg xl:text-xl px-3 sm:px-10 md:px-20 lg:px-32 xl:px-48 font-[Montserrat] mt-2 sm:mt-3 font-semibold">
       Our vision is to be the premier destination for all your real estate needs. 
       Whether you're looking for the perfect plot of land or the keys to your dream home, 
       we are here to make your aspirations come true.

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { FaUser, FaSearch, FaBars } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link,useNavigate } from 'react-router-dom'
@@ -7,7 +7,25 @@ import Wishlist from '../models/Wishlist';
 import Setting from '../models/Setting';
 import Logo from '../Logo';
 import { setLogOut } from "../../redux/UserSlice";
+
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const navigate=useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.user);
@@ -44,7 +62,11 @@ const logout=()=>{
 }
   return (
  
-    <div className="flex justify-between items-center p-4 border bg-white relative z-30 md:pl-20">
+    <div className={`flex justify-between items-center p-4  z-50 md:pl-20 sticky top-0 transition-all duration-300 ${
+      isScrolled
+        ? "bg-white/30 backdrop-blur-3xl shadow-md" // Glass effect on scroll
+        : "bg-white"
+    }`}>
     {/* Left Section */}
     <div className="flex items-center space-x-4">
       {model && <Search setModel={setModel} />}
@@ -57,7 +79,7 @@ const logout=()=>{
     </div>
 
  <div className='gap-10 flex items-center'>
-   <div className="hidden md:flex items-center space-x-6 font-[Montserrat] font-semibold">
+   <div className="hidden md:flex items-center space-x-6 inter">
       <Link className="hover:cursor-pointer hover:border-b-2" to="/">Home</Link>
       <Link to="/about" className="hover:cursor-pointer hover:border-b-2">About Us</Link>
       <Link to="/service" className="hover:cursor-pointer hover:border-b-2">Services</Link>

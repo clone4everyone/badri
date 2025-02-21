@@ -14,6 +14,7 @@ import Enterance from './component/Enterance';
 import Service from './pages/Service';
 import Testimonial from './pages/Testimonial';
 import NotFound from './pages/NotFound';
+import WhatsAppButton from './component/button/WhatsAppButton';
 
 function App() {
   return (
@@ -50,6 +51,7 @@ const LoadingRoutes = () => {
    
     
       {!showEnterance && (
+        <>
         <Routes>
           <Route path="/auth/email-sent" element={<EmailSentPage />} />
           <Route path="/auth/forgot-password" element={<ForgotPassword />} />
@@ -64,6 +66,11 @@ const LoadingRoutes = () => {
           <Route path='/Testimonials' element={<Testimonial />} />
           <Route path="*" element={<NotFound/>}/>
         </Routes>
+        <WhatsAppButton />
+        </>
+
+        
+
       )}
     </>
   );

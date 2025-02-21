@@ -113,17 +113,19 @@ const ContactUs = () => {
 
   {/* Right Section (Map) */}
   <div className="lg:w-1/2 w-full p-4">
-    <iframe
-      className="w-full h-[300px] md:h-[350px] lg:h-[400px] rounded-xl border border-gray-300 shadow-lg"
-      src="https://www.google.com/maps?q=Ramapuram+Putlur+Road,+Shree+Ram+Nagar,+Kakkalur+Industrial+Estate,+Thiruvallur,+Tamil+Nadu,+India&output=embed"
-      loading="lazy"
-    ></iframe>
+  <iframe
+  className="w-full h-[300px] md:h-[350px] lg:h-[400px] rounded-xl border border-gray-300"
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.9959191325584!2d79.928086!3d13.131763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDA3JzU0LjQiTiA3OcKwNTUnNDEuMSJF!5e0!3m2!1sen!2sin!4v1679054635833!5m2!1sen!2sin"
+  loading="lazy"
+  allowFullScreen
+></iframe>
+
   </div>
 
   {/* Sidebar */}
   {isSidebarOpen && (
     <div
-      className="absolute top-0 left-0 !pl-7   md:pl-0 h-full w-full lg:w-1/2 bg-white shadow-lg p-5 z-10"
+      className="absolute top-0 left-0 !pl-7 border   md:!pl-28 h-full w-full lg:w-1/2 bg-white shadow-lg p-5 z-10"
       style={{
         transform: isSidebarOpen ? "translateX(0)" : "translateX(-100%)",
         transition: "transform 1s ease-in-out",

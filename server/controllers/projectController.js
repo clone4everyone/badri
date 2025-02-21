@@ -7,7 +7,7 @@ const create=async(req,res)=> {
       const { formFields, listingPhotos,thumbnail,floorImage } = req.body;
       
       const year = new Date().getFullYear();
-      console.log("Received form fields:", formFields);
+      // console.log("Received form fields:", formFields);
     //   console.log("Received listing photos:", listingPhotos);
   
       // Validate if listingPhotos were received
@@ -15,27 +15,42 @@ const create=async(req,res)=> {
         console.log("No photos uploaded");
         return res.status(400).send("No photos uploaded.");
       }
-  
+  console.log("photos")
       // Upload each photo to Cloudinary
-      const uploadPromises = listingPhotos.map(async (photo) => {
+     
+const uploadPromises = listingPhotos.map(async (photo) => {
         return cloudinary.uploader.upload(photo, {
           folder: "avatars",
           width: 150,
           crop: "scale",
         });
       });
+     
+      
+      console.log("picture")
        const picture=await cloudinary.uploader.upload(thumbnail,{
          folder:"avatars",
          width:150,
          crop:"scale"
        });
-
-       const floor=await cloudinary.uploader.upload(floorImage,{
+       let floor="";
+       console.log(floor);
+if(floorImage!==null){
+  try{
+floor=await cloudinary.uploader.upload(floorImage,{
         folder:"avatars",
         width:150,
         crop:"scale"
       });
-      const uploadedPhotoUrls = await Promise.all(uploadPromises);
+  }catch(err){
+    console.log(err.message)
+  }
+
+}
+     
+        const uploadedPhotoUrls = await Promise.all(uploadPromises);
+      
+      
        console.log("reached here")
       // Create a new listing with uploaded photo URLs
       const newListing = new Listing({
@@ -43,7 +58,7 @@ const create=async(req,res)=> {
         listingPhotoPaths: uploadedPhotoUrls.map((result) => result.url),
         year,
         thumbnail:picture.url,
-        floorImage:floor.url
+        floorImage:floor===""?"":floor.url
       });
   
       // Save the listing to the database
@@ -58,7 +73,7 @@ const create=async(req,res)=> {
 
   const allProjects= async (req, res) => {
     try {
-      const courses = await Listing.find({});
+      const courses = await Listing.find({live:true});
   
       if (!courses || courses.length == 0) {
         return res.json({ status: false, message: "No Courses Found" });
@@ -70,7 +85,19 @@ const create=async(req,res)=> {
     }
   }
 
-
+  const adminAllProjects= async (req, res) => {
+    try {
+      const courses = await Listing.find({});
+  
+      if (!courses || courses.length == 0) {
+        return res.json({ status: false, message: "No Courses Found" });
+      }
+      return res.status(200).json({ courses });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({ message: error.message });
+    }
+  }
   const update = async (req, res) => {
     try {
       const { formFields, listingPhotos, thumbnail,_id,status,floorImage, } = req.body;
@@ -113,9 +140,9 @@ const create=async(req,res)=> {
         });
         thumbnailUrl = uploadedThumbnail.url;
       }
-     let floorThumbnail;
-
-     if (isCloudinaryUrl(floorImage)) {
+      let floorThumbnail="";
+      if(floorImage!==null){
+         if (isCloudinaryUrl(floorImage)) {
       floorThumbnail = floorImage; // Use the existing URL if already a Cloudinary URL
     } else {
       const uploadedThumbnail = await cloudinary.uploader.upload(floorImage, {
@@ -125,6 +152,10 @@ const create=async(req,res)=> {
       });
       floorThumbnail = uploadedThumbnail.url;
     }
+      }
+     
+
+    
       const uploadedPhotoUrls = await Promise.all(uploadPromises);
   
       // Update the listing with uploaded or existing photo URLs
@@ -239,4 +270,4 @@ const getShowcase=async(req,res)=>{
     console.log(err.message)
   }
 }
-  module.exports={create,allProjects,update,deleteProject,incrementProjectView,getProject,showcase,getShowcase}
+  module.exports={create,allProjects,update,deleteProject,incrementProjectView,getProject,showcase,getShowcase,adminAllProjects}

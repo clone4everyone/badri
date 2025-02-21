@@ -82,7 +82,7 @@ const handleWishlistToggle = async () => {
           <FaHome /> {product.title}
         </h2>
         <p className="flex items-center gap-2 font-[Montserrat]">
-          <FaMapMarkerAlt /> {product.location}
+          <FaMapMarkerAlt /> {product.locationTitle}
         </p>
         <p className="flex items-center gap-2 font-[Montserrat]">
           <FaMap /> {product.unit === "sqft"
@@ -90,10 +90,14 @@ const handleWishlistToggle = async () => {
             : `${product.Acre} Acre`}
         </p>
         <p className="flex items-center gap-2 font-[Montserrat]">
-          <BiBed className="font-semibold" /> {product.bhk}BHK{product.balcony? '- Balcony':null}{product.terrace? '- Terrace':null}
+          <BiBed className="font-semibold" /> 
+          {
+            product.category==="house" && `${product.bhk}BHK${product.balcony? '- Balcony':null}${product.terrace? '- Terrace':''}`
+          }
+          
         </p>
         <p className="font-[Montserrat]">₹ {Number(product.price).toLocaleString()}</p>
-        <p className="font-[Montserrat]">{product.description}</p>
+        <p className="font-[Montserrat]">{product.description.length >142 ?`${product.description.substring(0,143)}...`:product.description }</p>
         <p className={`text-sm font-semibold font-[Montserrat] ${product.status === 'sold-out' ? 'text-red-500' : 'text-green-500'}`}>
           {product.status === 'sold-out' ? 'Sold Out' : 'Available'}
         </p>

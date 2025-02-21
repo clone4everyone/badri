@@ -80,7 +80,7 @@ const teamMembers = [
                     </div>
 
 <section className="py-8 px-5 md:px-[65px] flex items-center justify-center">
-  <div className="max-w-6xl  px-4 sm:px-6 lg:px-8 z-50 bg-white">
+  <div className="max-w-6xl  px-4 sm:px-6 lg:px-8  bg-white">
     <h2 className="text-3xl pl-3 sm:text-4xl fira-sans font-bold text-start text-gray-800 mb-2">
       Our Services
     </h2>
@@ -109,7 +109,7 @@ const teamMembers = [
   </div>
 </section>
 
-        <div className="max-w-5xl mx-auto py-10">
+        {/* <div className="max-w-5xl mx-auto py-10">
         <h2 className="text-4xl font-bold mb-6 fira-sans">Our Team</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-[Montserrat]">
           {teamMembers.map((member, index) => (
@@ -125,7 +125,7 @@ const teamMembers = [
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
       <Footer/>
         </>
       

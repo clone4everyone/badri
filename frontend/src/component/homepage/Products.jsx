@@ -169,16 +169,16 @@ const Products = () => {
               {product.description.substring(0, 70)}...
             </p>
             <p className="flex items-center font-bold mb-2 text-sm">
-              <MdOutlineAttachMoney className="mr-2 text-green-400" />{" "}
-              {product.price}
+              <p className="mr-2 text-green-400" >₹</p>{" "}
+              {Number(product.price).toLocaleString()}
             </p>
             <p className="flex items-center text-sm">
               <FaMapMarkerAlt className=" text-red-400" />{" "}
-              {product.location.substring(0, 10)}...
+              {product.locationTitle.substring(0, 10)}...
             </p>
-            <p className="mt-2 text-sm">Area: {product.unit === "sqft"
+            <p className="mt-2 text-sm">Total Area: {product.unit === "sqft"
             ? `${product.sqft} Sq.ft (W: ${product.width}, L: ${product.length})`
-            : `${product.Acre} Acre`}</p>
+            :product.unit === "Acre"? `${product.Acre} Acre`:`${product.Cents} Cents`}</p>
           </div>
         </div>
       </SwiperSlide>

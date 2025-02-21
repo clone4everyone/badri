@@ -23,13 +23,17 @@ const listingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    location: {
+    locationTitle: {
+        type: String,
+        required: true
+    },
+    locationLink: {
         type: String,
         required: true
     },
     unit: {
         type: String,
-        enum: ["sqft", "Acre"], // Specify allowed units
+        enum: ["sqft", "Acre", "Cents"], // Specify allowed units
         required: true,
       },
       sqft: {
@@ -68,8 +72,32 @@ const listingSchema = new mongoose.Schema({
         
     },
     floorImage:{
+        type:String,
+        default:''
+    },
+    category:{
         type:String
-    }
+    },
+    Cents:{
+        type:Number,
+    },
+landType:{
+    type:String,
+    default:'dry'
+},
+plot:{
+    type:Number,
+    default:1
+},
+approved:{
+    type:String,
+    defualt:'notapproved'
+},
+live:{
+    type:Boolean,
+    default:false
+}
+
 });
 
 const Listing = mongoose.model('Listing', listingSchema);

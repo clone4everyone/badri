@@ -154,12 +154,12 @@ const Search = ({ setModel }) => {
                   <strong>BHK:</strong> {item.bhk}BHK{item.balcony? '- Balcony':null}{item.terrace? '- Terrace':null}
                 </p>
                 <p className='font-[Montserrat]'>
-                  <strong>Location:</strong> {item.location}
+                  <strong>Location:</strong> {item.locationTitle}
                 </p>
                 <p className='font-[Montserrat]'>
                   <strong>Area:</strong> {item.unit === "sqft"
             ? `${item.sqft} Sq.ft (W: ${item.width}, L: ${item.length})`
-            : `${item.Acre} Acre`}
+            : item.unit === "Acre"?`${item.Acre} Acre`:`${item.Cents} Cents`}
                 </p>
                 <p className='font-[Montserrat]'>
                 <strong>Price:</strong> ₹ {Number(item.price).toLocaleString()}

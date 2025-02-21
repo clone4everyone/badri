@@ -7,28 +7,28 @@ const Why = () => {
   const services = [
     {
       title: "Experience",
-      imageHeight: "h-80",
+      imageHeight: "h-96",
       description:
         "Our vision is to be the premier destination for all your real estate needs. Whether you're looking for the perfect plot of land or the keys to your dream home, we are here to make your aspirations come true.",
         image:s1
     },
     {
       title: "Quality",
-      imageHeight: "h-40",
+      imageHeight: "h-56",
       description:
         "Our commitment to quality is evident in every property we offer, from pristine land parcels to meticulously constructed homes.",
         image:s2
     },
     {
       title: "Trust",
-      imageHeight: "h-80",
+      imageHeight: "h-96",
       description:
         "We have earned the trust of countless clients, making us a name you can rely on in the world of real estate.",
         image:s3
     },
     {
       title: "Customer-Centric",
-      imageHeight: "h-40",
+      imageHeight: "h-56",
       description:
         "Your satisfaction is our priority. We work closely with you to understand your needs and provide tailored solutions.",
         image:s4
@@ -36,8 +36,8 @@ const Why = () => {
   ];
 
   return (
-    <div className="bg-[#FFF9EB] p-6 md:p-8">
-    <h2 className="text-2xl md:text-4xl  text-center mb-6 md:mb-8 fira-sans">
+    <div className="bg-[#FFF9EB] p-6 md:p-8 ">
+    <h2 className="text-2xl md:text-4xl mt-8 text-start mb-6 md:mb-8 fira-sans">
       Why Choose Shri Sai Ram Real Estate
     </h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">

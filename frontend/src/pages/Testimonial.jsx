@@ -144,7 +144,7 @@ try{
         <h2 className="text-3xl sm:text-4xl font-bold tracking-wide">
           What People Think About
         </h2>
-        <p className="text-2xl sm:text-4xl font-bold [-webkit-text-stroke:1px_transparent] bg-[linear-gradient(180deg,rgb(0,0,0)_0%,rgb(102,102,102)_51.5%,rgb(0,0,0)_73.5%,rgb(102,102,102)_100%)] [-webkit-background-clip:text] [font-family:'Fira_Sans-Bold',Helvetica] mt-2 text-[#f5be86]  tracking-[3.36px] leading-[57.6px] whitespace-nowrap">
+        <p className="text-2xl sm:text-4xl font-bold [-webkit-text-stroke:1px_transparent] bg-[linear-gradient(180deg,rgb(0,0,0)_0%,rgb(102,102,102)_51.5%,rgb(0,0,0)_73.5%,rgb(102,102,102)_100%)] [-webkit-background-clip:text] [font-family:'Fira_Sans-Bold',Helvetica] mt-2 text-[#f5be86]  leading-[57.6px] whitespace-nowrap">
           SRI SAI REAL ESTATE & CONSTRUCTION
         </p>
       </div>
