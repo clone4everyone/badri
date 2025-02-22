@@ -264,7 +264,7 @@ Starting Plot: {'  '}
         </div>
         <button
           onClick={() => openContact(!contact)}
-          className="bg-[#2B2BD9] text-white px-5 py-2  mt-6 hover:bg-blue-600 transition-colors duration-200 w-[466px]"
+          className="bg-[#2B2BD9] text-white px-5 py-2  mt-6 hover:bg-blue-600 transition-colors duration-200 w-[240px] md:w-[466px]"
         >
           Enquiry to Buy Property
         </button>
@@ -296,44 +296,53 @@ Starting Plot: {'  '}
            
 {
   contact && (
-    <div className='w-full flex justify-center px-16  mb-5 '>
-      <div className="w-full mx-auto bg-[#E9E9FB] border-2 border-gray-400">
+      <div className="w-full flex justify-center px-4 md:px-8 lg:px-16 mb-5">
+      <div className="w-full max-w-5xl bg-[#E9E9FB] border-2 border-gray-400 rounded-lg shadow-md">
         {/* Header */}
-        <div className="flex items-center justify-between px-4 py-2   border-b-2 border-gray-400">
+        <div className="flex items-center justify-between px-6 py-4 border-b-2 border-gray-400">
           <div className="flex items-center space-x-2">
-            <FaUserCircle className=" text-lg md:text-2xl" />
-            <span className="font-medium  text-lg md:text-2xl font-[finaSans]">Contact</span>
+            <FaUserCircle className="text-xl md:text-3xl" />
+            <span className="font-semibold text-lg md:text-2xl font-[finaSans]">
+              Contact
+            </span>
           </div>
         </div>
 
         {/* Content */}
-        <div className="flex items-center px-14 py-14 space-x-4 flex-wrap ">
+        <div className="flex flex-col md:flex-row items-center px-6 md:px-12 py-8 gap-y-6 md:gap-x-12">
           {/* Image Placeholder */}
-          <div className="w-24 h-24 bg-gray-300  mb-4 md:mb-0 overflow-hidden" style={{url:`${founder}`}} >
-            <img src={founder} className='h-full'/>
-</div>
+          <div className="w-24 h-24 rounded-full bg-gray-300 overflow-hidden">
+            <img
+              src={founder}
+              alt="Founder"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
           {/* Text Details */}
-          <div className="flex-grow">
+          <div className="text-center md:text-left flex-1">
             <p className="text-lg md:text-xl font-semibold text-gray-800 font-[finaSans]">
-            K SURESH BABU
+              {name || "K SURESH BABU"}
             </p>
-            <p className="text-sm text-gray-600 font-[Montserrat]">Property Seller</p>
+            <p className="text-sm text-gray-600 font-[Montserrat]">
+              Property Seller
+            </p>
           </div>
 
           {/* Contact Info */}
-          <div className="flex gap-4 md:gap-20 flex-wrap justify-between">
-            <div className="flex-col items-center space-x-1">
-            <strong className='text-[#2B2BD9]'>Phone Number:</strong>
-              
+          <div className="flex flex-col md:flex-row gap-y-4 md:gap-x-12 w-full md:w-auto">
+            {/* Phone */}
+            <div className="flex flex-col items-center md:items-start">
+              <strong className="text-[#2B2BD9]">Phone Number:</strong>
               <span className="text-gray-900 flex items-center gap-2 font-medium text-sm md:text-base font-[Montserrat]">
-              <FaPhoneAlt className="text-gray-600" /> +91 999 666 1234
+                <FaPhoneAlt className="text-gray-600" /> { "+91 999 666 1234"}
               </span>
             </div>
-            <div className="flex-col items-center space-x-1">
-            <strong className='text-[#2B2BD9]'>Email:</strong>
-             
+            {/* Email */}
+            <div className="flex flex-col items-center md:items-start">
+              <strong className="text-[#2B2BD9]">Email:</strong>
               <span className="text-gray-900 font-medium flex items-center gap-2 text-sm md:text-base font-[Montserrat]">
-              <FaEnvelope className="text-gray-600" /> badrirocks@gmail.com
+                <FaEnvelope className="text-gray-600" /> { "badrirocks@gmail.com"}
               </span>
             </div>
           </div>

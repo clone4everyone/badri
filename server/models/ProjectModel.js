@@ -50,7 +50,7 @@ const listingSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['available', 'soldout'],
+        enum: ['available', 'sold-out'],
         default: 'available'
     },
     year: {

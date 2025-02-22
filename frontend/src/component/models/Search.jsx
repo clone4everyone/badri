@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import API from '../../utils/API';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Loading from '../Loading';
-
+import {ToggleSearch} from  "../../redux/Toggle";
 const Search = ({ setModel }) => {
   const user=useSelector((state)=>state.user.user);
   const [currentPage, setCurrentPage] = useState(1);
@@ -13,7 +13,7 @@ const Search = ({ setModel }) => {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate=useNavigate()
- 
+  const dispatch=useDispatch();
   const itemsPerPage = 10;
   const placeholders = ["Price", "BHK"];
   const [placeholderIndex, setPlaceholderIndex] = useState(0);
@@ -91,7 +91,7 @@ const Search = ({ setModel }) => {
       {/* Close Button */}
       <button
         className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
-        onClick={() => setModel(false)}
+        onClick={() => dispatch(ToggleSearch())}
         aria-label="Close Modal"
       >
         ✖

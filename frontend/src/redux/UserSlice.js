@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: null,
   currentCourse: null,
+  search:false
 };
 const UserSlice = createSlice({
   name: "cart",
@@ -22,10 +23,14 @@ const UserSlice = createSlice({
     },
     updateAvatar:(state,action)=>{
       state.user.avatar=action.payload.avatar
+    },
+    search:(state,action)=>{
+      console.log("here")
+      state.search=!state.search
     }
   },
 });
 
-export const { setLogin, setLogOut, updateName, updateAvatar } =
+export const { setLogin, setLogOut, updateName, updateAvatar,search } =
   UserSlice.actions;
 export default UserSlice.reducer;

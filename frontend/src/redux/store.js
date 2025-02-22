@@ -10,10 +10,12 @@ import { combineReducers } from "redux";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist"; // Added persistReducer and persistStore imports
 import UserSlice from "./UserSlice";
+import Toggle from "./Toggle";
 import { configureStore } from "@reduxjs/toolkit";
 
 const rootReducer = combineReducers({
     user: UserSlice,
+    toggle:Toggle
     // Add other slices here if needed
 });
 

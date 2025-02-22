@@ -2,13 +2,14 @@ import React, { useState,useEffect } from 'react';
 import { FaUser, FaSearch, FaBars } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link,useNavigate } from 'react-router-dom'
-import Search from '../models/Search';
+// import Search from '../models/Search';
 import Wishlist from '../models/Wishlist';
 import Setting from '../models/Setting';
 import Logo from '../Logo';
 import { setLogOut } from "../../redux/UserSlice";
-
-const Navbar = () => {
+import {ToggleSearch} from  "../../redux/Toggle";
+import toast from 'react-hot-toast';
+const Navbar = ({setModel}) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const Navbar = () => {
   const [search, setSearch] = useState("");
   const [searchVisible,setSearchVisible]=useState(false);
   const [setting,setSettingModel]=useState(false)
-  const [model,setModel]=useState(false);
+  // const [model,setModel]=useState(false);
   const [wishModel,setWishModel]=useState(false);
   const handleMouseEnter = () => {
     clearTimeout(timeoutId); // Clear any existing timeout
@@ -55,7 +56,13 @@ const handleSearch=(e)=>{
   if(search.length!==0) navigate(`/properties/search/${search}`);
   
 }
+const s=useSelector((state)=>state.toggle.search)
+const toogleModel=()=>{
+ console.log(s)
+    dispatch(ToggleSearch());
+   
 
+}
 const logout=()=>{
   dispatch(setLogOut())
                   navigate("/login")
@@ -69,7 +76,7 @@ const logout=()=>{
     }`}>
     {/* Left Section */}
     <div className="flex items-center space-x-4">
-      {model && <Search setModel={setModel} />}
+     
       {wishModel && <Wishlist setWishModel={setWishModel} />}
       {setting && <Setting setSettingModel={setSettingModel} />}
   
@@ -91,7 +98,7 @@ const logout=()=>{
     <div className="flex items-center space-x-4">
       {/* Search */}
       <div className="relative ">
-        <FaSearch className="cursor-pointer" onClick={() => setModel(true)} />
+        <FaSearch className="cursor-pointer" onClick={() => toogleModel()} />
         {searchVisible && (
           <form onSubmit={(e) => handleSearch(e)} className="absolute top-full right-0 w-80 bg-white shadow-lg rounded-lg p-2">
             <input

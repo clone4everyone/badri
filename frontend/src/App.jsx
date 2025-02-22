@@ -15,6 +15,8 @@ import Service from './pages/Service';
 import Testimonial from './pages/Testimonial';
 import NotFound from './pages/NotFound';
 import WhatsAppButton from './component/button/WhatsAppButton';
+import { useSelector } from 'react-redux';
+import Search from './component/models/Search';
 
 function App() {
   return (
@@ -27,7 +29,7 @@ function App() {
 
 const LoadingRoutes = () => {
   const [loading, setLoading] = useState(true);// To track route changes
-
+  const search=useSelector((state)=>state.toggle.search);
   // Handle page loading and first-time visit logic
   const [showEnterance, setShowEnterance] = useState(true);
 
@@ -48,7 +50,7 @@ const LoadingRoutes = () => {
     <>
    
       {showEnterance && <Enterance loading={loading}/>} {/* Show loading screen when loading */}
-   
+   {search && <Search/>}
     
       {!showEnterance && (
         <>

@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import  Navbar  from '../component/homepage/Navbar';
 import BigImage from '../component/homepage/BigImage';
 import Overview from '../component/homepage/Overview';
@@ -10,9 +10,9 @@ import Footer from '../component/homepage/Footer';
 import Testimonial from '../component/homepage/Testimonial';
 import toast from 'react-hot-toast';
 import { useLocation } from 'react-router-dom';
+import Search from '../component/models/Search';
 const HomePage = () => {
   const location = useLocation();
-
   useEffect(() => {
     if (location.hash) {
       const targetElement = document.querySelector(location.hash);
@@ -26,7 +26,8 @@ const HomePage = () => {
   }
   return (
     <>
-     <Navbar/>
+    <Navbar />
+  
     <div className="bg-[#E9E9FB] p-0 m-0 ">
       
       <BigImage/>
