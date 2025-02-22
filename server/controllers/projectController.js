@@ -100,7 +100,7 @@ floor=await cloudinary.uploader.upload(floorImage,{
   }
   const update = async (req, res) => {
     try {
-      const { formFields, listingPhotos, thumbnail,_id,status,floorImage, } = req.body;
+      const { formFields, listingPhotos, thumbnail,_id,floorImage, } = req.body;
       const year = new Date().getFullYear();
       console.log("Received form fields:", formFields);
   
@@ -167,7 +167,7 @@ floor=await cloudinary.uploader.upload(floorImage,{
           year,
           thumbnail: thumbnailUrl,
           floorImage:floorThumbnail,
-          status
+         
         },
         { new: true } // Return the updated document
       );
