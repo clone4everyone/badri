@@ -13,7 +13,7 @@ const testimonials=[
       id: 1,
       name: "Karan rawat",
       profession: "Software Engineer",
-      feedback: "This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.",
+      feedback: "An exceptional experience with excellent results! The entire process was smooth, from placing the order to receiving the final product. The quality was far beyond what I anticipated, and the speed of service was unmatched. I appreciate the professionalism and effort put into every detail. Highly recommend to anyone in need of top-tier service!",
       rating: 5,
       image: man1, // Replace with actual image URL
     },
@@ -21,7 +21,7 @@ const testimonials=[
       id: 2,
       name: "Mahesh",
       profession: "Doctor",
-      feedback: "Great experience and support from the team.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.",
+      feedback: "A flawless experience from start to finish! The speed of delivery was impressive, and the quality was second to none. Every detail was carefully considered, making the results even better than expected. It’s refreshing to find such professionalism and dedication. I will be a repeat customer for sure!",
       rating: 4,
       image: man2, // Replace with actual image URL
     },
@@ -29,7 +29,7 @@ const testimonials=[
       id: 3,
       name: "Vamshi",
       profession: "Store Manager",
-      feedback: "Satisfied with the results. Will use again!This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.",
+      feedback: "Fast, reliable, and absolutely worth it! The team delivered exceptional results in record time without sacrificing quality. Every step of the process was smooth, and customer service was incredibly helpful. I couldn't be happier with the outcome. If you need great service with top-notch quality, look no further!",
       rating: 5,
       image: man3, // Replace with actual image URL
     },
@@ -37,7 +37,7 @@ const testimonials=[
       id: 4,
       name: "vaibhav Negi",
       profession: "Businessman",
-      feedback: "Exceptional quality and fast delivery.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.",
+      feedback: "Top-notch service with quick turnaround! The team exceeded my expectations with their attention to detail. Everything was handled professionally, making the entire process smooth and stress-free. I’m beyond satisfied with the results and will definitely be a returning customer. If you’re looking for quality and efficiency, this is the perfect choice!",
       rating: 5,
       image: man4, // Replace with actual image URL
     },
@@ -45,7 +45,7 @@ const testimonials=[
       id: 5,
       name: "Ajay singh bartwal",
       profession: "Freelancer",
-      feedback: "Affordable and reliable service. Highly impressed.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.This service is amazing! Highly recommend it.",
+      feedback: "Brilliant service and outstanding results! The attention to detail was remarkable, and the final product surpassed my expectations. The speed of delivery was impressive, yet quality was never compromised. It’s rare to find such reliability and expertise in one place. I’m so pleased and will surely be back for more!",
       rating: 4,
       image: man5, // Replace with actual image URL
     },

@@ -3,7 +3,7 @@ const cloudinary=require("cloudinary");
 
 const add=async(req,res)=>{
     try{
-        const { name, job, feedback,profileImage } = req.body;
+        const { name, job, feedback,profileImage,star } = req.body;
        
     
            const picture=await cloudinary.uploader.upload(profileImage,{
@@ -17,6 +17,7 @@ const add=async(req,res)=>{
           job,
           feedback,
           profileImage: picture.secure_url, // Store Cloudinary URL in DB
+          star
         });
     
         await newTestimonial.save();
@@ -53,7 +54,7 @@ const deleteTestimonial=async(req,res)=>{
 
 const edit=async(req,res)=>{
   try{
-    const { name, job, feedback,profileImage,id } = req.body;
+    const { name, job, feedback,profileImage,id,star } = req.body;
        
       let profileImageUrl;
       const isCloudinaryUrl = (url) => url.startsWith("http") && url.includes("cloudinary");
@@ -74,6 +75,7 @@ const edit=async(req,res)=>{
   job,
   feedback,
   profileImage: profileImageUrl,
+  star
  })
  res.json({ message: "Testimonial Edit successfully",status:true });
   }catch(err){

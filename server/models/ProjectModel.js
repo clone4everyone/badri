@@ -96,6 +96,9 @@ approved:{
 live:{
     type:Boolean,
     default:false
+},
+totalArea:{
+    type:Number
 }
 
 });

@@ -12,6 +12,9 @@ const testimonial =new mongoose.Schema({
     },
     profileImage:{
         type:String
+    },
+    star:{
+        type:Number
     }
 })
 

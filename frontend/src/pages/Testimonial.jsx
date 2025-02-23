@@ -84,6 +84,8 @@ const Testimonials = () => {
   const navigate=useNavigate();
  const [minimum,setMinimum]=useState(null);
 const [testi,setTesti]=useState(null)
+const [rating, setRating] = useState(0);
+
 
 const expand=()=>{
   if(showAll) {
@@ -102,6 +104,7 @@ try{
    if(data.data.status){
    
     setTesti(data.data.testimonial);
+    
     if(data.data.testimonial.length>5){
       setMinimum(data.data.testimonial.slice(0,5));
       return ;
@@ -174,11 +177,14 @@ try{
             <div className="text-sm text-[#6b7280]">{testimonial.job}</div>
             {/* Stars */}
             <div className="flex gap-1">
-              {Array(5)
-                .fill(0)
-                .map((_, idx) => (
-                  <span key={idx} className="text-yellow-500 text-lg">★</span>
-                ))}
+            {Array(5)
+  .fill(0)
+  .map((_, idx) => (
+    <span key={idx} className={idx < testimonial.star ? "text-yellow-500 text-lg" : "text-gray-300 text-lg"}>
+      ★
+    </span>
+  ))}
+
             </div>
           </div>
         </div>

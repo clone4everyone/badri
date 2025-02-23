@@ -38,7 +38,7 @@ const Why = () => {
   return (
     <div className="bg-[#FFF9EB] p-6 md:p-8 ">
     <h2 className="text-2xl md:text-4xl mt-8 text-start mb-6 md:mb-8 fira-sans">
-      Why Choose Shri Sai Ram Real Estate
+      Why Choose Sri Sai Ram Real Estate
     </h2>
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
       {services.map((service, index) => (

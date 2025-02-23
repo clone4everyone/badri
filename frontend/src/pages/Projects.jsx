@@ -20,7 +20,8 @@ const user=useSelector((state)=>state.user.user);
         bhk: '',
         minPrice: '',
         maxPrice: '',
-        area: ''
+        area: '',
+        category:''
     });
    
 
@@ -51,7 +52,8 @@ filteredProducts = products.filter(product => {
         const matchesPrice = (filters.minPrice ? parseInt(product.price.replace(/,/g, '')) >= parseInt(filters.minPrice) : true) &&
                              (filters.maxPrice ? parseInt(product.price.replace(/,/g, '')) <= parseInt(filters.maxPrice) : true);
         const matchesArea = filters.area ? product.Acre.toLowerCase().includes(filters.area.toLowerCase()) : true;
-        return matchesSearch && matchesStatus && matchesBHK && matchesPrice && matchesArea;
+        const matchesCategory=filters.category ? product.category === filters.category : true;
+        return matchesSearch && matchesStatus && matchesBHK && matchesPrice && matchesArea &&matchesCategory;
     });
      totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -93,14 +95,14 @@ filteredProducts = products.filter(product => {
             {/* Filters Section */}
             {
                 products ?  <div className='container mx-auto p-6'>
-                {/* <h1 className="text-2xl font-bold mb-6">Finding Projects You May Like</h1>
+                {/* <h1 className="text-2xl font-bold mb-6">Finding Projects You May Like</h1> */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <input
                         type="text"
                         name="searchQuery"
                         value={filters.searchQuery}
                         onChange={handleFilterChange}
-                        placeholder="Search by Title..."
+                        placeholder="Search by Project Name"
                         className="p-3 border rounded-md"
                     />
                     <select
@@ -109,11 +111,23 @@ filteredProducts = products.filter(product => {
                         onChange={handleFilterChange}
                         className="p-3 border rounded-md"
                     >
-                        <option value="">All Status</option>
-                        <option value="available">available</option>
-                        <option value="sold-out">sold-out</option>
+                        <option value="">All status</option>
+                        <option value="available">Plot Available</option>
+                        <option value="sold-out">Plot Sold-out</option>
                     </select>
+
                     <select
+                        name="category"
+                        value={filters.category}
+                        onChange={handleFilterChange}
+                        className="p-3 border rounded-md"
+                    >
+                        <option value="">All Category of Plot</option>
+                        <option value="residential">Resedential Plot</option>
+                        <option value="commercial">Commercial Plot</option>
+                        <option value="house">House Plot</option>
+                    </select>
+                    {/* <select
                         name="bhk"
                         value={filters.bhk}
                         onChange={handleFilterChange}
@@ -128,7 +142,7 @@ filteredProducts = products.filter(product => {
                         <option value="6">6 BHK</option>
                         <option value="7">7 BHK</option>
                         <option value="8">8 BHK</option>
-                    </select>
+                    </select> */}
                     <input
                         type="number"
                         name="minPrice"
@@ -146,7 +160,7 @@ filteredProducts = products.filter(product => {
                         className="p-3 border rounded-md"
                     />
                   
-                </div> */}
+                </div>
 
                 {/* Project Cards Section */}
                 <div className="grid grid-cols-1 gap-6">

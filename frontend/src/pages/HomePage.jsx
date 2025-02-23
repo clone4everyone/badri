@@ -28,11 +28,13 @@ const HomePage = () => {
     <>
     <Navbar />
   
-    <div className="bg-[#E9E9FB] p-0 m-0 ">
+    <div className="bg-[#E9E9FB] p-0 m-0 md:h-[1250px] lg:h-[1200px] overflow-hidden ">
+
       
       <BigImage/>
       <Overview/>
       <section id="about" className="!mb-0 !pb-0">
+   
         <About/>
       </section>
       

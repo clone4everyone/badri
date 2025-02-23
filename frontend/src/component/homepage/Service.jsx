@@ -4,7 +4,9 @@ import service2 from "../../assets/service2.jpg"
 import service3 from "../../assets/service3.jpg"
 import home from "../../assets/h1.webp"
 import working from "../../assets/working.jpg";
+import {useNavigate} from 'react-router-dom'
 const Service = () => {
+  const navigate=useNavigate();
   const services = [
     {
       title: "Discover Your Plot",
@@ -34,6 +36,7 @@ const Service = () => {
         <div
           key={index}
           className="rounded-lg  text-center hover:scale-105 p-4 transition-transform duration-300 w-[100%]"
+          onClick={index===0 ? ()=>navigate('/projects') : ()=>navigate('#contact')}
         >
           <div className="relativew-full aspect-square mb-4">
             <img
