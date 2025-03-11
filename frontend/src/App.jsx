@@ -17,6 +17,7 @@ import NotFound from './pages/NotFound';
 import WhatsAppButton from './component/button/WhatsAppButton';
 import { useSelector } from 'react-redux';
 import Search from './component/models/Search';
+import BackToTop from './component/button/BackToTop';
 
 function App() {
   return (
@@ -69,6 +70,7 @@ const LoadingRoutes = () => {
           <Route path="*" element={<NotFound/>}/>
         </Routes>
         <WhatsAppButton />
+        <BackToTop/>
         </>
 
         

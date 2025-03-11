@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import projectData from '../../data/productData';
-import { FaArrowLeft,FaArrowRight } from 'react-icons/fa';
+import { FaAngleLeft, FaAngleRight, FaArrowLeft,FaArrowRight, FaGreaterThan, FaGreaterThanEqual } from 'react-icons/fa';
 
 const ProjectSlider = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -25,16 +25,16 @@ const ProjectSlider = () => {
         <div className="flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-6 justify-around">
           <button
             onClick={prevSlide}
-            className="text-3xl rounded-lg  font-[Fira_Sans] hover:bg-gray-200 hover:scale-125 text-black  py-5 px-2 self-center md:self-auto"
+            className="text-3xl rounded-lg  font-bold hover:bg-gray-200 hover:scale-125 text-black  py-5 px-2 self-center md:self-auto "
           >
-            {/* &#9664; */}
-            {'< '}
+          {'<'}
+            {/* <FaAngleLeft/> */}
           </button>
           
           <div className="relative flex items-center ">
-            <div className="text-3xl md:text-4xl h-full flex-col justify-start  text-gray-700 absolute -left-10 md:-left-16 font-[firaSans]">
+            {/* <div className="text-3xl md:text-4xl h-full flex-col justify-start  text-gray-700 absolute -left-10 md:-left-16 font-[firaSans]">
               {year}
-            </div>
+            </div> */}
             <img
               src={thumbnail}
               alt={titile}
@@ -55,9 +55,9 @@ const ProjectSlider = () => {
           </div>
           <button
             onClick={nextSlide}
-            className="text-3xl px-2 p-1 rounded-lg font-[Montserrat] hover:bg-gray-200 hover:scale-125 text-black  py-5  self-center md:self-auto "
+            className="text-3xl px-2 p-1 rounded-lg hover:bg-gray-200 hover:scale-125 text-black  py-5  self-center md:self-auto font-bold"
           >
-            {'>'}
+           {'>'}
           </button>
         </div>
       </div>

@@ -169,7 +169,7 @@ const Testimonial = () => {
           >
             {isCenterCard ? (
               <div className="flex rounded-lg flex-col  justify-center">
-                <div className="flex flex-col sm:flex-row s sm:space-x-4">
+                <div className="flex flex-row  space-x-4">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -184,9 +184,10 @@ const Testimonial = () => {
                     </p>
                     <div className="flex space-x-1 mt-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-yellow-400">
-                          ★
-                        </span>
+                    <span key={i} className="bg-gradient-to-b from-[#faf8e9] via-[#F5BE86] to-[#8f6f4e] text-transparent bg-clip-text">
+                    ★
+                  </span>
+                  
                       ))}
                       {[...Array(5 - testimonial.rating)].map((_, i) => (
                         <span key={i} className="text-gray-300">
@@ -209,7 +210,7 @@ const Testimonial = () => {
                 />
                 <div className="flex space-x-1 mb-3">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <span key={i} className="text-yellow-400">
+                    <span key={i} className="bg-gradient-to-b from-[#faf8e9] via-[#F5BE86] to-[#8f6f4e] text-transparent bg-clip-text">
                       ★
                     </span>
                   ))}

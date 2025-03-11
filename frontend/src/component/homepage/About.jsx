@@ -22,11 +22,11 @@ const About = () => {
   <img 
     src={founder} // Replace with the correct path for your image
     alt="Founder Image" 
-    className="w-full h-48 md:h-auto rounded-sm object-center shadow-md"
+    className="w-full h-full md:h-auto rounded-sm object-center shadow-md"
   />
   {/* Name Overlay */}
   <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-3 text-white">
-    <h3 className="text-lg font-semibold font-[Montserrat]">K SURESH BABU</h3>
+    <h3 className="text-lg font-semibold font-[Montserrat]">K SURESH BABU GARU</h3>
     <p className="text-sm font-[Montserrat]">FOUNDER</p>
   </div>
 </div>

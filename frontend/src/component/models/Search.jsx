@@ -87,7 +87,7 @@ const Search = ({ setModel }) => {
   }
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 pl-4 md:pl-0">
-    <div className="bg-white rounded-xl p-6 md:p-8 w-[90%] max-h-[69%] overflow-y-auto max-w-4xl custom-scrollbar relative shadow-lg transition-all duration-1000 ease-in-out opacity-100 scale-100">
+    <div className="bg-white rounded-xl p-6 md:p-8 w-[90%] max-h-[69%]  max-w-4xl custom-scrollbar relative shadow-lg transition-all duration-1000 ease-in-out opacity-100 scale-100">
       {/* Close Button */}
       <button
         className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"
@@ -110,7 +110,7 @@ const Search = ({ setModel }) => {
       
       {/* Overlay Placeholder Text with Slide Up Animation */}
       {!search && (
-        <div className="absolute left-2  text-gray-400 pointer-events-none flex">
+        <div className="absolute left-2  text-gray-400 pointer-events-none flex ">
           Find By{" "}
           <span
             className={`ml-2  inline-block transition-transform duration-500 fonr-finaSans ${
@@ -124,7 +124,7 @@ const Search = ({ setModel }) => {
     </div>
   
       {/* Results Section */}
-      <div className="mt-6">
+      <div className="mt-6 overflow-y-auto min-h-[20vh] max-h-[40vh] ">
         <h2 className="text-xl font-semibold fira-sans">Property Listings</h2>
         {loading ? (
           <p className="text-center mt-4 font-[Montserrat]"><Loading/></p>
@@ -158,8 +158,8 @@ const Search = ({ setModel }) => {
                 </p>
                 <p className='font-[Montserrat]'>
                   <strong>Area:</strong> {item.unit === "sqft"
-            ? `${item.sqft} Sq.ft (W: ${item.width}, L: ${item.length})`
-            : item.unit === "Acre"?`${item.Acre} Acre`:`${item.Cents} Cents`}
+            ? `${item.totalArea} Sq.ft `
+            : item.unit === "Acre"?`${item.totalArea} Acre`:`${item.totalArea} Cents`}
                 </p>
                 <p className='font-[Montserrat]'>
                 <strong>Price:</strong> ₹ {Number(item.price).toLocaleString()}

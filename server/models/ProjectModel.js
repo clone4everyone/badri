@@ -36,26 +36,26 @@ const listingSchema = new mongoose.Schema({
         enum: ["sqft", "Acre", "Cents"], // Specify allowed units
         required: true,
       },
-      sqft: {
-        type: Number,
-      },
-      width: {
-        type: Number,
-      },
-      length: {
-        type: Number,
-      },
-      Acre: {
-        type: Number,
-    },
+    //   sqft: {
+    //     type: Number,
+    //   },
+    //   width: {
+    //     type: Number,
+    //   },
+    //   length: {
+    //     type: Number,
+    //   },
+    //   Acre: {
+    //     type: Number,
+    // },
     status: {
         type: String,
         enum: ['available', 'sold-out'],
         default: 'available'
     },
-    year: {
-        type: Number
-    },  
+    // year: {
+    //     type: Number
+    // },  
     listingPhotoPaths: [{ type: String }],
     view:{
         type:Number,
@@ -78,21 +78,21 @@ const listingSchema = new mongoose.Schema({
     category:{
         type:String
     },
-    Cents:{
-        type:Number,
-    },
-landType:{
-    type:String,
-    default:'dry'
-},
+//     Cents:{
+//         type:Number,
+//     },
+// landType:{
+//     type:String,
+//     default:'dry'
+// },
 plot:{
     type:Number,
     default:1
 },
-approved:{
-    type:String,
-    defualt:'notapproved'
-},
+// approved:{
+//     type:String,
+//     defualt:'notapproved'
+// },
 live:{
     type:Boolean,
     default:false

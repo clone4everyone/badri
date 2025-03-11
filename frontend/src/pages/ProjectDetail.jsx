@@ -14,6 +14,7 @@ import Share from '../component/models/Share';
 import founder from '../assets/founder.png'
 import toast from 'react-hot-toast';
 import Loading from '../component/Loading';
+import Alsolike from '../component/Alsolike';
 const ProjectDetail = () => {
   const navigate=useNavigate();
   const {id,}=useParams();
@@ -25,6 +26,10 @@ const ProjectDetail = () => {
     const [project,setProject]=useState(null);
     const [shareModel,setShareModel]=useState(false);
     const [listingPhoto,setListingPhot]=useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+  
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
     const handlePrev = () => {
       setCurrentIndex((prev) => (prev === 0 ? listingPhoto.length - 1 : prev - 1));
     };
@@ -51,7 +56,7 @@ const ProjectDetail = () => {
         photos.push(data.data.project.floorImage);
       }
       
-      console.log(photos)
+      console.log(data.data.project.locationLink)
       setListingPhot(photos);
      }
      else{
@@ -67,6 +72,7 @@ const ProjectDetail = () => {
       
     
     },[]);
+    
     useEffect(() => {
       const fetchWishlistStatus = async () => {
         try {
@@ -103,6 +109,29 @@ const ProjectDetail = () => {
   return (
     <>
        <Navbar />
+       {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+          <div className="relative w-full h-full flex items-center justify-center p-4">
+            {/* Close button */}
+            <button
+              className="absolute top-4 right-4 bg-white rounded-full p-2 text-black hover:bg-gray-200"
+              onClick={closeModal}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            
+            {/* Full-screen image */}
+            <img
+              src={project.floorImage}
+              alt="Floor Plan"
+              className="max-w-full max-h-full object-contain"
+            />
+          </div>
+        </div>
+      )}
        {shareModel && <Share setShareModel={setShareModel} image={project.thumbnail} title={project.title} url={`badri.bharathmegaminds.com/projectDetail/${project.title}/${project._id}`}/>}
             {/* Background Section */}
             <div className='w-full min-h-72 max-h-72 inset-0  bg-center' style={{ backgroundImage: `url(${background})` }}>
@@ -193,24 +222,7 @@ const ProjectDetail = () => {
     </a>
   )}
         </p> */}
-        <p className='mt-2 flex gap-2 items-center font-thin'>
-        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" className="mt-2 relative -left-[1px]">
-<g id="gis:location-man" clip-path="url(#clip0_2521_12329)">
-<path id="Vector" d="M12.45 5.89795C10.4915 5.8982 8.55103 6.73995 8.75503 8.42195L9.25503 12.0779C9.34278 12.7212 9.77753 13.7499 10.4268 13.7499H10.473L11.0048 19.8827C11.0278 20.1587 11.2278 20.3827 11.5048 20.3827H13.5048C13.7818 20.3827 13.9818 20.1587 14.0048 19.8827L14.5365 13.7499H14.583C15.2323 13.7499 15.6668 12.7212 15.7548 12.0782L16.2548 8.4217C16.3858 6.73845 14.4088 5.89745 12.45 5.89795Z" fill="black"/>
-<path id="Vector_2" d="M12.5061 12.7271L12.4941 12.7586C12.4981 12.7491 12.5009 12.7393 12.5049 12.7298L12.5061 12.7271Z" fill="black"/>
-<path id="Vector_3" d="M12.5 5.25C13.9497 5.25 15.125 4.07475 15.125 2.625C15.125 1.17525 13.9497 0 12.5 0C11.0503 0 9.875 1.17525 9.875 2.625C9.875 4.07475 11.0503 5.25 12.5 5.25Z" fill="black"/>
-<path id="Vector_4" d="M15.2305 17.2729C15.2093 17.5159 15.1867 17.7584 15.1655 18.0014C17.4035 18.3174 19.0625 19.0344 19.25 19.9214C19.5292 21.2404 15.2145 21.8339 12.435 21.8062C9.6555 21.7784 5.42025 21.2404 5.7905 19.9212C6.0335 19.0554 7.6685 18.3527 9.848 18.0254C9.82625 17.7817 9.8015 17.5379 9.7805 17.2944C6.979 17.6034 4.645 18.3642 3.7125 19.3559H0.55725L0 20.5117H3.2915C3.54725 21.8717 6.39825 23.0457 10.475 23.3422L10.3355 24.9999H14.3705L14.33 23.3424C18.4275 23.0457 21.3592 21.8717 21.7085 20.5117H25L24.5225 19.3559H21.3673C20.4815 18.3392 18.1052 17.5659 15.2305 17.2729Z" fill="black"/>
-</g>
-<defs>
-<clipPath id="clip0_2521_12329">
-<rect width="25" height="25" fill="white"/>
-</clipPath>
-</defs>
-</svg>
-Starting Plot: {'  '}
-{
-  project.plot
-}</p>
+       
           {
 //       project.unit === "sqft" && <p className='mt-2 flex gap-2 items-center font-thin'>
 //         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" className="mt-2 relative -left-[1px]">
@@ -235,18 +247,36 @@ Starting Plot: {'  '}
           <FaMapMarked className='text-xl' />
           Project Size :{'  '} 
           {project.unit === "sqft"
-            ? `${project.sqft} Sq.ft (W: ${project.width}, L: ${project.length})`
-            :project.unit === "Acre"? `${project.Acre} Acre`:`${project.Cents} Cents`
+            ? `${project.totalArea} Sq.ft `
+            :project.unit === "Acre"? `${project.totalArea} Acre`:`${project.totalArea} Cents`
           }
         </p>
+        <p className='mt-2 flex gap-2 items-center font-thin'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 25 25" fill="none" className="mt-1 relative -left-[2px]">
+<g id="gis:location-man" clip-path="url(#clip0_2521_12329)">
+<path id="Vector" d="M12.45 5.89795C10.4915 5.8982 8.55103 6.73995 8.75503 8.42195L9.25503 12.0779C9.34278 12.7212 9.77753 13.7499 10.4268 13.7499H10.473L11.0048 19.8827C11.0278 20.1587 11.2278 20.3827 11.5048 20.3827H13.5048C13.7818 20.3827 13.9818 20.1587 14.0048 19.8827L14.5365 13.7499H14.583C15.2323 13.7499 15.6668 12.7212 15.7548 12.0782L16.2548 8.4217C16.3858 6.73845 14.4088 5.89745 12.45 5.89795Z" fill="black"/>
+<path id="Vector_2" d="M12.5061 12.7271L12.4941 12.7586C12.4981 12.7491 12.5009 12.7393 12.5049 12.7298L12.5061 12.7271Z" fill="black"/>
+<path id="Vector_3" d="M12.5 5.25C13.9497 5.25 15.125 4.07475 15.125 2.625C15.125 1.17525 13.9497 0 12.5 0C11.0503 0 9.875 1.17525 9.875 2.625C9.875 4.07475 11.0503 5.25 12.5 5.25Z" fill="black"/>
+<path id="Vector_4" d="M15.2305 17.2729C15.2093 17.5159 15.1867 17.7584 15.1655 18.0014C17.4035 18.3174 19.0625 19.0344 19.25 19.9214C19.5292 21.2404 15.2145 21.8339 12.435 21.8062C9.6555 21.7784 5.42025 21.2404 5.7905 19.9212C6.0335 19.0554 7.6685 18.3527 9.848 18.0254C9.82625 17.7817 9.8015 17.5379 9.7805 17.2944C6.979 17.6034 4.645 18.3642 3.7125 19.3559H0.55725L0 20.5117H3.2915C3.54725 21.8717 6.39825 23.0457 10.475 23.3422L10.3355 24.9999H14.3705L14.33 23.3424C18.4275 23.0457 21.3592 21.8717 21.7085 20.5117H25L24.5225 19.3559H21.3673C20.4815 18.3392 18.1052 17.5659 15.2305 17.2729Z" fill="black"/>
+</g>
+<defs>
+<clipPath id="clip0_2521_12329">
+<rect width="25" height="25" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+Starting Plot: {'  '}
+{
+  project.plot
+}</p>
         {
           project.category === "house" && <p className="mt-2 mb-2 flex gap-2 items-center font-thin relative -left-[0.9px]">
           <BiBed className="text-2xl " /> {project.bhk} BHK
         </p>
         }
         
-        <p className="  flex gap-3 items-center pl-1">
-        <p className='text-2xl '>₹</p> {Number(project.price).toLocaleString()}
+        <p className="  flex gap-3 items-center pl-1 ">
+        <p className='text-2xl '>₹ </p> <p className='font-thin'>Starting plot prize:</p> <p className='font-thin'>{Number(project.price).toLocaleString()}</p>
         </p>
         
         <button className='mont mt-5 border-2 flex items-center rounded-md border-blue-500 px-5 py-3 font-semibold text-blue-600 '  onClick={() => {
@@ -279,6 +309,7 @@ Starting Plot: {'  '}
       src={project.floorImage}
       alt="Floor Plan"
       className="w-full max-h-[400px] object-contain rounded-lg"
+      onClick={openModal}
     />
       }
  
@@ -297,12 +328,17 @@ Starting Plot: {'  '}
 {
   contact && (
       <div className="w-full flex justify-center px-4 md:px-8 lg:px-16 mb-5">
-      <div className="w-full max-w-5xl bg-[#E9E9FB] border-2 border-gray-400 rounded-lg shadow-md">
+      <div className="w-full max-w-5xl bg-[#E9E9FB] border-2 border-gray-400  shadow-md">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b-2 border-gray-400">
           <div className="flex items-center space-x-2">
-            <FaUserCircle className="text-xl md:text-3xl" />
-            <span className="font-semibold text-lg md:text-2xl font-[finaSans]">
+            {/* <FaUserCircle className="text-xl md:text-3xl" /> */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+<g id="mdi:support">
+<path id="Vector" d="M18.72 14.7607C19.07 13.9107 19.26 13.0007 19.26 12.0007C19.26 11.2807 19.15 10.5907 18.96 9.95068C18.31 10.1007 17.63 10.1807 16.92 10.1807C15.466 10.1822 14.0329 9.8342 12.7415 9.1659C11.4502 8.4976 10.3384 7.52863 9.5 6.34068C8.60396 8.51142 6.91172 10.2573 4.77 11.2207C4.73 11.4707 4.73 11.7407 4.73 12.0007C4.73 12.9554 4.91804 13.9008 5.2834 14.7828C5.64875 15.6648 6.18425 16.4663 6.85933 17.1413C8.22272 18.5047 10.0719 19.2707 12 19.2707C13.05 19.2707 14.06 19.0407 14.97 18.6307C15.54 19.7207 15.8 20.2607 15.78 20.2607C14.14 20.8107 12.87 21.0807 12 21.0807C9.58 21.0807 7.27 20.1307 5.57 18.4207C4.53505 17.3906 3.76627 16.1242 3.33 14.7307H2V10.1807H3.09C3.42024 8.57319 4.17949 7.08509 5.28719 5.87427C6.39489 4.66345 7.80971 3.77509 9.38153 3.30344C10.9534 2.83179 12.6235 2.79445 14.2149 3.19539C15.8062 3.59632 17.2593 4.42057 18.42 5.58068C19.6798 6.83626 20.5393 8.43696 20.89 10.1807H22V14.7307H21.94L18.38 18.0007L13.08 17.4007V15.7307H17.91L18.72 14.7607ZM9.27 11.7707C9.57 11.7707 9.86 11.8907 10.07 12.1107C10.281 12.3234 10.3995 12.611 10.3995 12.9107C10.3995 13.2104 10.281 13.4979 10.07 13.7107C9.86 13.9207 9.57 14.0407 9.27 14.0407C8.64 14.0407 8.13 13.5407 8.13 12.9107C8.13 12.2807 8.64 11.7707 9.27 11.7707ZM14.72 11.7707C15.35 11.7707 15.85 12.2807 15.85 12.9107C15.85 13.5407 15.35 14.0407 14.72 14.0407C14.09 14.0407 13.58 13.5407 13.58 12.9107C13.58 12.6083 13.7001 12.3184 13.9139 12.1046C14.1277 11.8908 14.4177 11.7707 14.72 11.7707Z" fill="black"/>
+</g>
+</svg>
+            <span className="font-semibold text-lg md:text-2xl mont">
               Contact
             </span>
           </div>
@@ -311,38 +347,38 @@ Starting Plot: {'  '}
         {/* Content */}
         <div className="flex flex-col md:flex-row items-center px-6 md:px-12 py-8 gap-y-6 md:gap-x-12">
           {/* Image Placeholder */}
-          <div className="w-24 h-24 rounded-full bg-gray-300 overflow-hidden">
+          {/* <div className="w-24 h-24  bg-gray-300 overflow-hidden">
             <img
               src={founder}
               alt="Founder"
               className="w-full h-full object-cover"
             />
-          </div>
+          </div> */}
 
           {/* Text Details */}
-          <div className="text-center md:text-left flex-1">
-            <p className="text-lg md:text-xl font-semibold text-gray-800 font-[finaSans]">
+          {/* <div className="text-center md:text-left flex-1">
+            <p className="text-lg md:text-xl font-semibold text-gray-800 fira-sans">
               {name || "K SURESH BABU"}
             </p>
             <p className="text-sm text-gray-600 font-[Montserrat]">
               Property Seller
             </p>
-          </div>
+          </div> */}
 
           {/* Contact Info */}
           <div className="flex flex-col md:flex-row gap-y-4 md:gap-x-12 w-full md:w-auto">
             {/* Phone */}
             <div className="flex flex-col items-center md:items-start">
-              <strong className="text-[#2B2BD9]">Phone Number:</strong>
+              <strong className="text-[#2B2BD9]">Mobile Number:</strong>
               <span className="text-gray-900 flex items-center gap-2 font-medium text-sm md:text-base font-[Montserrat]">
-                <FaPhoneAlt className="text-gray-600" /> { "+91 999 666 1234"}
+                <FaPhoneAlt className="text-black" /> { "+91 999 666 1234"}
               </span>
             </div>
             {/* Email */}
             <div className="flex flex-col items-center md:items-start">
               <strong className="text-[#2B2BD9]">Email:</strong>
               <span className="text-gray-900 font-medium flex items-center gap-2 text-sm md:text-base font-[Montserrat]">
-                <FaEnvelope className="text-gray-600" /> { "badrirocks@gmail.com"}
+                <FaEnvelope className="text-black" /> { "badrirocks@gmail.com"}
               </span>
             </div>
           </div>
@@ -431,6 +467,8 @@ Starting Plot: {'  '}
       }
      
     </div>
+
+    <Alsolike/>
                             <Footer/>
     </>
   );

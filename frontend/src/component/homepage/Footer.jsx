@@ -14,12 +14,12 @@ const Footer = () => {
   return (
     <>
    <h1
-  className="bg-[#2222AE] flex justify-center py-2 text-xl font-[Montserrat] text-white hover:cursor-pointer "
+  className="bg-[#2222AE] flex justify-center py-2 text-xl font-[Montserrat]  text-white hover:cursor-pointer "
   onClick={scrollToTop}
 >
   Go Back To Top
 </h1>
-<footer className="bg-[#EEEEFC] text-black pt-6 pl-10 md:px-28 px-0 pb-6">
+<footer className="bg-[#EEEEFC] text-black pt-6 pl-10 md:px-28 px-0 pb-6 ">
   <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-4 md:px-6">
     {/* Logo & Social Media */}
     <div className=''>
@@ -106,10 +106,11 @@ const Footer = () => {
       <p className="text-sm text-black font-[Montserrat]">
         Office at: NO-2 ANJANEYA PURAM 1st MAIN ROAD KAKKALUR THIRUVALLUR-602003
       </p>
-      <p className="text-sm text-black font-[Montserrat] mt-1">Phone: +919962999658</p>
+      <p className="text-sm text-black font-[Montserrat] mt-1 ">Phone: <a  target="_blank"
+      rel="noopener noreferrer" href={`https://wa.me/9962999658`} className='underline'>+919962999658</a></p>
       <p className="text-sm text-black font-[Montserrat] mt-1">
         Email:{" "}
-        <a href="mailto:info@example.com" className="hover:text-black">
+        <a className="hover:text-black">
          contact@srisairam.co.in
         </a>
       </p>

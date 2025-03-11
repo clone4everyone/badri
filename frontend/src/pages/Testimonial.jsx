@@ -180,7 +180,7 @@ try{
             {Array(5)
   .fill(0)
   .map((_, idx) => (
-    <span key={idx} className={idx < testimonial.star ? "text-yellow-500 text-lg" : "text-gray-300 text-lg"}>
+    <span key={idx} className={idx < testimonial.star ? "bg-gradient-to-b from-[#faf8e9] via-[#F5BE86] to-[#8f6f4e] text-transparent bg-clip-text text-lg" : "text-gray-300 text-lg"}>
       ★
     </span>
   ))}

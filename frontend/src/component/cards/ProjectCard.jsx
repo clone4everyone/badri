@@ -1,83 +1,129 @@
-import React,{useState,useEffect} from 'react';
-import { FaMapMarkerAlt,FaHome,FaMap,FaShareAlt ,FaHeart} from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaMapMarkerAlt, FaHome, FaMap, FaShareAlt, FaHeart } from 'react-icons/fa';
 import { BiBed } from 'react-icons/bi';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import API from '../../utils/API';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Share from '../models/Share';
-const ProjectCard = ({ product }) => {
-const [isInWishlist, setIsInWishlist] = useState(false);
-const navigate=useNavigate();
-const [shareModel,setShareModel]=useState(false);
-const user=useSelector((state)=>state.user.user);
-useEffect(()=>{
-    try{
- const fetchWishlistStatus = async () => {
+import stickerImage from "../../assets/Star 6.png";
+import sold from "../../assets/sold.png";
+
+const ProjectCard = ({ product, viewMode = 'list' }) => {
+  const [isInWishlist, setIsInWishlist] = useState(false);
+  const navigate = useNavigate();
+  const [shareModel, setShareModel] = useState(false);
+  const user = useSelector((state) => state.user.user);
+
+  useEffect(() => {
+    try {
+      const fetchWishlistStatus = async () => {
         try {
           const response = await API.get(`/wishlist/getWishlist`, {
-            params: { userId:user._id,
-              listingId: product._id, },
+            params: {
+              userId: user._id,
+              listingId: product._id,
+            },
           });
           setIsInWishlist(response.data.isInWishlist);
         } catch (error) {
           console.error("Failed to fetch wishlist status", error);
         }
       };
-  
-      fetchWishlistStatus();
-    }catch(err){
-        console.log(err.message)
-    }
-   
-},[]);
 
-const incrementProjectView=async(id)=>{
-    await  API.post("/projects/incrementProjectView",{
-        userId:user._id,
-        projectId:id
-      })
-  }
-const handleWishlistToggle = async () => {
+      fetchWishlistStatus();
+    } catch (err) {
+      console.log(err.message);
+    }
+  }, []);
+
+  const incrementProjectView = async (id) => {
+    await API.post("/projects/incrementProjectView", {
+      userId: user._id,
+      projectId: id
+    });
+  };
+
+  const handleWishlistToggle = async () => {
     try {
       const response = await API.post(`/wishlist/postWishlist`, {
-        userId:user._id,
+        userId: user._id,
         listingId: product._id,
       });
-    //  navigate('/projects')
       if (response.data.success) {
         setIsInWishlist(!isInWishlist);
-        toast.success('wishlish updated');
+        toast.success('wishlist updated');
       }
     } catch (error) {
       console.error("Failed to update wishlist", error);
     }
   };
-    return (
+
+  const handleCardClick = () => {
+    incrementProjectView(product._id);
+    navigate(`/projectDetail/${product.title}/${product._id}`, { state: product });
+  };
+
+  return (
+    <div className={`border rounded-lg shadow-lg p-4 bg-white relative hover:cursor-pointer ${
+      viewMode === 'list' 
+        ? 'flex flex-col md:flex-row md:gap-4 gap-2' 
+        : 'flex flex-col h-full'
+    }`}>
+      {/* Sticker - same for both views */}
+      {product.status !== 'sold-out' ? (
+        <div className="absolute -top-6 -left-6 z-10 w-20 h-20 flex items-center justify-center">
+          <img 
+            src={stickerImage} 
+            alt="Sticker" 
+            className="w-full h-full absolute top-0 left-0"
+          />
+          <div className="relative z-20 text-center -rotate-[35deg]">
+            <div className="text-xs font-bold text-black">New</div>
+            <div className="text-xs font-bold text-black">Arrival</div>
+          </div>
+        </div>
+      ) : (
+        <div className="absolute -top-6 -left-6 z-10 w-20 h-20 flex items-center justify-center">
+          <img 
+            src={sold} 
+            alt="Sold" 
+            className="w-full h-full absolute top-0 left-0"
+          />
+        </div>
+      )}
+      
+      {/* Share Modal - same for both views */}
+      {shareModel && (
+        <Share 
+          image={product.thumbnail} 
+          title={product.title} 
+          url={`badri.bharathmegaminds.com/projectDetail/${encodeURIComponent(product.title)}/${product._id}`} 
+          setShareModel={setShareModel}
+        />
+      )}
+      
+      {/* Thumbnail with conditional styling based on view mode */}
       <div 
-      className="border rounded-lg shadow-lg p-4 flex flex-col md:flex-row bg-white relative hover:cursor-pointer gap-2" 
-     
-    >
-      {
-        shareModel && <Share image={product.thumbnail} title={product.title} url={`badri.bharathmegaminds.com/projectDetail/${encodeURIComponent(product.title)}/${product._id}`} setShareModel={setShareModel}/>
-      }
-      {/* Thumbnail */}
-      <img 
-        src={product.thumbnail} 
-        alt={product.title} 
-        className="w-full md:max-w-[30%] md:min-w-[30%] h-52 object-cover rounded-md mb-4 mt-3 md:mt-0" 
-      />
-    
+        className={viewMode === 'list' ? 'w-full md:max-w-[30%] md:min-w-[30%]' : 'w-full'} 
+        onClick={handleCardClick}
+      >
+        <img
+          src={product.thumbnail}
+          alt={product.title}
+          className={`object-cover rounded-md ${
+            viewMode === 'list'
+              ? 'w-full h-52 mb-4 mt-3 md:mt-0'
+              : 'w-full h-48 mb-3'
+          }`}
+        />
+      </div>
+        
       {/* Content */}
-      <div className="flex flex-col gap-2"  onClick={() => {
-        // if (user !== null) {
-        //   incrementProjectView(product._id);
-        //   navigate(`/projectDetail/${product.title}/${product._id}`, { state: product });
-        // } else {
-        //   navigate("/login");
-        // }
-        navigate(`/projectDetail/${product.title}/${product._id}`, { state: product });
-      }}>
+      <div 
+        className="flex flex-col gap-2 flex-grow" 
+        onClick={handleCardClick}
+      >
         <h2 className="text-xl font-bold flex items-center gap-2 font-[firaSans]">
           <FaHome /> {product.title}
         </h2>
@@ -85,42 +131,53 @@ const handleWishlistToggle = async () => {
           <FaMapMarkerAlt /> {product.locationTitle}
         </p>
         <p className="flex items-center gap-2 font-[Montserrat]">
-          <FaMap /> {product.unit === "sqft"
-            ? `${product.sqft} Sq.ft (W: ${product.width}, L: ${product.length})`
-            : `${product.Acre} Acre`}
+          <FaMap /> 
+          {product.unit === "sqft"
+            ? `${product.totalArea} Sq.ft `
+            :product.unit === "Acre"? `${product.totalArea} Acre`:`${product.totalArea} Cents`}
         </p>
-        <p className="flex items-center gap-2 font-[Montserrat]">
-          <BiBed className="font-semibold" /> 
-          {
-            product.category==="house" && `${product.bhk}BHK${product.balcony? '- Balcony':null}${product.terrace? '- Terrace':''}`
+        {product.category === "house" && (
+          <p className="flex items-center gap-2 font-[Montserrat]">
+            <BiBed className="font-semibold" /> 
+            {`${product.bhk} BHK${product.balcony ? ' - Balcony' : ''}${product.terrace ? ' - Terrace' : ''}`}
+          </p>
+        )}
+        <p className="font-[Montserrat] font-semibold">₹ {Number(product.price).toLocaleString()}</p>
+        
+        {/* Conditionally truncate description based on view mode */}
+        <p className="font-[Montserrat]">
+          {viewMode === 'list' 
+            ? (product.description.length > 142 
+                ? `${product.description.substring(0, 143)}...` 
+                : product.description)
+            : (product.description.length > 80
+                ? `${product.description.substring(0, 80)}...` 
+                : product.description)
           }
-          
-        </p>
-        <p className="font-[Montserrat]">₹ {Number(product.price).toLocaleString()}</p>
-        <p className="font-[Montserrat]">{product.description.length >142 ?`${product.description.substring(0,143)}...`:product.description }</p>
-        <p className={`text-sm font-semibold font-[Montserrat] ${product.status === 'sold-out' ? 'text-red-500' : 'text-green-500'}`}>
-          {product.status === 'sold-out' ? 'Sold Out' : 'Available'}
         </p>
       </div>
-    
-      {/* Share Icon */}
-      <FaShareAlt 
-        className="absolute top-2 right-2 text-xl cursor-pointer text-gray-600 hover:text-black" 
-        onClick={() => setShareModel(true)} 
-      />
-    
-      {/* Wishlist Icon */}
-      {/* <FaHeart
-        onClick={handleWishlistToggle}
-        className={`cursor-pointer absolute top-2 right-10 text-xl ${
-          isInWishlist ? "text-red-500" : "text-gray-400"
-        }`}
-      /> */}
+        
+      {/* Action Icons */}
+      <div className="absolute top-4 right-4 flex gap-3">
+        {/* <FaHeart
+          className={`text-xl cursor-pointer ${
+            isInWishlist ? 'text-red-500' : 'text-gray-400'
+          }`}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleWishlistToggle();
+          }}
+        /> */}
+        <FaShareAlt
+          className="text-xl cursor-pointer text-black hover:text-black"
+          onClick={(e) => {
+            e.stopPropagation();
+            setShareModel(true);
+          }}
+        />
+      </div>
     </div>
-    
-
-    
-    );
+  );
 };
 
 export default ProjectCard;

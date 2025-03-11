@@ -9,9 +9,10 @@ import Logo from '../Logo';
 import { setLogOut } from "../../redux/UserSlice";
 import {ToggleSearch} from  "../../redux/Toggle";
 import toast from 'react-hot-toast';
+import { useLocation } from 'react-router-dom';
 const Navbar = ({setModel}) => {
   const [isScrolled, setIsScrolled] = useState(false);
-
+const location=useLocation();
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -67,6 +68,14 @@ const logout=()=>{
   dispatch(setLogOut())
                   navigate("/login")
 }
+
+const handleNavigation = (path) => {
+  if (location.pathname === path) {
+    window.location.reload(); // Reload if already on the same page
+  } else {
+    navigate(path);
+  }
+};
   return (
  
     <div className={`flex justify-between items-center p-4  z-50 md:pl-20 sticky top-0 transition-all duration-300 ${
@@ -80,18 +89,45 @@ const logout=()=>{
       {wishModel && <Wishlist setWishModel={setWishModel} />}
       {setting && <Setting setSettingModel={setSettingModel} />}
   
-      <Link to="/">
+      <button onClick={() => handleNavigation("/")}>
         <Logo />
-      </Link>
+      </button>
     </div>
 
  <div className='gap-10 flex items-center'>
    <div className="hidden md:flex items-center space-x-6 inter">
-      <Link className="hover:cursor-pointer hover:border-b-2" to="/">Home</Link>
-      <Link to="/about" className="hover:cursor-pointer hover:border-b-2">About Us</Link>
-      <Link to="/service" className="hover:cursor-pointer hover:border-b-2">Services</Link>
-      <Link to="/projects" className="hover:cursor-pointer hover:border-b-2">Projects</Link>
-      <Link to="/#contact" className="hover:cursor-pointer hover:border-b-2">Contact Us</Link>
+   <div className="hidden md:flex items-center space-x-6 inter">
+  <button
+    className="hover:cursor-pointer hover:border-b-2"
+    onClick={() => handleNavigation("/")}
+  >
+    Home
+  </button>
+  <button
+    className="hover:cursor-pointer hover:border-b-2"
+    onClick={() => handleNavigation("/about")}
+  >
+    About Us
+  </button>
+  <button
+    className="hover:cursor-pointer hover:border-b-2"
+    onClick={() => handleNavigation("/service")}
+  >
+    Services
+  </button>
+  <button
+    className="hover:cursor-pointer hover:border-b-2"
+    onClick={() => handleNavigation("/projects")}
+  >
+    Projects
+  </button>
+  <button
+    className="hover:cursor-pointer hover:border-b-2"
+    onClick={() => handleNavigation("/#contact")}
+  >
+    Contact Us
+  </button>
+</div>
     </div>
   
     {/* Right Section */}
@@ -165,15 +201,43 @@ const logout=()=>{
     {mobileMenuOpen && (
       <div className="absolute top-16 left-0 w-full z-20 bg-white shadow-lg md:hidden">
         <div className="flex flex-col items-center space-y-4 p-4 z-10">
-          <Link className="hover:cursor-pointer hover:border-b-2" to="/">Home</Link>
-          <Link to="/about" className="hover:cursor-pointer hover:border-b-2">About Us</Link>
-          <Link to="/service" className="hover:cursor-pointer hover:border-b-2">Services</Link>
-          <Link to="/projects" className="hover:cursor-pointer hover:border-b-2">Projects</Link>
-          <Link to="/#contact" className="hover:cursor-pointer hover:border-b-2">Contact Us</Link>
+        <div className="hidden md:flex items-center space-x-6 inter">
+  <button
+    className="hover:cursor-pointer hover:border-b-2"
+    onClick={() => handleNavigation("/")}
+  >
+    Home
+  </button>
+  <button
+    className="hover:cursor-pointer hover:border-b-2"
+    onClick={() => handleNavigation("/about")}
+  >
+    About Us
+  </button>
+  <button
+    className="hover:cursor-pointer hover:border-b-2"
+    onClick={() => handleNavigation("/service")}
+  >
+    Services
+  </button>
+  <button
+    className="hover:cursor-pointer hover:border-b-2"
+    onClick={() => handleNavigation("/projects")}
+  >
+    Projects
+  </button>
+  <button
+    className="hover:cursor-pointer hover:border-b-2"
+    onClick={() => handleNavigation("/#contact")}
+  >
+    Contact Us
+  </button>
+</div>
         </div>
       </div>
     )}
   </div>
+  
   
 
   );

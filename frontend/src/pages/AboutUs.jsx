@@ -13,6 +13,7 @@ import Footer from '../component/homepage/Footer';
 import { useNavigate } from 'react-router-dom';
 import estate from '../assets/estate.jpg'
 import { Link } from 'react-router-dom';
+import overlay from "../assets/overlay.jpg"
 const AboutUs = () => {
   const navigate=useNavigate()
 let i=21;
@@ -45,7 +46,7 @@ zero();
 <div className="flex flex-col md:flex-row items-center rounded-lg overflow-hidden   space-y-6 md:space-y-0 md:space-x-10">
   <div className="flex flex-col justify-center space-y-4 w-full md:w-2/3 ">
     <h1 className="top-4 relative text-[40px] md:text-4xl text-gray-800 mb-2 uppercase tracking-wide fira-sans text-center md:text-left">
-      K SURESH BABU
+      K SURESH BABU Garu
     </h1>
     <p className="text-sm md:text-base font-[Montserrat] text-center md:text-left">Founder</p>
     <p className="text-gray-600 leading-relaxed text-sm md:text-base lg:text-lg font-[Montserrat]">
@@ -125,9 +126,12 @@ zero();
         </div>
       </div>
     </div>
-    <div className="relative w-[680px] h-[560px]"> <div className="relative h-[561px] -top-px"> <img className="absolute w-[576px] h-[435px] top-[126px] left-0 object-cover" alt="Rectangle" src={estate} /><div className="absolute top-7 left-[40%] lg:left-48 font-bold text-[90px] lg:text-[150px] tracking-[6.00px] leading-[200px] whitespace-nowrap z-20 text-gray-800  [font-family:'Fira_Sans-Bold',Helvetica] drop-shadow-[0_0_10px_rgba(240,240,240,0.9)] ">
+    <div className="relative w-[680px] h-[560px]"> <div className="relative h-[561px] -top-px"> <img className="absolute w-[576px] h-[435px] top-[126px] left-0 object-cover" alt="Rectangle" src={estate} /><div className="absolute top-7 left-[40%] lg:left-48 font-bold text-[90px] lg:text-[150px] tracking-[6px] leading-[200px] whitespace-nowrap z-20 text-gray-800
+  bg-gradient-to-b from-black via-gray-700 to-black 
+  bg-clip-text text-transparent">
   1980
 </div>
+
  </div> </div>
   </div>
 </div>
@@ -203,8 +207,19 @@ zero();
 
 
 
-<Why/>
+<div className='lg:mb-[241px]'>
+  <Why/>
+  
+</div>
 
+{/* <div className='relative -top-20'>
+  <div className='w-full h-20 border border-red-500'>
+
+  </div>
+  <div className='max-h-[780px] overflow-hidden relative -top-20 '>
+    <img src={overlay} />
+  </div>
+</div> */}
 <Footer/>
     </>
   );

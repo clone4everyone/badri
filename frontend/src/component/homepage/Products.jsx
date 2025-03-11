@@ -19,7 +19,7 @@ import FloatingActionAnimationButton from '../button/FloatingActionAnimationButt
 const Products = () => {
     const user=useSelector((state)=>state.user.user);
     const navigate=useNavigate();
-    const [visibleProducts, setVisibleProducts] = useState(3);
+    const [visibleProducts, setVisibleProducts] = useState(8);
     const [products,setProducts]=useState(null);
     const [loading,setLoading]=useState(false)
     const handleViewMore = () => {
@@ -55,7 +55,7 @@ const Products = () => {
       }catch(err){
         toast.error(err.message);
       }
-    })
+    },[])
     console.log(products);
     
     const incrementProjectView=async(id)=>{
@@ -118,12 +118,12 @@ const Products = () => {
     (showcase === "most-view"
       ? products
           .sort((a, b) => b.view - a.view) // Sort by views in descending order
-          .slice(0, 3)
+          .slice(0, 4)
       : showcase === "latest"
       ? products
           .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by latest creation date
-          .slice(0, 3)
-      : products.slice(0, 8) // Default case, show first 8 products
+          .slice(0, 4)
+      : products.slice(0, 4) // Default case, show first 8 products
     ).map((product, index) => (
       <SwiperSlide key={index}>
         <div
