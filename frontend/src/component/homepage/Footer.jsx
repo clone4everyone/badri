@@ -110,7 +110,7 @@ const Footer = () => {
       rel="noopener noreferrer" href={`https://wa.me/9962999658`} className='underline'>+919962999658</a></p>
       <p className="text-sm text-black font-[Montserrat] mt-1">
         Email:{" "}
-        <a className="hover:text-black">
+        <a className="hover:text-black underline" href="https://mail.google.com/mail/?view=cm&to=karanrawat9149@gmail.com" target='_blank' rel='noopener noreferrer'>
          contact@srisairam.co.in
         </a>
       </p>
@@ -124,6 +124,7 @@ const Footer = () => {
     <p>Privacy Policy</p>
     <p>All rights reserved.</p>
   </div>
+ 
   </>
   
   );

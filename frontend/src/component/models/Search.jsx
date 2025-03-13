@@ -149,7 +149,7 @@ const Search = ({ setModel }) => {
                 className="w-24 h-24 md:w-32 md:h-32 rounded-lg object-cover"
               />
               <div className="font-montserrat">
-                <h3 className="text-lg font-bold font-[finaSans]">{item.titile}</h3>
+                <h3 className="text-lg font-bold font-[finaSans]">{item.title}</h3>
                 <p className="font-[Montserrat]">
                   <strong>BHK:</strong> {item.bhk}BHK{item.balcony? '- Balcony':null}{item.terrace? '- Terrace':null}
                 </p>

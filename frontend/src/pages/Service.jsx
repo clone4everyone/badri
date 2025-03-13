@@ -74,7 +74,7 @@ const teamMembers = [
 
          <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
                         <div className='flex flex-col justify-end gap-3 h-72 pb-8 pl-14 text-white'>
-                            <h1 className='text-4xl fira-sans'>Projects</h1>
+                            <h1 className='text-4xl fira-sans'>Services</h1>
                             <p className='text-xl font-[Montserrat]'><span onClick={()=>navigate('/')} className='border-b-2 cursor-pointer'>Home</span> {'>'}<span>Services</span></p>
                         </div>
                     </div>

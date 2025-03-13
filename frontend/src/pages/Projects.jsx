@@ -10,6 +10,7 @@ import Share from '../component/models/Share';
 import Loading from '../component/Loading';
 import { FaList } from 'react-icons/fa';
 import { BsGrid3X3GapFill } from 'react-icons/bs';
+import Footer from '../component/homepage/Footer';
 
 
 
@@ -206,6 +207,7 @@ filteredProducts = products.filter(product => {
               </div>
             )
           }
+          <Footer/>
         </>
       );
 };

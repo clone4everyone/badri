@@ -199,9 +199,9 @@ const handleNavigation = (path) => {
   
     {/* Mobile Menu */}
     {mobileMenuOpen && (
-      <div className="absolute top-16 left-0 w-full z-20 bg-white shadow-lg md:hidden">
+      <div className="absolute top-16 left-0 w-full z-50 bg-white shadow-lg md:hidden ">
         <div className="flex flex-col items-center space-y-4 p-4 z-10">
-        <div className="hidden md:flex items-center space-x-6 inter">
+        {/* <div className="hidden md:flex items-center space-x-6 inter"> */}
   <button
     className="hover:cursor-pointer hover:border-b-2"
     onClick={() => handleNavigation("/")}
@@ -232,7 +232,7 @@ const handleNavigation = (path) => {
   >
     Contact Us
   </button>
-</div>
+{/* </div> */}
         </div>
       </div>
     )}

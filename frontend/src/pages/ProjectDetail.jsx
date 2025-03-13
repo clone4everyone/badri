@@ -271,7 +271,7 @@ Starting Plot: {'  '}
 }</p>
         {
           project.category === "house" && <p className="mt-2 mb-2 flex gap-2 items-center font-thin relative -left-[0.9px]">
-          <BiBed className="text-2xl " /> {project.bhk} BHK
+          <BiBed className="text-2xl " /> {project.bhk} BHK - {project.balcony && 'Balcony'}, {project.terrace && 'Terrace'}
         </p>
         }
         
