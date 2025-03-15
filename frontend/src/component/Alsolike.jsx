@@ -4,57 +4,11 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import API from '../utils/API';
 import Loading from './Loading';
 import { useNavigate } from 'react-router-dom';
-const Alsolike = () => {
+const Alsolike = ({id}) => {
   const [scrollPosition, setScrollPosition] = useState(0);
   const scrollContainerRef = useRef(null);
   const [products,setProducts]=useState(null);
-  const properties = [
-    {
-      id: 1,
-      image: "/api/placeholder/400/320",
-      title: "Sri Sai Shakthi Nagar (Poondi Project)",
-      location: "Location: Poondi, Thiruvallur District",
-      projectSize: "6 Acres",
-      bedrooms: "2BHK - 1Balcony",
-      price: "40,30,000"
-    },
-    {
-      id: 2,
-      image: "/api/placeholder/400/320",
-      title: "Sri Sai Shakthi Nagar (Poondi Project)",
-      location: "Location: Poondi, Thiruvallur District",
-      projectSize: "6 Acres",
-      bedrooms: "2BHK - 1Balcony",
-      price: "40,30,000"
-    },
-    {
-      id: 3,
-      image: "/api/placeholder/400/320",
-      title: "Sri Sai Shakthi Nagar (Poondi Project)",
-      location: "Location: Poondi, Thiruvallur District",
-      projectSize: "6 Acres",
-      bedrooms: "2BHK - 1Balcony",
-      price: "40,30,000"
-    },
-    {
-      id: 4,
-      image: "/api/placeholder/400/320",
-      title: "Sri Sai Shakthi Nagar (Poondi Project)",
-      location: "Location: Poondi, Thiruvallur District",
-      projectSize: "6 Acres",
-      bedrooms: "2BHK - 1Balcony",
-      price: "40,30,000"
-    },
-    {
-      id: 5,
-      image: "/api/placeholder/400/320",
-      title: "Sri Sai Shakthi Nagar (Poondi Project)",
-      location: "Location: Poondi, Thiruvallur District",
-      projectSize: "6 Acres",
-      bedrooms: "2BHK - 1Balcony",
-      price: "40,30,000"
-    }
-  ];
+
 
   
   const scroll = (direction) => {
@@ -111,12 +65,19 @@ const Alsolike = () => {
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           onScroll={handleScroll}
         >
-          {products.map((property,index) => (
-            <LikeCard
+          {products.map((property,index) => {
+            return <>
+         {
+              property._id!==id && <LikeCard
              property={property}
              key={index}
             />
-          ))}
+            }
+        </>   
+          }
+        
+            
+          )}
         </div>
         
         {/* Right scroll button */}

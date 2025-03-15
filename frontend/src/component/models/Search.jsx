@@ -87,7 +87,7 @@ const Search = ({ setModel }) => {
   }
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 pl-4 md:pl-0">
-    <div className="bg-white rounded-xl p-6 md:p-8 w-[90%] max-h-[69%]  max-w-4xl custom-scrollbar relative shadow-lg transition-all duration-1000 ease-in-out opacity-100 scale-100">
+    <div className="bg-white rounded-xl p-6 md:p-8 w-[90%]   max-w-4xl custom-scrollbar relative shadow-lg transition-all duration-1000 ease-in-out opacity-100 scale-100">
       {/* Close Button */}
       <button
         className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors"

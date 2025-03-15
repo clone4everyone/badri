@@ -43,8 +43,8 @@ const Overview = () => {
     const targets = {
       experience: 35,
       projects: 80,
-      customers: 200,
-      sqft: 500,
+      customers: 2001,
+      sqft: 1000000,
     };
 
     let steps = fps; // Number of animation frames
@@ -96,7 +96,11 @@ const Overview = () => {
           <p className="text-base md:text-lg font-bold mt-4 mont">Customers Served</p>
         </div>
         <div className="h-auto md:h-[70%] px-6 flex flex-col items-center justify-center text-gray-800">
-          <h1 className="text-4xl md:text-[64px] font-bold fira-sans bg-gradient-to-b from-black via-gray-600 py-1 to-black bg-clip-text text-transparent">{Math.floor(counts.sqft)+1}k+</h1>
+          <h1 className="text-4xl md:text-[64px] font-bold fira-sans bg-gradient-to-b from-black via-gray-600 py-1 to-black bg-clip-text text-transparent">
+            {
+              Math.floor(counts.sqft)+1 !==1000000 ? `${Math.floor(counts.sqft)+1}k+`:'1M+'
+            }
+            </h1>
           <p className="text-base md:text-lg font-bold mt-4 mont">Sq.ft Sold</p>
         </div>
       </div>

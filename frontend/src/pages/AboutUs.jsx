@@ -126,7 +126,7 @@ zero();
         </div>
       </div>
     </div>
-    <div className="relative w-[680px] h-[560px]"> <div className="relative h-[561px] -top-px"> <img className="absolute w-[576px] h-[435px] top-[126px] left-0 object-cover" alt="Rectangle" src={estate} /><div className="absolute top-7 left-[40%] lg:left-48 font-bold text-[90px] lg:text-[150px] tracking-[6px] leading-[200px] whitespace-nowrap z-20 text-gray-800
+    <div className="relative w-[680px] h-[560px]"> <div className="relative h-[561px] -top-px"> <img className="absolute w-[576px] h-[435px] top-[126px] left-0 object-cover" alt="Rectangle" src={estate} /><div className="absolute top-7 left-[40%] lg:left-48 font-bold text-[70px] lg:text-[150px] tracking-[6px] leading-[200px] whitespace-nowrap z-20 text-gray-800
   bg-gradient-to-b from-black via-gray-700 to-black 
   bg-clip-text text-transparent">
   1980

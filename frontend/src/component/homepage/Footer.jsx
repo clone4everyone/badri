@@ -66,8 +66,8 @@ const Footer = () => {
           </Link>
         </li>
         <li>
-          <Link to="/#properties" className="hover:text-black text-sm font-[Montserrat]">
-            Properties
+          <Link to="/projects" className="hover:text-black text-sm font-[Montserrat]">
+            Projects
           </Link>
         </li>
         <li>
@@ -110,7 +110,7 @@ const Footer = () => {
       rel="noopener noreferrer" href={`https://wa.me/9962999658`} className='underline'>+919962999658</a></p>
       <p className="text-sm text-black font-[Montserrat] mt-1">
         Email:{" "}
-        <a className="hover:text-black underline" href="https://mail.google.com/mail/?view=cm&to=karanrawat9149@gmail.com" target='_blank' rel='noopener noreferrer'>
+        <a className="hover:text-black underline" href="https://mail.google.com/mail/?view=cm&to=contact@srisairam.co.in" target='_blank' rel='noopener noreferrer'>
          contact@srisairam.co.in
         </a>
       </p>

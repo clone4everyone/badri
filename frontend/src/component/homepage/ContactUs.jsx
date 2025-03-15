@@ -135,12 +135,13 @@ const ContactUs = () => {
 
       {/* Right Section (Map) */}
       <div className="lg:w-1/2 w-full p-4">
-        <iframe
-          className="w-full h-[300px] md:h-[350px] lg:h-[400px] rounded-xl border border-gray-300"
-          src="https://maps.google.com/maps?q=13.131797,79.928074&t=&z=15&ie=UTF8&iwloc=B&output=embed"
-          loading="lazy"
-          allowFullScreen
-        ></iframe>
+      <iframe 
+    className="w-full h-[300px] md:h-[350px] lg:h-[400px] rounded-xl border border-gray-300"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3914.7447897750445!2d79.9279747!3d13.131686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a528f6cd1eeeb73%3A0xdd165de74773170!2sSRI%20SAI%20RAM%20REAL%20ESTATE%20%26%20CONSTRUCTION!5e0!3m2!1sen!2sin!4v1710527264123!5m2!1sen!2sin"
+    loading="lazy"
+    allowFullScreen
+></iframe>
+
       </div>
 
       {/* Sidebar */}
@@ -170,7 +171,7 @@ const ContactUs = () => {
               id="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className={`w-full border ${errors.name ? 'border-red-500' : 'border-gray-300'} rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full border ${errors.name ? 'border-red-500' : 'border-gray-300'}  px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
               placeholder="Your Name"
             />
             {/* {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>} */}
@@ -188,7 +189,7 @@ const ContactUs = () => {
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className={`w-full border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full border ${errors.email ? 'border-red-500' : 'border-gray-300'}  px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
               placeholder="Your Email"
             />
             {/* {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>} */}
@@ -206,7 +207,7 @@ const ContactUs = () => {
               rows="4"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              className={`w-full border ${errors.message ? 'border-red-500' : 'border-gray-300'} rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
+              className={`w-full border ${errors.message ? 'border-red-500' : 'border-gray-300'}  px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500`}
               placeholder="Enter Your Message"
             ></textarea>
             {/* {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>} */}
@@ -215,14 +216,14 @@ const ContactUs = () => {
             <button
               type="button"
               onClick={toggleSidebar}
-              className="text-sm md:text-base text-gray-700 px-4 py-2 mr-2 border border-gray-300 rounded-md hover:bg-gray-100 transition-all"
+              className="text-sm md:text-base text-gray-700 px-4 py-2 mr-2 border border-gray-300  hover:bg-gray-100 transition-all"
               style={{ fontFamily: "Montserrat" }}
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="text-sm md:text-base text-white px-4 py-2 bg-blue-600 rounded-md hover:bg-blue-700 transition-all"
+              className="text-sm md:text-base text-white px-4 py-2 bg-blue-600   hover:bg-blue-700 transition-all"
               style={{ fontFamily: "Montserrat" }}
             >
               Send

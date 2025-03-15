@@ -107,14 +107,14 @@ filteredProducts = products.filter(product => {
             <div className="flex gap-2">
               <button 
                 onClick={() => toggleViewMode('list')}
-                className={`p-2 ${viewMode === 'list' ? 'bg-blue-600 text-white' : 'bg-gray-200'} rounded`}
+                className={`p-2 ${viewMode === 'list' ? 'bg-blue-600 text-white' : 'bg-gray-200'} rounded hidden md:block`}
                 aria-label="List view"
               >
                 <FaList className="h-6 w-6" />
               </button>
               <button 
                 onClick={() => toggleViewMode('grid')}
-                className={`p-2 ${viewMode === 'grid' ? 'bg-blue-600 text-white' : 'bg-gray-200'} rounded`}
+                className={`p-2 ${viewMode === 'grid' ? 'bg-blue-600 text-white' : 'bg-gray-200'} rounded hidden md:block`}
                 aria-label="Grid view"
               >
                 <BsGrid3X3GapFill className="h-6 w-6" />

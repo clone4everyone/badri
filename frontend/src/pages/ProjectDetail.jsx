@@ -50,6 +50,7 @@ const ProjectDetail = () => {
        })
      if(data.data.status){
       setProject(data.data.project);
+      console.log(data.data.project._id)
       let photos = [...data.data.project.listingPhotoPaths]; 
       photos.push(data.data.project.thumbnail);
       if(data.data.project.floorImage.length!==0){
@@ -265,7 +266,7 @@ const ProjectDetail = () => {
 </clipPath>
 </defs>
 </svg>
-Starting Plot: {'  '}
+Starting Plot size: {'  '}
 {
   project.plot
 }</p>
@@ -276,7 +277,7 @@ Starting Plot: {'  '}
         }
         
         <p className="  flex gap-3 items-center pl-1 ">
-        <p className='text-2xl '>₹ </p> <p className='font-thin'>Starting plot prize:</p> <p className='font-thin'>{Number(project.price).toLocaleString()}</p>
+        <p className='text-2xl '>₹ </p> <p className='font-thin'>Starting plot price:</p> <p className='font-thin'>{Number(project.price).toLocaleString()}</p>
         </p>
         
         <button className='mont mt-5 border-2 flex items-center rounded-md border-blue-500 px-5 py-3 font-semibold text-blue-600 '  onClick={() => {
@@ -468,7 +469,10 @@ Starting Plot: {'  '}
      
     </div>
 
-    <Alsolike/>
+{
+  project && <Alsolike id={project._id}/>
+}
+    
                             <Footer/>
     </>
   );

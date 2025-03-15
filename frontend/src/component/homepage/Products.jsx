@@ -163,7 +163,12 @@ const Products = () => {
           </div>
           <div className="absolute inset-0 p-4 opacity-0 group-hover:opacity-100 bg-black bg-opacity-70 text-white transition-all duration-500 flex flex-col justify-center">
             <p className="flex items-center mb-2 text-sm">
-              <BiBed className="mr-2 text-blue-300" /> {product.bhk} bhk
+             {product.category === "house" && (
+                        <p className="flex items-center gap-2 font-[Montserrat]">
+                          <BiBed className="font-semibold text-blue-500" /> 
+                          {`${product.bhk} BHK${product.balcony ? ' - Balcony' : ''}${product.terrace ? ' - Terrace' : ''}`}
+                        </p>
+                      )}
             </p>
             <p className="mb-4 text-xs">
               {product.description.substring(0, 70)}...
@@ -176,9 +181,9 @@ const Products = () => {
               <FaMapMarkerAlt className=" text-red-400" />{" "}
               {product.locationTitle.substring(0, 10)}...
             </p>
-            <p className="mt-2 text-sm">Total Area: {product.unit === "sqft"
-            ? `${product.sqft} Sq.ft (W: ${product.width}, L: ${product.length})`
-            :product.unit === "Acre"? `${product.Acre} Acre`:`${product.Cents} Cents`}</p>
+            <p className="mt-2 text-sm">Total Area:  {product.unit === "sqft"
+            ? `${product.totalArea} Sq.ft `
+            :product.unit === "Acre"? `${product.totalArea} Acre`:`${product.totalArea} Cents`}</p>
           </div>
         </div>
       </SwiperSlide>
