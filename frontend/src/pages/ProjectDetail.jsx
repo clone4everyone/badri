@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import Navbar from '../component/homepage/Navbar';
 import background from '../assets/project.jpeg';
 import {useLocation,useParams} from 'react-router-dom';
-import { FaMapMarkerAlt,FaMapMarked ,FaShareAlt, FaHome, FaArrowRight} from 'react-icons/fa';
+import { FaMapMarkerAlt,FaMapMarked ,FaShareAlt, FaHome, FaArrowRight, FaLandmark, FaLocationArrow, FaPoundSign, FaRupeeSign, FaMagento, FaMap, FaMapPin, FaMapSigns, FaThLarge, FaLayerGroup, FaChartBar} from 'react-icons/fa';
 import { BiBed } from 'react-icons/bi';
 import { MdOutlineAttachMoney } from 'react-icons/md';
 import { FaPhoneAlt, FaEnvelope, FaUserCircle,FaHeart} from "react-icons/fa";
@@ -251,6 +251,17 @@ const ProjectDetail = () => {
             ? `${project.totalArea} Sq.ft `
             :project.unit === "Acre"? `${project.totalArea} Acre`:`${project.totalArea} Cents`
           }
+        </p>
+
+        <p className=" flex gap-2 items-center mt-2  font-thin ">
+          <FaThLarge className="text-xl" />  <a
+  href={project.locationLink}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="text-black flex gap-1"
+>
+ Number of plots : {' '}{project.plotNumber}
+</a>
         </p>
         <p className='mt-2 flex gap-2 items-center font-thin'>
         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" viewBox="0 0 25 25" fill="none" className="mt-1 relative -left-[2px]">
