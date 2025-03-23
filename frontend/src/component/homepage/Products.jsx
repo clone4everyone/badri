@@ -175,7 +175,8 @@ const Products = () => {
             </p>
             <p className="flex items-center font-bold mb-2 text-sm">
               <p className="mr-2 text-green-400" >₹</p>{" "}
-              {Number(product.price).toLocaleString()}
+              {Number(product.price).toLocaleString('en-IN')}
+              {/* {Number(product.price).toLocaleString()} */}
             </p>
             <p className="flex items-center text-sm">
               <FaMapMarkerAlt className=" text-red-400" />{" "}

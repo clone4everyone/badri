@@ -110,11 +110,11 @@ zero();
 
 
 
-<div className="p-12 min-h-72 pt-10 bg-[#FFF9EB] relative -top-[25vh] md:-top-[62vh] mb-[-62vh]">
+  <div className="p-12 min-h-72 pt-10 bg-[#FFF9EB] relative -top-[25vh] md:-top-[62vh] mb-[-62vh]">
   <div className="flex flex-col md:flex-row items-center rounded-lg overflow-hidden p-8 space-y-8 md:space-y-0 md:space-x-10">
     <div className="flex flex-col justify-center space-y-8 w-full md:w-2/3">
       <div className="flex flex-col">
-        <h1 className="text-4xl md:text-4xl  fira-sans leading-snug text-gray-800">
+        <h1 className="text-4xl md:text-4xl fira-sans leading-snug text-gray-800">
           Our History
         </h1>
         <div className="mt-4 text-sm md:text-lg font-[Montserrat] text-gray-600 leading-relaxed">
@@ -126,15 +126,27 @@ zero();
         </div>
       </div>
     </div>
-    <div className="relative w-[680px] h-[560px]"> <div className="relative h-[561px] -top-px"> <img className="absolute w-[576px] h-[435px] top-[126px] left-0 object-cover" alt="Rectangle" src={estate} /><div className="absolute top-7 left-[40%] lg:left-48 font-bold text-[70px] lg:text-[150px] tracking-[6px] leading-[200px] whitespace-nowrap z-20 text-gray-800
-  bg-gradient-to-b from-black via-gray-700 to-black 
-  bg-clip-text text-transparent">
-  1980
-</div>
-
- </div> </div>
+    <div className="relative w-[680px] h-[560px]">
+      <div className="relative h-[561px] -top-px">
+        <img
+          className="absolute w-[576px] h-[435px] top-[126px] left-0 object-cover"
+          alt="Rectangle"
+          src={estate}
+        />
+        <div
+          className="absolute top-7 left-[40%] lg:left-48 font-bold 
+          text-[50px] sm:text-[70px] md:text-[100px] lg:text-[150px] 
+          tracking-[6px] leading-[150px] sm:leading-[200px] whitespace-nowrap 
+          z-20 text-gray-800 bg-gradient-to-b from-black via-gray-700 to-black 
+          bg-clip-text text-transparent"
+        >
+          1980
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
 
 <ProjectSlider />
 

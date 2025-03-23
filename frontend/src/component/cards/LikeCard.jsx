@@ -39,7 +39,7 @@ const LikeCard = ({ property,index}) => {
                 )}
                 <p className="font-[Montserrat] font-semibold">
                   
-                  ₹ {Number(property.price).toLocaleString()}</p>
+                  ₹ {Number(property.price).toLocaleString('en-IN')}</p>
                 
                 {/* Conditionally truncate description based on view mode */}
                 <p className="font-[Montserrat]">

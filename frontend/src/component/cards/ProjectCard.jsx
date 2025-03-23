@@ -142,7 +142,10 @@ const ProjectCard = ({ product, viewMode = 'list' }) => {
             {`${product.bhk} BHK${product.balcony ? ' - Balcony' : ''}${product.terrace ? ' - Terrace' : ''}`}
           </p>
         )}
-        <p className="font-[Montserrat] font-semibold">₹ {Number(product.price).toLocaleString()}</p>
+       <p className="font-[Montserrat] font-semibold">
+  ₹ {Number(product.price).toLocaleString('en-IN')}
+</p>
+
         
         {/* Conditionally truncate description based on view mode */}
         <p className="font-[Montserrat]">

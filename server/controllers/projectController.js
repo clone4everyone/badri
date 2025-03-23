@@ -5,7 +5,7 @@ const Show=require("../models/Showcase")
 const create=async(req,res)=> {
     try {
       const { formFields, listingPhotos,thumbnail,floorImage } = req.body;
-      
+      console.log(formFields.Nplot)
       const year = new Date().getFullYear();
       // console.log("Received form fields:", formFields);
     //   console.log("Received listing photos:", listingPhotos);

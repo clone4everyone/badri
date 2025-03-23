@@ -288,7 +288,7 @@ Starting Plot size: {'  '}
         }
         
         <p className="  flex gap-3 items-center pl-1 ">
-        <p className='text-2xl '>₹ </p> <p className='font-thin'>Starting plot price:</p> <p className='font-thin'>{Number(project.price).toLocaleString()}</p>
+        <p className='text-2xl '>₹ </p> <p className='font-thin'>Starting plot price:</p> <p className='font-thin'>{Number(project.price).toLocaleString('en-IN')}</p>
         </p>
         
         <button className='mont mt-5 border-2 flex items-center rounded-md border-blue-500 px-5 py-3 font-semibold text-blue-600 '  onClick={() => {

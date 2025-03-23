@@ -162,7 +162,7 @@ const Search = ({ setModel }) => {
             : item.unit === "Acre"?`${item.totalArea} Acre`:`${item.totalArea} Cents`}
                 </p>
                 <p className='font-[Montserrat]'>
-                <strong>Price:</strong> ₹ {Number(item.price).toLocaleString()}
+                <strong>Price:</strong> ₹ {Number(item.price).toLocaleString('en-IN')}
 
 
                 </p>
