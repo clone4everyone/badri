@@ -176,7 +176,7 @@ const Projects = () => {
         <div className='container mx-auto px-4 py-8 max-w-7xl'>
           {/* Filter Section with Shadow and Better Layout */}
           <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h3 className="text-lg font-semibold text-gray-700 mb-4">Filter Properties</h3>
+           
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
               <div className="flex flex-col">
                 <label htmlFor="searchQuery" className="text-sm font-medium text-gray-600 mb-1">Search</label>
