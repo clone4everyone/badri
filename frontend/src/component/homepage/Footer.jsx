@@ -56,12 +56,12 @@ const Footer = () => {
           </Link>
         </li>
         <li>
-          <Link to="/#about" className="hover:text-black text-sm font-[Montserrat]">
+          <Link to="/about" className="hover:text-black text-sm font-[Montserrat]">
             About
           </Link>
         </li>
         <li>
-          <Link to="/#service" className="hover:text-black text-sm font-[Montserrat]">
+          <Link to="/service" className="hover:text-black text-sm font-[Montserrat]">
             Service
           </Link>
         </li>
@@ -83,19 +83,19 @@ const Footer = () => {
       <h2 className="text-md font-medium mb-3 font-fira-sana">Services</h2>
       <ul className="space-y-1">
         <li>
-          <a href="#" className="hover:text-black text-sm font-[Montserrat]">
+          <Link to="/projects" className="hover:text-black text-sm font-[Montserrat]">
             Buy
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="hover:text-black text-sm font-[Montserrat]">
+          <Link to="/projects" className="hover:text-black text-sm font-[Montserrat]">
             Land Sale Solution
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#" className="hover:text-black text-sm font-[Montserrat]">
+          <Link to="/projects" className="hover:text-black text-sm font-[Montserrat]">
             Construction
-          </a>
+          </Link>
         </li>
       </ul>
     </div>

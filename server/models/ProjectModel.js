@@ -79,7 +79,8 @@ const listingSchema = new mongoose.Schema({
         type:String
     },
     plotNumber:{
-type:Number
+    type:Number,
+        default:1
     },
 //     Cents:{
 //         type:Number,

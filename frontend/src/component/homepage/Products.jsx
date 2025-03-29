@@ -115,16 +115,7 @@ const Products = () => {
 >
   {products &&
     // Apply filter or sorting logic based on the showcase prop
-    (showcase === "most-view"
-      ? products
-          .sort((a, b) => b.view - a.view) // Sort by views in descending order
-          .slice(0, 4)
-      : showcase === "latest"
-      ? products
-          .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)) // Sort by latest creation date
-          .slice(0, 4)
-      : products.slice(0, 4) // Default case, show first 8 products
-    ).map((product, index) => (
+  products.slice(0,8).map((product, index) => (
       <SwiperSlide key={index}>
         <div
           onClick={() => {

@@ -28,7 +28,7 @@ const NotFound=()=>{
           </p>
 
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate('/')}
             className="mt-6 px-6 py-3 font-bold border-b-4 border-b-yellow-600 rounded-lg shadow-lg transition duration-300" 
           >
             Go Back

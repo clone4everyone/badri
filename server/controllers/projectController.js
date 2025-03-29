@@ -7,7 +7,7 @@ const create=async(req,res)=> {
       const { formFields, listingPhotos,thumbnail,floorImage } = req.body;
       console.log(formFields.plotNumber)
       const year = new Date().getFullYear();
-      // console.log("Received form fields:", formFields);
+      console.log("Received form fields:", formFields);
     //   console.log("Received listing photos:", listingPhotos);
   
       // Validate if listingPhotos were received
