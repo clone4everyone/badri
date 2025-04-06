@@ -18,47 +18,47 @@ const create=async(req,res)=> {
   console.log("photos")
       // Upload each photo to Cloudinary
      
-const uploadPromises = listingPhotos.map(async (photo) => {
-        return cloudinary.uploader.upload(photo, {
-          folder: "avatars",
-          width: 150,
-          crop: "scale",
-        });
-      });
+// const uploadPromises = listingPhotos.map(async (photo) => {
+//         return cloudinary.uploader.upload(photo, {
+//           folder: "avatars",
+//           width: 150,
+//           crop: "scale",
+//         });
+//       });
      
       
-      console.log("picture")
-       const picture=await cloudinary.uploader.upload(thumbnail,{
-         folder:"avatars",
-         width:150,
-         crop:"scale"
-       });
-       let floor="";
-       console.log(floor);
-if(floorImage!==null){
-  try{
-floor=await cloudinary.uploader.upload(floorImage,{
-        folder:"avatars",
-        width:150,
-        crop:"scale"
-      });
-  }catch(err){
-    console.log(err.message)
-  }
+//       console.log("picture")
+//        const picture=await cloudinary.uploader.upload(thumbnail,{
+//          folder:"avatars",
+//          width:150,
+//          crop:"scale"
+//        });
+//        let floor="";
+//        console.log(floor);
+// if(floorImage!==null){
+//   try{
+// floor=await cloudinary.uploader.upload(floorImage,{
+//         folder:"avatars",
+//         width:150,
+//         crop:"scale"
+//       });
+//   }catch(err){
+//     console.log(err.message)
+//   }
 
-}
+// }
      
-        const uploadedPhotoUrls = await Promise.all(uploadPromises);
+        // const uploadedPhotoUrls = await Promise.all(uploadPromises);
       
       
        console.log("reached here")
       // Create a new listing with uploaded photo URLs
       const newListing = new Listing({
         ...formFields, // Spread form fields
-        listingPhotoPaths: uploadedPhotoUrls.map((result) => result.url),
+        listingPhotoPaths: listingPhotos,
         year,
-        thumbnail:picture.url,
-        floorImage:floor===""?"":floor.url
+        thumbnail,
+        floorImage
       });
   
       // Save the listing to the database

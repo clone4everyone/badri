@@ -80,7 +80,7 @@ const listingSchema = new mongoose.Schema({
     },
     plotNumber:{
     type:Number,
-        default:1
+     
     },
 //     Cents:{
 //         type:Number,
@@ -93,10 +93,10 @@ plot:{
     type:Number,
     default:1
 },
-// approved:{
-//     type:String,
-//     defualt:'notapproved'
-// },
+approved:{
+    type:String,
+    defualt:'notapproved'
+},
 live:{
     type:Boolean,
     default:false

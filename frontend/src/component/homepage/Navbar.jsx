@@ -78,7 +78,7 @@ const handleNavigation = (path) => {
 };
   return (
  
-    <div className={`flex justify-between items-center p-4  z-50 md:pl-20 sticky top-0 transition-all duration-300 ${
+    <div className={`flex justify-between items-center p-4  z-40 md:pl-20 sticky top-0 transition-all duration-300 ${
       isScrolled
         ? "bg-white/30 backdrop-blur-3xl shadow-md" // Glass effect on scroll
         : "bg-white"

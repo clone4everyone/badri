@@ -219,7 +219,7 @@ zero();
 
 
 
-<div className='lg:mb-[241px]'>
+<div >
   <Why/>
   
 </div>

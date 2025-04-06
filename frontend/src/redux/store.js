@@ -1,42 +1,25 @@
-import {
-    FLUSH,
-    REHYDRATE,
-    PAUSE,
-    PERSIST,
-    PURGE,
-    REGISTER
-} from "redux-persist";
 import { combineReducers } from "redux";
-import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist"; // Added persistReducer and persistStore imports
+import { configureStore } from "@reduxjs/toolkit";
 import UserSlice from "./UserSlice";
 import Toggle from "./Toggle";
-import { configureStore } from "@reduxjs/toolkit";
 
+// Combine reducers
 const rootReducer = combineReducers({
     user: UserSlice,
-    toggle:Toggle
+    toggle: Toggle,
     // Add other slices here if needed
 });
 
-const persistConfig = {
-    key: "root",
-    version: 1,
-    storage,
-};
-
-
-const persistedReducer = persistReducer(persistConfig, rootReducer); // Renamed persistReducer to rootReducer
-
+// Configure and export the store
 export const store = configureStore({
-    reducer: persistedReducer,
+    reducer: rootReducer,
+    // Add any necessary middleware here
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+                ignoredActions: [],
             },
         }),
 });
 
-export let persistor = persistStore(store);
 export default store;

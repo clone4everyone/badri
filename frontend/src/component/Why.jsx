@@ -3,7 +3,7 @@ import s1 from "../assets/s1.jpg";
 import s2 from "../assets/s2.jpg";
 import s3 from "../assets/s3.jpg";
 import s4 from "../assets/s4.jpg";
-import overlay from "../assets/overlay.jpg"
+import overlay from "../assets/bage.png"
 const Why = () => {
   const services = [
     {
@@ -35,22 +35,18 @@ const Why = () => {
       image: s4
     },
   ];
-
-  return (
-    <div className="relative">
-      {/* Background container */}
-      <div className="bg-[#fff9eb] hidden lg:flex md:flex-row justify-center w-full absolute top-0 left-0 z-0 ">
-        <div className="bg-[#fff9eb] w-full max-w-[1440px] overflow-hidden  h-[985px] ">
+{/* <div className="bg-[#fff9eb] hidden lg:flex md:flex-row justify-center w-full absolute top-0 left-0 z-0">
+        <div className="bg-[#fff9eb] w-full border border-red-500 overflow-hidden  h-[930px]  max-h-[930px]">
           <div className="relative h-[549px] mt-[501px]">
             <div className="relative w-full h-[549px]">
-              {/* Background image */}
+           
               <img
                 className="absolute w-full h-[485px]  left-0 object-cover"
                 alt="Background Image"
-                src={overlay} // Replace with your actual overlay image
+                src={overlay}
               />
               
-              {/* Gradient overlay */}
+             
               <div 
                 className="absolute w-full h-[506px] top-0 left-0"
                 style={{
@@ -60,10 +56,14 @@ const Why = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+  return (
+    <div className="relative bg-[#FFF9EB]">
+     
+      
       
       {/* Why component content */}
-      <div className="relative z-10 bg-transparent p-6 md:p-8">
+      <div className="relative  bg-transparent p-6 md:pl-8 bg-[#FFF9EB] ">
         <h2 className="text-2xl md:text-4xl mt-8 text-start mb-6 md:mb-8 fira-sans">
           Why Choose Sri Sai Ram Real Estate
         </h2>
@@ -89,6 +89,7 @@ const Why = () => {
           ))}
         </div>
       </div>
+      <img src={overlay} className="w-full"/>
     </div>
   );
 };

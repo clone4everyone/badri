@@ -88,12 +88,12 @@ const Footer = () => {
           </Link>
         </li>
         <li>
-          <Link to="/projects" className="hover:text-black text-sm font-[Montserrat]">
+          <Link to="/#contact" className="hover:text-black text-sm font-[Montserrat]">
             Land Sale Solution
           </Link>
         </li>
         <li>
-          <Link to="/projects" className="hover:text-black text-sm font-[Montserrat]">
+          <Link to="/#contact" className="hover:text-black text-sm font-[Montserrat]">
             Construction
           </Link>
         </li>
