@@ -66,9 +66,9 @@ const login = async (req, res) => {
     console.log(user.password);
     
     console.log(password)
-    const isMatch = await bcrypt.compare(password, user.password);
-    console.log(isMatch);
-    
+    // const isMatch = await bcrypt.compare(password, user.password);
+    // console.log(isMatch);
+    const isMatch= password === user.password ? true : false;
     if (!isMatch) {
        return res
     .status(401)
@@ -127,12 +127,14 @@ const updatePassword = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    // const isMatch = await bcrypt.compare(currentPassword, user.password);
+    const isMatch= currentPassword === passoword ? true:false;
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid password" });
     }
-    const hashed = bcrypt.hash(newPassword, 10); 
-    user.password = hashed;
+    // const hashed = bcrypt.hash(newPassword, 10); 
+    // user.password = hashed;
+    user.password=password;
     await user.save();
     res.json({ success: true, message: "Password updated successfully" });
   } catch (error) {
@@ -222,7 +224,8 @@ const resetPassword = async (req, res, next) => {
       .json({ message: "Passwords do not match or are missing" });
   }
   
-  user.password = await bcrypt.hash(password, 10);
+  // user.password = await bcrypt.hash(password, 10);
+  user.password=password;
   console.log(user.password);
   
   // user.password = await
