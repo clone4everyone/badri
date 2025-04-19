@@ -11,6 +11,7 @@ import m3 from "../assets/m1 (3).png"
 import m4 from "../assets/m1 (4).png"
 import m5 from "../assets/m1 (5).png"
 import m6 from "../assets/m1 (6).png"
+import { Helmet } from "react-helmet";
 const teamMembers = [
     {
       name: "Team member",
@@ -71,7 +72,12 @@ const teamMembers = [
     return (
         <>
         <Navbar/>
+<Helmet>
+  <title>Service - SRI SAI ESTATE</title>
+  <meta name="description" content="Explore professional real estate services by SRI SAI Real Estate including property buying, selling, investment consulting, home loan assistance, legal support, and site visits." />
+  <meta name="keywords" content="real estate services, property buying assistance, property selling, investment consulting, home loan help, legal property services, site visits, SRI SAI Real Estate" />
 
+</Helmet>
          <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
                         <div className='flex flex-col justify-end gap-3 h-72 pb-8 pl-14 text-white'>
                             <h1 className='text-4xl fira-sans'>Services</h1>

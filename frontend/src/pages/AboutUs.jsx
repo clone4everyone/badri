@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import estate from '../assets/estate.jpg'
 import { Link } from 'react-router-dom';
 import overlay from "../assets/overlay.jpg"
+import Layout from '../component/layout/Layout';
 const AboutUs = () => {
   const navigate=useNavigate()
 let i=21;
@@ -32,7 +33,12 @@ zero();
     <>
          <Navbar />
             {/* Background Section */}
-            <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
+            <Layout 
+            title={'About Us - SRI SAI ESTATE'}
+             description={'SRI SAI Real Estate is a trusted name in property consulting and development. Learn about our mission, team, values, and years of experience in the real estate industry.'}
+             keywords={'about real estate company, property consultants, experienced realtors, trusted real estate firm, SRI SAI Real Estate team'}
+             >
+  <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
   <div className='flex flex-col justify-end gap-3 h-72 pb-8 pl-14 text-white'>
     <h1 className='text-4xl font-bold leading-tight fira-sans'>About Us</h1>
     <p className='text-lg md:text-xl hover:cursor-pointer font-[Montserrat]'>
@@ -223,6 +229,8 @@ zero();
   <Why/>
   
 </div>
+            </Layout>
+          
 
 {/* <div className='relative -top-20'>
   <div className='w-full h-20 border border-red-500'>

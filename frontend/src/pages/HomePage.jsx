@@ -10,7 +10,9 @@ import Footer from '../component/homepage/Footer';
 import Testimonial from '../component/homepage/Testimonial';
 import toast from 'react-hot-toast';
 import { useLocation } from 'react-router-dom';
+import {Helmet} from "react-helmet"
 import Search from '../component/models/Search';
+import Layout from '../component/layout/Layout';
 const HomePage = () => {
   const location = useLocation();
   useEffect(() => {
@@ -27,8 +29,15 @@ const HomePage = () => {
   return (
     <>
     <Navbar />
-  
-    <div className="bg-[#E9E9FB] p-0 m-0 md:h-[1250px] lg:h-[1200px] overflow-hidden ">
+    <Helmet>
+  <title>Home - SRI SAI ESTATE</title>
+  <meta name="description" content="Explore top-rated properties for sale and rent with SRI SAI Real Estate. From luxury apartments to family homes, we help you find the perfect property in your desired location." />
+  <meta name="keywords" content="real estate, buy home, rent property, luxury apartments, family houses, commercial spaces, SRI SAI Real Estate" />
+  <meta name="author" content="SRI SAI Real Estate" />
+</Helmet>
+
+<Layout title="Home - SRI SAI ESTATE">
+ <div className="bg-[#E9E9FB] p-0 m-0 md:h-[1250px] lg:h-[1200px] overflow-hidden ">
 
       
       <BigImage/>
@@ -50,6 +59,8 @@ const HomePage = () => {
       <section id='contact'>
         <ContactUs/>
       </section>
+</Layout>
+   
       
       <Footer/>
     </>

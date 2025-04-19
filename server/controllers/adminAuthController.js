@@ -63,15 +63,18 @@ const login = async (req, res) => {
     }
 
     /* Compare the password with the hashed password */
-    // const isMatch = await bcrypt.compare(password, user.password);
-    // if (!isMatch) {
-      
-    // }
-   if(password!==user.password){
-    return res
+    console.log(user.password);
+    
+    console.log(password)
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log(isMatch);
+    
+    if (!isMatch) {
+       return res
     .status(401)
     .json({ status: false, message: "Invalid Credentials" });
-   }
+    }
+   
     const userData = await AdminModel.findById(user._id).select("-password");
     // Generate The token
     const token = user.generateToken();
@@ -125,11 +128,11 @@ const updatePassword = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
     const isMatch = await bcrypt.compare(currentPassword, user.password);
-    if (currentPassword!==user.password) {
+    if (!isMatch) {
       return res.status(401).json({ message: "Invalid password" });
     }
-   
-    user.password = newPassword;
+    const hashed = bcrypt.hash(newPassword, 10); 
+    user.password = hashed;
     await user.save();
     res.json({ success: true, message: "Password updated successfully" });
   } catch (error) {
@@ -184,7 +187,7 @@ const sendResetPassword = async (req, res, next) => {
     .update(resetToken)
     .digest("hex");
   user.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
-
+  console.log(resetToken);
   const resetUrl = `${process.env.ADMIN_URL}/auth/reset-password/${resetToken}`;
   const html = await ejs.renderFile(
     path.join(__dirname, "../emails/resetPassword.ejs"),
@@ -218,18 +221,21 @@ const resetPassword = async (req, res, next) => {
       .status(400)
       .json({ message: "Passwords do not match or are missing" });
   }
-
+  
   user.password = await bcrypt.hash(password, 10);
+  console.log(user.password);
+  
+  // user.password = await
   user.resetPasswordToken = undefined;
   user.resetPasswordExpire = undefined;
 
+  await user.save();
   const html = await ejs.renderFile(
     path.join(__dirname, "../emails/passwordSuccessfull.ejs"),
     { user }
   );
   await sendEmail({ to: user.email, subject: "Password Reset Success", html });
 
-  await user.save();
 
   res.status(200).json({ message: "Password has been updated successfully" });
 };

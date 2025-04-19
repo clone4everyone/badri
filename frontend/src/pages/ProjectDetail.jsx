@@ -15,6 +15,7 @@ import founder from '../assets/founder.png'
 import toast from 'react-hot-toast';
 import Loading from '../component/Loading';
 import Alsolike from '../component/Alsolike';
+import Layout from '../component/layout/Layout';
 const ProjectDetail = () => {
   const navigate=useNavigate();
   const {id,}=useParams();
@@ -110,7 +111,18 @@ const ProjectDetail = () => {
   return (
     <>
        <Navbar />
-       {isModalOpen && (
+        <Layout 
+                   title={`${project?project.title:"Project"} - SRI SAI ESTATE`}
+                    description={`Explore ${project?.title} – ${project?.unit === "sqft"
+            ? `${project?.totalArea} Sq.ft `
+            :project?.unit === "Acre"? `${project?.totalArea} Acre`:`${project?.totalArea} Cents`
+          } located in ${project?.locationTitle}. Get complete details including price, floor plans, amenities, and more.`}
+                    keywords={`${project?.title}, real estate in ${project?.locationTitle}, ${project?.unit === "sqft"
+                      ? `${project?.totalArea} Sq.ft `
+                      :project?.unit === "Acre"? `${project?.totalArea} Acre`:`${project?.totalArea} Cents`
+                    }], project floor plans, project brochure, real estate investment`}
+                    >
+                         {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
           <div className="relative w-full h-full flex items-center justify-center p-4">
             {/* Close button */}
@@ -483,6 +495,8 @@ Starting Plot size: {'  '}
 {
   project && <Alsolike id={project._id}/>
 }
+                    </Layout>
+    
     
                             <Footer/>
     </>

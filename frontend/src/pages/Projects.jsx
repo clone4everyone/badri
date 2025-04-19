@@ -11,6 +11,7 @@ import Loading from '../component/Loading';
 import { FaList } from 'react-icons/fa';
 import { BsGrid3X3GapFill } from 'react-icons/bs';
 import Footer from '../component/homepage/Footer';
+import Layout from '../component/layout/Layout';
 
 const Projects = () => {
   const [products, setProducts] = useState(null);
@@ -139,7 +140,8 @@ const Projects = () => {
     <>
       <Navbar />
       {/* Background Section */}
-      <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
+      <Layout title={'Projects - SRI SAI ESTATE'} description={'Discover top residential and commercial real estate projects in your city. Browse upcoming and ready-to-move projects from trusted developers, all in one place.'} keywords={'real estate projects, residential projects, commercial properties, upcoming projects, ready to move flats, new construction homes'}>
+         <div className='w-full min-h-72 max-h-72 inset-0 bg-cover bg-center' style={{ backgroundImage: `url(${background})` }}>
         <div className='flex flex-col justify-end gap-3 h-72 pb-8 pl-14 text-white'>
           <h1 className='text-4xl fira-sans'>Projects</h1>
           <p className='text-xl font-[Montserrat]'>
@@ -367,6 +369,8 @@ const Projects = () => {
           <p className="text-gray-600">Loading properties...</p>
         </div>
       )}
+      </Layout>
+     
       <Footer/>
     </>
   );
