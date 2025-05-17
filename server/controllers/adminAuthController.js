@@ -134,6 +134,8 @@ const updatePassword = async (req, res) => {
     }
     // const hashed = bcrypt.hash(newPassword, 10); 
     // user.password = hashed;
+    console.log(newPassword);    
+   
     user.password=newPassword;
     await user.save();
     res.json({ success: true, message: "Password updated successfully" });
